@@ -49,8 +49,7 @@
 body {
   width: 100%;
   height: 100%;
-  background: white;
-  overflow: hidden; }
+  background: white; }
 
 h1 {
   color: white;
@@ -82,7 +81,7 @@ h2 {
   background-color: #001025;
   text-align: center;
   position: absolute;
-  z-index: 9999;
+  z-index: 100;
   top: 0;
   left: 0;
   width: 100%;
@@ -157,105 +156,9 @@ h2 {
   .mapArrow img {
     height: 100%; }
 
-nav {
-  position: fixed;
-  height: 10vh;
-  top: 5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 375px;
-  z-index: 999;
-  background: #001025;
-  margin: auto; }
-
-.flex {
-  height: 100%;
-  padding: 0 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center; }
-
-a {
-  text-decoration: none;
-  color: white; }
-
-p {
-  color: white;
-  text-align: center;
-  font-size: 18px; }
-
-.menuOpen {
-  z-index: 99;
-  display: flex;
-  height: 90vh;
-  background: #001025;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; }
-
-.menuLinks {
-  margin: 20px;
-  color: white;
-  font-size: 2em; }
-
-.hamburger {
-  padding: 0; }
-
-.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-  width: 35px;
-  height: 4px;
-  background-color: white; }
-
-.hamburger.is-active .hamburger-inner, .hamburger.is-active .hamburger-inner::before, .hamburger.is-active .hamburger-inner::after {
-  background-color: white;
-  width: 35px; }
-
-:focus {
-  outline: none; }
-
-.panels {
-  position: fixed;
-  z-index: 999;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 375px;
-  height: 90vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: center; }
-
-.swiper-container {
-  display: flex;
-  align-self: flex-end;
-  margin-bottom: 10px;
-  width: 600px;
-  height: 300px; }
-
-.swiper-slide {
-  display: flex;
-  width: 100px;
-  margin: 0 5px;
-  height: 150px;
-  background: #001025;
-  border: 1px solid white;
-  border-radius: 10px;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-end; }
-
-/* .swiper-slide:hover {
-    transform: scale(1.1);
-} */
-.hide {
-  display: none; }
-
 @media only screen and (max-width: 375px) {
   #phoneOverlay {
     display: none; }
   #prototype {
     width: 100%;
-    height: 100%; }
-  nav {
-    width: 100%; } }
+    height: 100%; } }
