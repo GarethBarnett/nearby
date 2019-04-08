@@ -63,6 +63,10 @@ h2 {
   margin-top: 10px;
   font-size: 20px; }
 
+.container {
+  width: 90%;
+  margin: 0 auto; }
+
 #phoneOverlay {
   position: absolute;
   z-index: 99999;
@@ -103,6 +107,54 @@ h2 {
   width: 375px;
   height: 821px;
   z-index: -1; }
+
+.infoMenu {
+  display: none;
+  position: absolute;
+  background: #001025;
+  height: 180px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 50; }
+
+.infoMenuTop {
+  margin-top: 15px;
+  padding: 15px 30px;
+  border-top: 1px solid white;
+  height: 80px; }
+
+.infoMenuLow {
+  padding: 20px;
+  height: 80px;
+  border-top: 1px solid white; }
+
+.findTransport {
+  float: left;
+  color: white;
+  font-family: Gotham Narrow Medium;
+  font-size: 21px;
+  margin-top: 12px; }
+
+.busArrow {
+  height: 50px;
+  float: right; }
+  .busArrow img {
+    height: 100%; }
+
+.backMap {
+  float: left;
+  color: white;
+  font-family: Gotham Narrow Medium;
+  font-size: 17px;
+  margin: 10px 0px 0px 30px; }
+
+.mapArrow {
+  height: 40px;
+  clear: both;
+  float: left; }
+  .mapArrow img {
+    height: 100%; }
 
 @media only screen and (max-width: 375px) {
   #phoneOverlay {
