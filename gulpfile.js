@@ -31,6 +31,7 @@ function mywatch(){
 	});
 
 	gulp.watch("*.html", update)
+	gulp.watch("./assets/scripts/*.js", update)
 	gulp.watch(scssPath, style);
 }
 
