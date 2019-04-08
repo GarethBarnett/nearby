@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="assets/styles/css/reset.css">
-<!-- 	<link rel="stylesheet" type="text/css" href="assets/styles/css/settings.css"> -->
+	<!-- 	<link rel="stylesheet" type="text/css" href="assets/styles/css/settings.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
 	<link rel="stylesheet" type="text/css" href="assets/styles/css/main.css">
 	<link rel="stylesheet" type="text/css" href="assets/styles/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="assets/styles/css/map.css">
+	<link href="assets/styles/css/hamburgers.css" rel="stylesheet">
+
+
 
 	<title>AT Explore Nearby</title>
 </head>
+
 <body>
 
-
-<!-- 	<div id="phoneOverlay">
+	<!-- 	<div id="phoneOverlay">
 		<img src="assets/images/phone.svg">
 	</div> -->
 
-	
+
 	<div id="prototype">
 
 		<div id="splash" class="splash animated">
@@ -30,34 +35,110 @@
 			<h2>Lets Explore Auckland</h2>
 		</div>
 
+		<nav id="navigation">
+			<ul class="flex">
+				<li><button class="hamburger hamburger--slider" type="button" id="menuBtn">
+						<span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+						</span>
+					</button></li>
+
+
+
+
+				<li id="typeText">
+					<p id="breakLines"></p>
+				</li>
+				<li id="marker"><a href="#"><img src="assets/images/marker.svg" alt="marker"></a></li>
+
+
+			</ul>
+			<ul id="menuOpen" class="menuOpen hide">
+
+				<li class="menuLinks animated fadeInDown">Trending</li>
+				<li class="menuLinks animated fadeInDown">Search</li>
+				<li class="menuLinks animated fadeInDown">Events</li>
+				<li class="menuLinks animated fadeInDown">Deals</li>
+				<li class="menuLinks animated fadeInUp"><img src="assets/images/logo.svg" alt="aucklandtransportlogo"
+						height="60px">
+				</li>
+
+
+			</ul>
+
+
+		</nav>
+		<section id="panel" class="panels">
+			<div class="swiper-container">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<div class="swiper-slide"><img src="assets/images/menurestr.svg" alt="menurestaurant"
+							height="100px">
+					</div>
+					<div class="swiper-slide"><img src="assets/images/menusights.svg" alt="menurestaurant"
+							height="100px">
+					</div>
+					<div class="swiper-slide"><img src="assets/images/menubar.svg" alt="menurestaurant" height="100px">
+					</div>
+					<div class="swiper-slide"><img src="assets/images/menuaccom.svg" alt="menurestaurant"
+							height="100px">
+					</div>
+					<div class="swiper-slide"><img src="assets/images/menurestr.svg" alt="menurestaurant"
+							height="100px">
+					</div>
+					<div class="swiper-slide"><img src="assets/images/menusights.svg" alt="menurestaurant"
+							height="100px">
+					</div>
+				</div>
+		</section>
+
 		<div id="map"></div>
+
+
+		<!-- Slider main container -->
+
+
+
+
+
+
+
 		<div class="infoMenu">
 
 			<div class="infoMenuTop container">
-			<div class="findTransport">Find Transport</div>
-			<div class="busArrow"><img src="assets/images/busarrow.svg"></div>
+				<div class="findTransport">Find Transport</div>
+				<div class="busArrow"><img src="assets/images/busarrow.svg"></div>
 			</div>
 
 			<div class="infoMenuLow container">
-			<div class="mapArrow"><img src="assets/images/maparrow.svg"></div>
-			<div class="backMap">Back to Map</div>
+				<div class="mapArrow"><img src="assets/images/maparrow.svg"></div>
+				<div class="backMap">Back to Map</div>
 			</div>
-			
+
 		</div>
 
 	</div>
 
-	
+
 
 	<!-- Jquery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<!-- Google Maps -->
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADMD9LFOQbB8gF8HctWzlQipyitCIdhZo&callback=initMap"></script>
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADMD9LFOQbB8gF8HctWzlQipyitCIdhZo&callback=initMap"></script>
 	<!-- Map section -->
 	<script src="assets/scripts/map.js"></script>
+	<!-- TypeIt -->
+	<script src="assets/scripts/typeit.min.js"></script>
+	<!-- Swiper -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
+	<!-- Header -->
+	<script src="assets/scripts/header.js"></script>
 	<!-- Main script -->
 	<script src="assets/scripts/main.js"></script>
 
-    
+
 </body>
+
 </html>
