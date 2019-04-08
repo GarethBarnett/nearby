@@ -1,21 +1,99 @@
+@font-face {
+  font-family: 'Gotham Narrow Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: url(/assets/fonts/GothamNarrow-Bold.woff); }
+
+@font-face {
+  font-family: 'Gotham Narrow Thin';
+  font-style: normal;
+  font-weight: normal;
+  src: url(/assets/fonts/GothamNarrow-Thin.woff); }
+
+@font-face {
+  font-family: 'Gotham Narrow Extra Light';
+  font-style: normal;
+  font-weight: normal;
+  src: url(/assets/fonts/GothamNarrow-XLight.woff); }
+
+@font-face {
+  font-family: 'Gotham Narrow Light';
+  font-style: normal;
+  font-weight: normal;
+  src: url(/assets/fonts/GothamNarrow-Light.woff); }
+
+@font-face {
+  font-family: 'Gotham Narrow Book';
+  font-style: normal;
+  font-weight: normal;
+  src: url(/assets/fonts/GothamNarrow-Book.woff); }
+
+@font-face {
+  font-family: 'Gotham Narrow Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: url(/assets/fonts/GothamNarrow-Medium.woff); }
+
+@font-face {
+  font-family: 'Gotham Narrow Black';
+  font-style: normal;
+  font-weight: normal;
+  src: url(/assets/fonts/GothamNarrow-Black.woff); }
+
+@font-face {
+  font-family: 'Gotham Narrow Ultra';
+  font-style: normal;
+  font-weight: normal;
+  src: url(/assets/fonts/GothamNarrow-Ultra.woff); }
+
 body {
   width: 100%;
   height: 100%;
   background: white; }
+
+h1 {
+  color: white;
+  font-family: Gotham Narrow Bold;
+  margin-top: 60px;
+  font-size: 38px; }
+
+h2 {
+  color: white;
+  font-family: Gotham Narrow Light;
+  margin-top: 10px;
+  font-size: 20px; }
+
+#splash {
+  background-color: #001025;
+  text-align: center;
+  position: absolute;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.logo {
+  width: 192px;
+  margin: 0 auto;
+  margin-top: 190px; }
+
+.overlay {
+  position: absolute;
+  top: -198px;
+  right: -216px;
+  width: 120%;
+  z-index: -1; }
 
 #prototype {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%; }
+  width: 375px;
+  height: 821px; }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (max-width: 375px) {
   #prototype {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 375px;
-    height: 821px; } }
+    width: 100%;
+    height: 100%; } }
