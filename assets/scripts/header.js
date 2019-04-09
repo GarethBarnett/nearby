@@ -12,11 +12,11 @@ new TypeIt('#breakLines', {
 let menu = document.getElementById('menuBtn');
 let openMenu = document.getElementById('menuOpen');
 let type = document.getElementById('typeText');
-let marker = document.getElementById('marker');
+let position = document.getElementById('marker');
 let panels = document.getElementById('panel');
 menu.addEventListener("click", function () {
     type.classList.toggle("hide");
-    marker.classList.toggle("hide");
+    position.classList.toggle("hide");
     openMenu.classList.toggle("hide");
     panels.classList.toggle("hide");
 })
