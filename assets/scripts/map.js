@@ -5,7 +5,7 @@ function initMap(){
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -36.8569444, lng: 174.7641288},
-        zoom: 16,
+        zoom: 17,
         disableDefaultUI: true,
         zoomControl: true,
         zoomControlOptions: {
@@ -15,7 +15,7 @@ function initMap(){
  });
 
 
-    // Ajax request for food
+    /* Ajax Request for Food */
     $.ajax({
         url: foodUrl,
         dataType:'jsonp',
@@ -23,7 +23,34 @@ function initMap(){
             requestAllLocationByFilter(res, map, 'food');
         } 
     }); 
-    
+
+    /* Ajax Request for Drinks */
+    $.ajax({
+        url: drinkUrl,
+        dataType:'jsonp',
+        success:function(res){
+            requestAllLocationByFilter(res, map, 'drink');
+        } 
+    }); 
+
+    /* Ajax Request for Hotels */
+    $.ajax({
+        url: hotelUrl,
+        dataType:'jsonp',
+        success:function(res){
+            requestAllLocationByFilter(res, map, 'hotel');
+        } 
+    }); 
+
+     
+     /* Ajax Request for Landmarks */
+    $.ajax({
+        url: landmarkUrl,
+        dataType:'jsonp',
+        success:function(res){
+            requestAllLocationByFilter(res, map, 'landmark');
+        } 
+    }); 
 
 }; // End Display Venues on Map 
 
