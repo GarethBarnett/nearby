@@ -221,13 +221,12 @@ nav {
   outline: none; }
 
 .panels {
-  position: fixed;
+  position: absolute;
   z-index: 999;
-  top: 55%;
+  bottom: -10%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 375px;
-  height: 90vh;
   display: flex;
   flex-direction: row;
   justify-content: center; }
@@ -236,8 +235,7 @@ nav {
   display: flex;
   align-self: flex-end;
   margin-bottom: 10px;
-  width: 600px;
-  height: 300px; }
+  width: 600px; }
 
 .swiper-slide {
   display: flex;
