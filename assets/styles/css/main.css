@@ -68,16 +68,6 @@ h2 {
   width: 90%;
   margin: 0 auto; }
 
-#phoneOverlay {
-  position: absolute;
-  z-index: 99999;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 430px; }
-  #phoneOverlay img {
-    width: 100%; }
-
 #splash {
   background-color: #001025;
   text-align: center;

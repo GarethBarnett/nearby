@@ -48,6 +48,19 @@ function requestAllLocationByFilter(obj, map, categoryVal){
         });
         
         marker.venueid = item.venue.id;
+
+        /* Click function on Marker */
+        marker.addListener('click',function(){
+            var venueUrl = 'https://api.foursquare.com/v2/venues/' + this.venueid + key;
+            $.ajax({
+                url:venueUrl,
+                dataType:'jsonp',
+                success: function(res){
+                    alert('success')
+                  
+                }
+            });
+        });
         
     });
 

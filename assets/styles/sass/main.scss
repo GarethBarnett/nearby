@@ -93,25 +93,65 @@ h2{
 }
 
 
+
 .container {
     width: 90%;
     margin: 0 auto;
 }
 
-#phoneOverlay{
-    position: absolute;
-    z-index: 99999;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 430px;
 
-	img{
-		width: 100%;
+// phone overlay Start
 
-	}
 
-}
+// #phoneOverlay{
+//     position: absolute;
+//     z-index: 99999;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+
+// 	img{
+// 		width: 100%;
+
+// 	}
+
+// }
+
+// .phoneTop {
+//     position: relative;
+//     top: -381px;
+//     width: 375px;
+
+// }
+
+// .phoneBottom {
+//     position: relative;
+//     bottom: -379px;
+//     width: 375px;
+
+// }
+
+// .phoneLeft {
+//  position: absolute;
+//     top: -370px;
+//     left: -29px;
+//     /* height: 63%; */
+//     width: 30px;
+
+// }
+
+// .phoneRight {
+//  position: absolute;
+//     top: -370px;
+//     right: -29px;
+//     /* height: 63%; */
+//     width: 30px;
+
+// }
+
+
+// phone overlay End
+
 
 
 // Splash Screen Start
@@ -317,6 +357,7 @@ p {
     margin-bottom: 10px;
     width: 600px;
     height: 300px;
+    // display: none; //hidden for development
 }
 
 .swiper-slide {
