@@ -91,6 +91,12 @@ function initMap(){
 }; // End Display Venues on Map 
 
 
+let placeLocationObj = {
+    food: [],
+    drink: [],
+    hotel: [],
+    landmark: [],
+}
 
 
 function requestAllLocationByFilter(obj, map, categoryVal){
@@ -99,6 +105,8 @@ function requestAllLocationByFilter(obj, map, categoryVal){
         let lat = item.venue.location.lat;
         let lng = item.venue.location.lng;
         let venueName =  item.venue.name;
+        placeLocationObj[categoryVal].push([true, Number(lat), Number(lng), venueName.toString(), icons[categoryVal].toString(), item.venue.id]);
+        
         let marker = new google.maps.Marker({
             map: map,
             icon: {url: icons[categoryVal], scaledSize: new google.maps.Size(50, 50)},
@@ -115,8 +123,7 @@ function requestAllLocationByFilter(obj, map, categoryVal){
                 url:venueUrl,
                 dataType:'jsonp',
                 success: function(res){
-                    alert('success')
-                  
+                    createInfoMenu(res);
                 }
             });
         });
@@ -124,6 +131,73 @@ function requestAllLocationByFilter(obj, map, categoryVal){
     });
 
 }
+
+
+
+
+function createInfoMenu(res){
+   
+
+    $('.infoMenuBody').empty();
+
+    // $('.venueTitle').text(res.response.venue.name);
+
+    $('.infoMenuBody').append('<p class="title">' + res.response.venue.name + '</p>');
+
+    if(res.response.venue.description !== undefined){
+        $('.infoMenuBody').append('<p class="description">' + res.response.venue.description + '</p>');
+    }
+    if(res.response.venue.photos.groups.length>0){
+        var photoPrefix = res.response.venue.bestPhoto.prefix;
+        var photoSuffix = res.response.venue.bestPhoto.suffix;
+        $('<img src=' + photoPrefix + '100x100' + photoSuffix + '>').appendTo('.infoMenuBody');
+    }
+
+    $('.infoMenuBody').append('<p class="likes"><span class="bold">Likes:</span> ' + res.response.venue.likes.count + '</p>');
+    if(res.response.venue.likes.count > 9) {
+        $('.likes').css('font-weight','bold');
+    }
+
+    if(res.response.venue.rating !== undefined){
+        $('.infoMenuBody').append('<p class="rating"><span class="bold">Rating:</span> ' + res.response.venue.rating + '/10 from ' +  res.response.venue.ratingSignals + ' users.</p>');
+    }
+
+    if(res.response.venue.contact.phone !== undefined){
+        $('.infoMenuBody').append('<p class="phone"><span class="bold">Phone:</span> ' + res.response.venue.contact.phone + '</p>');
+    }
+
+    var directionsUrl = 'https://www.google.com/maps/dir/Current+Location/'+res.response.venue.location.lat+','+res.response.venue.location.lng;
+    $('.infoMenuBody').append('<a href='+directionsUrl+'>directions</a>');        
+    $('.infoMenuBody').append('<a href='+ res.response.venue.url+'>Website Link</a>');
+    $('.infoMenuBody').append('<p class="address">' + res.response.venue.location.address + ', ' + res.response.venue.location.city + '</p>');
+
+    // $('#myModal').modal('show');
+}
+
+
+console.log(placeLocationObj)
+
+let foodFilter = document.getElementById('foodFilter');
+
+foodFilter.addEventListener("click", function () {
+
+// Object.keys(placeLocationObj)[0];
+  
+// placeLocationObj.food.parentNode.removeChild(placeLocationObj);
+
+// placeLocationObj
+  
+   alert("success")
+
+});
+
+
+
+
+
+
+
+
 
 
 

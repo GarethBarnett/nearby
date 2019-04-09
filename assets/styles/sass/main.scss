@@ -92,6 +92,16 @@ h2{
     font-size: 20px;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
+p {
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
 
 
 .container {
@@ -205,7 +215,7 @@ h2{
 // Note is set to display none
 
 .infoMenu{
-    display: none;
+    // display: none;
     position: absolute;
     background: $atBlue;
     height: 180px;
@@ -264,9 +274,31 @@ h2{
 }
 
 
-
-
 // Info Menu Static End
+
+// Info Menu Open
+
+.infoMenuOpen{
+    // display: none;
+    position: absolute;
+    background: $atBlue;
+    height: 500px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 49;
+}
+
+.pullTab{
+    position: relative;
+    top: -36px;
+    margin: 0 auto;
+    width: 210px;
+
+    img{
+        width: 100%;
+    }
+}
 
 
 
@@ -291,15 +323,7 @@ nav {
     align-items: center;
     
 }
-a {
-    text-decoration: none;
-    color: white;
-}
-p {
-    color: white;
-    text-align: center;
-    font-size: 18px;
-}
+
 
 .menuOpen {
     z-index: 99;
