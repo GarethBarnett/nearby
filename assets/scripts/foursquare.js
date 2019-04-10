@@ -8,11 +8,11 @@ const key = version + clientid + clientSecret;
 
 /* Icons for Venues */
 let icons = {
-     food: './assets/images/restauranticon.svg',
-     drink: './assets/images/baricon.svg',
-     hotel: './assets/images/accommodationicon.svg',
-     landmark: './assets/images/sightsicon.svg'
- };
+    food: './assets/images/restauranticon.svg',
+    drink: './assets/images/baricon.svg',
+    hotel: './assets/images/accommodationicon.svg',
+    landmark: './assets/images/sightsicon.svg'
+};
 
 /* Foursquare venue categories */
 let food = '4d4b7105d754a06374d81259';
@@ -21,34 +21,36 @@ let hotel = '4bf58dd8d48988d1fa931735';
 let landmark = '4d4b7104d754a06370d81259';
 
 
+
 /* User Location */
 let latUser = -36.8569444;
 let lngUser = 174.7641288;
 
 
 /* Display Venues on Map */
-let foodUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll='+latUser+','+lngUser+' '+'&categoryId='+ food+'&limit=5&radius=200';
-let drinkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll='+latUser+','+lngUser+' '+'&categoryId='+ drink+'&limit=5&radius=200';
-let hotelUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll='+latUser+','+lngUser+' '+'&categoryId='+ hotel+'&limit=5&radius=200';
-let landmarkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll='+latUser+','+lngUser+' '+'&categoryId='+ landmark+'&limit=5&radius=200';
+let foodUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&categoryId=' + food + '&limit=5&radius=200';
+let drinkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&categoryId=' + drink + '&limit=5&radius=200';
+let hotelUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&categoryId=' + hotel + '&limit=5&radius=200';
+let landmarkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&categoryId=' + landmark + '&limit=5&radius=200';
+let trendingUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&limit=10';
 
 
 
 /* Map JS Files */
 
-function initMap(){
+function initMap() {
     let map, marker;
 
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -36.8569444, lng: 174.7641288},
+        center: { lat: -36.8569444, lng: 174.7641288 },
         zoom: 17,
         disableDefaultUI: true,
         zoomControl: true,
         zoomControlOptions: {
-        position: google.maps.ControlPosition.RIGHT_CENTER,
+            position: google.maps.ControlPosition.RIGHT_CENTER,
         },
-        styles: mapstyle,  
- });
+        styles: mapstyle,
+    });
 
 
 
@@ -57,41 +59,50 @@ function initMap(){
     /* Ajax Request for Food */
     $.ajax({
         url: foodUrl,
-        dataType:'jsonp',
-        success:function(res){
+        dataType: 'jsonp',
+        success: function (res) {
             requestAllLocationByFilter(res, map, 'food');
-        } 
-    }); 
+        }
+    });
 
     /* Ajax Request for Drinks */
     $.ajax({
         url: drinkUrl,
-        dataType:'jsonp',
-        success:function(res){
+        dataType: 'jsonp',
+        success: function (res) {
             requestAllLocationByFilter(res, map, 'drink');
-        } 
-    }); 
+        }
+    });
 
     /* Ajax Request for Hotels */
     $.ajax({
         url: hotelUrl,
-        dataType:'jsonp',
-        success:function(res){
+        dataType: 'jsonp',
+        success: function (res) {
             requestAllLocationByFilter(res, map, 'hotel');
-        } 
-    }); 
+        }
+    });
 
-     
-     /* Ajax Request for Landmarks */
+
+    /* Ajax Request for Landmarks */
     $.ajax({
         url: landmarkUrl,
-        dataType:'jsonp',
-        success:function(res){
+        dataType: 'jsonp',
+        success: function (res) {
             requestAllLocationByFilter(res, map, 'landmark');
-        } 
-    }); 
+        }
+    });
+    /* Ajax Request for Trending */
+    $.ajax({
+        url: trendingUrl,
+        dataType: 'jsonp',
+        success: function (res) {
+            requestAllLocationByFilter(res, map, 'trending');
+            // console.log(res)
+        }
+    });
 
-}; /* End Display Venues on Map */ 
+}; /* End Display Venues on Map */
 
 
 let placeLocationObj = {
@@ -102,60 +113,60 @@ let placeLocationObj = {
 }
 
 
-function requestAllLocationByFilter(obj, map, categoryVal){
+function requestAllLocationByFilter(obj, map, categoryVal) {
     let data = obj.response.groups["0"].items;
-    let venues = data.map(function(item){
+    let venues = data.map(function (item) {
         let lat = item.venue.location.lat;
         let lng = item.venue.location.lng;
-        let venueName =  item.venue.name;
+        let venueName = item.venue.name;
         placeLocationObj[categoryVal].push([true, Number(lat), Number(lng), venueName.toString(), icons[categoryVal].toString(), item.venue.id]);
-        
+
         let marker = new google.maps.Marker({
             map: map,
-            icon: {url: icons[categoryVal], scaledSize: new google.maps.Size(50, 50)},
-            position: {lat: lat, lng: lng},
+            icon: { url: icons[categoryVal], scaledSize: new google.maps.Size(50, 50) },
+            position: { lat: lat, lng: lng },
             title: venueName
         });
-        
+
         marker.venueid = item.venue.id;
 
         /* Click function on Marker */
-        marker.addListener('click',function(){
+        marker.addListener('click', function () {
             var venueUrl = 'https://api.foursquare.com/v2/venues/' + this.venueid + key;
             $.ajax({
-                url:venueUrl,
-                dataType:'jsonp',
-                success: function(res){
+                url: venueUrl,
+                dataType: 'jsonp',
+                success: function (res) {
 
-                /* Hide the Filter Panel */
-                panel.classList.add('hide');
+                    /* Hide the Filter Panel */
+                    panel.classList.add('hide');
 
-                /* Hide the Filter Panel */
-                infoMenuContainer.classList.remove('hide');
+                    /* Hide the Filter Panel */
+                    infoMenuContainer.classList.remove('hide');
 
-                /* Fill info menu with data */
-                createInfoMenu(res);
+                    /* Fill info menu with data */
+                    createInfoMenu(res);
 
                 }
             });
         });
-        
+
     });
 
 }
 
 
-   
+
 
 let source;
 
-function createInfoMenu(res){
+function createInfoMenu(res) {
 
-/* Handle Bars JS*/
+    /* Handle Bars JS*/
 
-if(!source){
+    if (!source) {
         source = document.querySelector('#infoMenuData').innerHTML;
-}                
+    }
     const template = Handlebars.compile(source);
 
     const compiledHtml = template(res);
@@ -164,7 +175,7 @@ if(!source){
 
     infoMenuText.innerHTML = compiledHtml;
 
-/* Handle Bars JS End */
+    /* Handle Bars JS End */
 
 
     // $('.infoMenuBody').empty();
@@ -202,20 +213,20 @@ let foodFilter = document.getElementById('foodFilter');
 
 foodFilter.addEventListener("click", function () {
 
-// Object.keys(placeLocationObj)[0];
-  
-// placeLocationObj.food.parentNode.removeChild(placeLocationObj);
+    // Object.keys(placeLocationObj)[0];
 
-// placeLocationObj
-  
-   alert("success")
+    // placeLocationObj.food.parentNode.removeChild(placeLocationObj);
+
+    // placeLocationObj
+
+    alert("success")
 
 });
 
 
 
 var mapstyle = [
-{
+    {
         "featureType": "administrative",
         "elementType": "all",
         "stylers": [
