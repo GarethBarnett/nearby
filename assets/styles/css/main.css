@@ -108,6 +108,10 @@ p {
   height: 821px;
   z-index: -1; }
 
+.infoMenuMove {
+  transition: all 0.5s ease;
+  transform: translateY(-250px); }
+
 .infoMenu {
   position: absolute;
   background: #001025;
@@ -160,9 +164,10 @@ p {
   background: #001025;
   height: 500px;
   width: 100%;
-  bottom: 0;
+  bottom: -225px;
   left: 0;
-  z-index: 49; }
+  z-index: 49;
+  text-align: center; }
 
 .pullTab {
   position: relative;

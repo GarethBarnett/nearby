@@ -111,7 +111,7 @@
 
 
 
-
+<div id="infoMenuContainer" class="hide">
 		<div class="infoMenu">
 
 			<div class="infoMenuTop container">
@@ -124,13 +124,35 @@
 				<div class="backMap">Back to Map</div>
 			</div>
 
+<a href=""></a>
 		</div>
 
 		<div class="infoMenuOpen">
 
-             <div class="pullTab"><img src="assets/images/tab.svg"></div>
+             <div id="pullBtn" class="pullTab"><img src="assets/images/tab.svg"></div>
 			 <div class="infoMenuBody">
-			 <h5 class="venueTitle">test</h5>
+
+			 	<script id="greet" type="text/x-handlebars-template">
+
+	      		<h2>{{response.venue.name}}</h2>
+	      		<p>{{response.venue.rating}}/10</p>
+	      		<img src={{response.venue.bestPhoto.prefix}}50x50{{response.venue.bestPhoto.suffix}}>  
+	      		<p>{{response.venue.likes.count}}likes</p>
+	      		<p>{{response.venue.description}}</p>
+	      		<p>{{response.venue.contact.phone}}</p>	    
+	      	    <a href="{{response.venue.url}}">link</a>
+
+	      	    <div>
+	      	    	<p>{{response.venue.location.address}}</p>
+	      	    	<p>{{response.venue.location.city}}</p>
+	      	    </div>
+
+	      	     <a href="https://www.google.com/maps/dir/Current+Location/{{response.venue.location.lat}},{{response.venue.location.lng}}">directions</a>
+
+
+            </script>
+
+			 <!-- <h5 class="venueTitle">test</h5> -->
          </div>
 
 
@@ -140,11 +162,18 @@
 
 
 
+
+
 	<!-- Jquery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<!-- Google Maps -->
+
+
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADMD9LFOQbB8gF8HctWzlQipyitCIdhZo&callback=initMap"></script>
 	
+<!-- Handlebars -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.js"></script>
+
 	<!-- Map & Foursquare -->
 	<script src="assets/scripts/foursquare.js"></script>
 	

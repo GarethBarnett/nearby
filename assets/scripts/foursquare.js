@@ -123,7 +123,16 @@ function requestAllLocationByFilter(obj, map, categoryVal){
                 url:venueUrl,
                 dataType:'jsonp',
                 success: function(res){
-                    createInfoMenu(res);
+
+                /* Hide the Filter Panel */
+                panel.classList.add('hide');
+
+                /* Hide the Filter Panel */
+                infoMenuContainer.classList.remove('hide');
+
+                /* Fill info menu with data */
+                createInfoMenu(res);
+
                 }
             });
         });
@@ -134,44 +143,62 @@ function requestAllLocationByFilter(obj, map, categoryVal){
 
 
 
-
 function createInfoMenu(res){
-   
 
-    $('.infoMenuBody').empty();
+console.log(res)
+                          
 
-    // $('.venueTitle').text(res.response.venue.name);
+    const source = document.querySelector('#greet').innerHTML;
 
-    $('.infoMenuBody').append('<p class="title">' + res.response.venue.name + '</p>');
+                            const template = Handlebars.compile(source);
 
-    if(res.response.venue.description !== undefined){
-        $('.infoMenuBody').append('<p class="description">' + res.response.venue.description + '</p>');
-    }
-    if(res.response.venue.photos.groups.length>0){
-        var photoPrefix = res.response.venue.bestPhoto.prefix;
-        var photoSuffix = res.response.venue.bestPhoto.suffix;
-        $('<img src=' + photoPrefix + '100x100' + photoSuffix + '>').appendTo('.infoMenuBody');
-    }
+                            const compiledHtml = template(res);
 
-    $('.infoMenuBody').append('<p class="likes"><span class="bold">Likes:</span> ' + res.response.venue.likes.count + '</p>');
-    if(res.response.venue.likes.count > 9) {
-        $('.likes').css('font-weight','bold');
-    }
+                            $('.infoMenuBody').empty();
 
-    if(res.response.venue.rating !== undefined){
-        $('.infoMenuBody').append('<p class="rating"><span class="bold">Rating:</span> ' + res.response.venue.rating + '/10 from ' +  res.response.venue.ratingSignals + ' users.</p>');
-    }
+                            const greetText = document.getElementsByClassName("infoMenuBody")[0];
 
-    if(res.response.venue.contact.phone !== undefined){
-        $('.infoMenuBody').append('<p class="phone"><span class="bold">Phone:</span> ' + res.response.venue.contact.phone + '</p>');
-    }
+                            greetText.innerHTML = compiledHtml;
 
-    var directionsUrl = 'https://www.google.com/maps/dir/Current+Location/'+res.response.venue.location.lat+','+res.response.venue.location.lng;
-    $('.infoMenuBody').append('<a href='+directionsUrl+'>directions</a>');        
-    $('.infoMenuBody').append('<a href='+ res.response.venue.url+'>Website Link</a>');
-    $('.infoMenuBody').append('<p class="address">' + res.response.venue.location.address + ', ' + res.response.venue.location.city + '</p>');
 
-    // $('#myModal').modal('show');
+
+
+    // $('.infoMenuBody').empty();
+
+    // // $('.venueTitle').text(res.response.venue.name);
+
+    // $('.infoMenuBody').append('<p class="title">' + res.response.venue.name + '</p>');
+
+    // if(res.response.venue.description !== undefined){
+    //     $('.infoMenuBody').append('<p class="description">' + res.response.venue.description + '</p>');
+    // }
+    // if(res.response.venue.photos.groups.length>0){
+    //     var photoPrefix = res.response.venue.bestPhoto.prefix;
+    //     var photoSuffix = res.response.venue.bestPhoto.suffix;
+    //     $('<img src=' + photoPrefix + '200x200' + photoSuffix + '>').appendTo('.infoMenuBody');
+    // }
+
+    // $('.infoMenuBody').append('<p class="likes"><span class="bold">Likes:</span> ' + res.response.venue.likes.count + '</p>');
+    // if(res.response.venue.likes.count > 9) {
+    //     $('.likes').css('font-weight','bold');
+    // }
+
+    // if(res.response.venue.rating !== undefined){
+    //     $('.infoMenuBody').append('<p class="rating"><span class="bold">Rating:</span> ' + res.response.venue.rating + '/10 from ' +  res.response.venue.ratingSignals + ' users.</p>');
+    // }
+
+    // if(res.response.venue.contact.phone !== undefined){
+    //     $('.infoMenuBody').append('<p class="phone"><span class="bold">Phone:</span> ' + res.response.venue.contact.phone + '</p>');
+    // }
+
+    // var directionsUrl = 'https://www.google.com/maps/dir/Current+Location/'+res.response.venue.location.lat+','+res.response.venue.location.lng;
+    
+    // $('.infoMenuBody').append('<a href='+directionsUrl+'>directions</a>');
+
+    // $('.infoMenuBody').append('<a href='+ res.response.venue.url+'>Website Link</a>');
+
+    // $('.infoMenuBody').append('<p class="address">' + res.response.venue.location.address + ', ' + res.response.venue.location.city + '</p>');
+
 }
 
 

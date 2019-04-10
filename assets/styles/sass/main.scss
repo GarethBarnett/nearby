@@ -208,11 +208,21 @@ p {
 }
 
 
+.infoMenuMove{
+   transition: all 0.5s ease;
+
+    transform: translateY(-250px);
+}
+
+
+
 
 
 // Info Menu Static Start
 
 // Note is set to display none
+
+
 
 .infoMenu{
     // display: none;
@@ -223,6 +233,7 @@ p {
     bottom: 0;
     left: 0;
     z-index: 50;
+
 }
 
 .infoMenuTop{
@@ -284,9 +295,10 @@ p {
     background: $atBlue;
     height: 500px;
     width: 100%;
-    bottom: 0;
+    bottom: -225px;
     left: 0;
     z-index: 49;
+    text-align: center;
 }
 
 .pullTab{
@@ -404,7 +416,9 @@ nav {
 
 
 .hide   {
+
     display: none;
+
 }
 
 
