@@ -148,6 +148,16 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
 
                     /* Fill info menu with data */
                     createInfoMenu(res);
+                    // 3 seconds after the center of the map has changed, pan back to the // marker.
+                    map.addListener('center_changed', function () {
+                        window.setTimeout(function () {
+                            map.panTo(marker.getPosition());
+                        }, 3000);
+                    });
+
+                    map.setZoom(18);
+                    map.setCenter(marker.getPosition());
+
 
                 }
             });
