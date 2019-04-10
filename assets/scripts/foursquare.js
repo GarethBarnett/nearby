@@ -11,7 +11,8 @@ let icons = {
     food: './assets/images/restauranticon.svg',
     drink: './assets/images/baricon.svg',
     hotel: './assets/images/accommodationicon.svg',
-    landmark: './assets/images/sightsicon.svg'
+    landmark: './assets/images/sightsicon.svg',
+    trending: './assets/images/trending.svg'
 };
 
 /* Foursquare venue categories */
@@ -19,7 +20,7 @@ let food = '4d4b7105d754a06374d81259';
 let drink = '4bf58dd8d48988d11a941735';
 let hotel = '4bf58dd8d48988d1fa931735';
 let landmark = '4d4b7104d754a06370d81259';
-
+// let trending = '5ac51dde351e3d4df64064f8';
 
 
 /* User Location */
@@ -110,6 +111,7 @@ let placeLocationObj = {
     drink: [],
     hotel: [],
     landmark: [],
+    trending: []
 }
 
 
