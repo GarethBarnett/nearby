@@ -36,11 +36,18 @@ infoMenuBtn.addEventListener("click", function () {
 
 
 
+
 /* Info Menu Back */
 backBtn.addEventListener("click", function () {
 
+
 	infoMenuContainer.classList.toggle('hide');
 	panel.classList.remove('hide');
+
+
+
+
+
 
 });
 

@@ -47,8 +47,11 @@ function initMap(){
         zoomControlOptions: {
         position: google.maps.ControlPosition.RIGHT_CENTER,
         },
-        styles: mapstyle,
+        styles: mapstyle,  
  });
+
+
+
 
 
     /* Ajax Request for Food */
@@ -88,7 +91,7 @@ function initMap(){
         } 
     }); 
 
-}; // End Display Venues on Map 
+}; /* End Display Venues on Map */ 
 
 
 let placeLocationObj = {
@@ -142,33 +145,31 @@ function requestAllLocationByFilter(obj, map, categoryVal){
 }
 
 
+   
+
+let source;
 
 function createInfoMenu(res){
 
-console.log(res)
-                          
+/* Handle Bars JS*/
 
-    const source = document.querySelector('#greet').innerHTML;
+if(!source){
+        source = document.querySelector('#infoMenuData').innerHTML;
+}                
+    const template = Handlebars.compile(source);
 
-                            const template = Handlebars.compile(source);
+    const compiledHtml = template(res);
 
-                            const compiledHtml = template(res);
+    const infoMenuText = document.getElementsByClassName("infoMenuBody")[0];
 
-                            $('.infoMenuBody').empty();
+    infoMenuText.innerHTML = compiledHtml;
 
-                            const greetText = document.getElementsByClassName("infoMenuBody")[0];
-
-                            greetText.innerHTML = compiledHtml;
-
-
+/* Handle Bars JS End */
 
 
     // $('.infoMenuBody').empty();
-
     // // $('.venueTitle').text(res.response.venue.name);
-
     // $('.infoMenuBody').append('<p class="title">' + res.response.venue.name + '</p>');
-
     // if(res.response.venue.description !== undefined){
     //     $('.infoMenuBody').append('<p class="description">' + res.response.venue.description + '</p>');
     // }
@@ -177,26 +178,19 @@ console.log(res)
     //     var photoSuffix = res.response.venue.bestPhoto.suffix;
     //     $('<img src=' + photoPrefix + '200x200' + photoSuffix + '>').appendTo('.infoMenuBody');
     // }
-
     // $('.infoMenuBody').append('<p class="likes"><span class="bold">Likes:</span> ' + res.response.venue.likes.count + '</p>');
     // if(res.response.venue.likes.count > 9) {
     //     $('.likes').css('font-weight','bold');
     // }
-
     // if(res.response.venue.rating !== undefined){
     //     $('.infoMenuBody').append('<p class="rating"><span class="bold">Rating:</span> ' + res.response.venue.rating + '/10 from ' +  res.response.venue.ratingSignals + ' users.</p>');
     // }
-
     // if(res.response.venue.contact.phone !== undefined){
     //     $('.infoMenuBody').append('<p class="phone"><span class="bold">Phone:</span> ' + res.response.venue.contact.phone + '</p>');
     // }
-
     // var directionsUrl = 'https://www.google.com/maps/dir/Current+Location/'+res.response.venue.location.lat+','+res.response.venue.location.lng;
-    
     // $('.infoMenuBody').append('<a href='+directionsUrl+'>directions</a>');
-
     // $('.infoMenuBody').append('<a href='+ res.response.venue.url+'>Website Link</a>');
-
     // $('.infoMenuBody').append('<p class="address">' + res.response.venue.location.address + ', ' + res.response.venue.location.city + '</p>');
 
 }
@@ -217,16 +211,6 @@ foodFilter.addEventListener("click", function () {
    alert("success")
 
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
