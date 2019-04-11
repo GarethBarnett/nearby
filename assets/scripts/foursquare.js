@@ -71,7 +71,7 @@ function initMap() {
     let map, marker;
 
     map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: latUser1, lng: lngUser1 },
+        center: { lat: +latUser1, lng: +lngUser1 },
         zoom: 17,
         disableDefaultUI: true,
         zoomControl: true,
