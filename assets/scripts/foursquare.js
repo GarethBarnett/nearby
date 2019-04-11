@@ -20,31 +20,47 @@ let food = '4d4b7105d754a06374d81259';
 let drink = '4bf58dd8d48988d11a941735';
 let hotel = '4bf58dd8d48988d1fa931735';
 let landmark = '4d4b7104d754a06370d81259';
+// let trending = '5ac51dde351e3d4df64064f8';
 
+// $('#marker').click(function () {
+//     if (navigator.geolocation)
+//         navigator.geolocation.getCurrentPosition(function (position) {
+//             console.log(position.coords.latitude);
+//             console.log(position.coords.longitude);
+//         }); else
+//         console.log('geo location is not supported');
+
+
+
+// });
 
 navigator.geolocation.getCurrentPosition(locationHandler);
 
 function locationHandler(position) {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
+    latUser1 = position.coords.latitude;
+    lngUser1 = position.coords.longitude;
     console.log(lat);
     console.log(lng);
+    foodUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + food + '&limit=5&radius=2000';
+    drinkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + drink + '&limit=5&radius=2000';
+    hotelUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + hotel + '&limit=5&radius=2000';
+    landmarkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + landmark + '&limit=5&radius=2000';
+    trendingUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&limit=10';
 }
+let latUser1, lngUser1;
 
 
 /* User Location */
-let latUser = -36.8569444;
-let lngUser = 174.7641288;
+// let latUser = latuser1;
+// let lngUser = lngUser1;
 
-var myLatLng = { lat: latUser, lng: lngUser }
+// var myLatLng = { lat: latUser, lng: lngUser }
 
-
+let foodUrl, drinkUrl, hotelUrl, landmarkUrl, trendingUrl;
 /* Display Venues on Map */
-let foodUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&categoryId=' + food + '&limit=5&radius=200';
-let drinkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&categoryId=' + drink + '&limit=5&radius=200';
-let hotelUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&categoryId=' + hotel + '&limit=5&radius=200';
-let landmarkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&categoryId=' + landmark + '&limit=5&radius=200';
-let trendingUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&limit=10';
+
 
 
 
@@ -55,7 +71,7 @@ function initMap() {
     let map, marker;
 
     map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -36.8569444, lng: 174.7641288 },
+        center: { lat: latUser1, lng: lngUser1 },
         zoom: 17,
         disableDefaultUI: true,
         zoomControl: true,
