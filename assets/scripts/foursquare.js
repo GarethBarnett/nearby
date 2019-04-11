@@ -20,19 +20,7 @@ let food = '4d4b7105d754a06374d81259';
 let drink = '4bf58dd8d48988d11a941735';
 let hotel = '4bf58dd8d48988d1fa931735';
 let landmark = '4d4b7104d754a06370d81259';
-// let trending = '5ac51dde351e3d4df64064f8';
 
-// $('#marker').click(function () {
-//     if (navigator.geolocation)
-//         navigator.geolocation.getCurrentPosition(function (position) {
-//             console.log(position.coords.latitude);
-//             console.log(position.coords.longitude);
-//         }); else
-//         console.log('geo location is not supported');
-
-
-
-// });
 
 navigator.geolocation.getCurrentPosition(locationHandler);
 
