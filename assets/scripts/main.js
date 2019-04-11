@@ -24,13 +24,14 @@ let panel = document.getElementById('panel');
 let infoMenuOpen = document.getElementsByClassName('infoMenuOpen')[0];
 let backBtn = document.getElementsByClassName('infoMenuLow')[0];
 let infoMenuContainer = document.getElementById('infoMenuContainer');
-
+let trendingButton = document.getElementById('marker');
+let info = document.getElementById('infoMenuData')
 
 
 /* Info Menu Expand */
 infoMenuBtn.addEventListener("click", function () {
 
-	infoMenuOpen.classList.toggle('infoMenuMove');
+   infoMenuOpen.classList.toggle('infoMenuMove');
 
 });
 
@@ -41,13 +42,13 @@ infoMenuBtn.addEventListener("click", function () {
 backBtn.addEventListener("click", function () {
 
 
-	infoMenuContainer.classList.toggle('hide');
-	panel.classList.remove('hide');
-
-
-
-
-
+   infoMenuContainer.classList.toggle('hide');
+   panel.classList.remove('hide');
 
 });
 
+// trendingButton.addEventListener("click", function () {
+//    infoMenuContainer.classList.toggle('hide');
+
+
+// })

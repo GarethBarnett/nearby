@@ -22,10 +22,33 @@ let hotel = '4bf58dd8d48988d1fa931735';
 let landmark = '4d4b7104d754a06370d81259';
 // let trending = '5ac51dde351e3d4df64064f8';
 
+// $('#marker').click(function () {
+//     if (navigator.geolocation)
+//         navigator.geolocation.getCurrentPosition(function (position) {
+//             console.log(position.coords.latitude);
+//             console.log(position.coords.longitude);
+//         }); else
+//         console.log('geo location is not supported');
+
+
+
+// });
+
+navigator.geolocation.getCurrentPosition(locationHandler);
+
+function locationHandler(position) {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    console.log(lat);
+    console.log(lng);
+}
+
 
 /* User Location */
 let latUser = -36.8569444;
 let lngUser = 174.7641288;
+
+var myLatLng = { lat: latUser, lng: lngUser }
 
 
 /* Display Venues on Map */
@@ -39,6 +62,7 @@ let trendingUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' 
 
 /* Map JS Files */
 
+
 function initMap() {
     let map, marker;
 
@@ -51,7 +75,42 @@ function initMap() {
             position: google.maps.ControlPosition.RIGHT_CENTER,
         },
         styles: mapstyle,
+
     });
+
+    var icon = {
+        url: "./assets/images/zeus.svg", // url
+        scaledSize: new google.maps.Size(40, 40), // scaled size
+        origin: new google.maps.Point(0, 0), // origin
+        anchor: new google.maps.Point(0, 0) // anchor
+    };
+
+
+    var location = new google.maps.Marker({
+        position: { lat: -36.7642377, lng: 174.7577896 }, map: map,
+        icon: icon
+    });
+
+    var infoWindow = new google.maps.InfoWindow({
+        content: '<h4 class="testing animated fadeInDown"> Your location here</h4>'
+    });
+    location.addListener('click', function () {
+        infoWindow.open(map, location);
+    });
+    //     addMarker({ lat: -36.7642377, lng: 174.7577896 });
+
+    //     function addMarker(coords) {
+    //         var test = new google.maps.Marker({
+    //             position: coords,
+    //             map: map,
+    //             icon: icon
+    //         });
+    //     }
+    // }
+
+
+
+
 
 
 
