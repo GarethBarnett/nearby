@@ -49,6 +49,7 @@ function locationHandler(position) {
     landmarkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + landmark + '&limit=5&radius=2000';
     trendingUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&limit=10';
 }
+
 let latUser1, lngUser1;
 
 

@@ -26,8 +26,17 @@ var hamburger = document.querySelector(".hamburger");
 hamburger.addEventListener("click", function () {
     // Toggle class "is-active"
     hamburger.classList.toggle("is-active");
-    // Do something else, like open/close menu
+
 });
+
+var trendingLink = document.getElementById('trending');
+var menuLink = document.getElementById('menuOpen');
+var trendingMenu = document.getElementById('trendingMenu');
+trendingLink.addEventListener("click", function () {
+    menuLink.classList.toggle("hide");
+    trendingMenu.classList.toggle("hide");
+});
+
 var mySwiper = new Swiper('.swiper-container', {
     // Optional parameters
     direction: 'horizontal',
