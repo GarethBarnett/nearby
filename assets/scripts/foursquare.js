@@ -91,7 +91,7 @@ function initMap() {
 
 
     var location = new google.maps.Marker({
-        position: { lat: -36.7642377, lng: 174.7577896 }, map: map,
+        position: { lat: +latUser1, lng: +lngUser1 }, map: map,
         icon: icon
     });
 
