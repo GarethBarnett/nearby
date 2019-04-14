@@ -8,6 +8,9 @@ const key = version + clientid + clientSecret;
 
 /* Icons for Venues */
 let icons = {
+    location: './assets/images/location.svg',
+    bus: './assets/images/bus1.svg',
+    busstop: './assets/images/busstop.svg',
     food: './assets/images/restauranticon.svg',
     drink: './assets/images/baricon.svg',
     hotel: './assets/images/accommodationicon.svg',
@@ -180,6 +183,10 @@ let placeLocationObj = {
     trending: []
 }
 let allMarkers = [];
+/* Jason */
+let placeToGo;
+let placeToGoDetails;
+/* Jason */
 
 
 function requestAllLocationByFilter(obj, map, categoryVal) {
@@ -188,7 +195,8 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
         let lat = item.venue.location.lat;
         let lng = item.venue.location.lng;
         let venueName = item.venue.name;
-        placeLocationObj[categoryVal].push([true, Number(lat), Number(lng), venueName.toString(), icons[categoryVal].toString(), item.venue.id]);
+        let placeDetails = [true, Number(lat), Number(lng), venueName.toString(), icons[categoryVal].toString(), item.venue.id];
+        placeLocationObj[categoryVal].push(placeDetails);
 
         let marker = new google.maps.Marker({
             map: map,
@@ -224,7 +232,8 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
 
                     map.setZoom(18);
                     map.setCenter(marker.getPosition());
-
+                    placeToGo = placeDetails[5];
+                    placeToGoDetails = placeDetails;
 
                 }
             });

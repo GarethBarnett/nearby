@@ -6,7 +6,7 @@ $('#busArrow').on('click',()=>{
             allMarkers[i].setMap(null);
         }
     }
-    findBusStop(latUser, lngUser, 100);
+    findBusStop(latUser1, lngUser1, 100);
     findBus();
     
 })
@@ -80,8 +80,8 @@ function findBus() {
             positionX = pData.latitude;
             positionY = pData.longitude;
             for (let i = 0; i < returnedData.length; i++) {
-                if ((returnedData[i].vehicle.position.latitude <= (latUser + 0.005)) && (returnedData[i].vehicle.position.latitude >= (latUser - 0.005))) {
-                    if ((returnedData[i].vehicle.position.longitude <= (lngUser + 0.005)) && (returnedData[i].vehicle.position.longitude >= (lngUser - 0.005))) {
+                if ((returnedData[i].vehicle.position.latitude <= (latUser1 + 0.005)) && (returnedData[i].vehicle.position.latitude >= (latUser1 - 0.005))) {
+                    if ((returnedData[i].vehicle.position.longitude <= (lngUser1 + 0.005)) && (returnedData[i].vehicle.position.longitude >= (lngUser1 - 0.005))) {
                         busMarker = new google.maps.Marker({
                             map: map,
                             draggable: false,
@@ -90,10 +90,10 @@ function findBus() {
                         });
                         busLocation.lat = returnedData[i].vehicle.position.latitude;
                         busLocation.lng = returnedData[i].vehicle.position.longitude;
-                        locations[0] = [latUser, lngUser];
+                        locations[0] = [latUser1, lngUser1];
                         locations[1] = [placeToGoDetails[1], placeToGoDetails[2]];
                         locations[2] = [busLocation.lat, busLocation.lng];
-                        getCentrePoint(locations);
+
                         return;
                     }
                 }
