@@ -31,7 +31,7 @@ hamburger.addEventListener("click", function () {
 var mySwiper = new Swiper('.swiper-container', {
     // Optional parameters
     direction: 'horizontal',
-    loop: true,
+    loop: false,
     slidesPerView: 3
 
 

@@ -20,7 +20,7 @@
 
 <body>
 
-<!-- 		<div id="phoneOverlay">
+	<!-- 		<div id="phoneOverlay">
 			<div class="phoneTop"><img src="assets/images/phonetop.png"></div>
 			<div class="phoneLeft"><img src="assets/images/phoneleft.png"></div>
 			<div class="phoneRight"><img src="assets/images/phoneright.png"></div>
@@ -75,29 +75,29 @@
 				<!-- Additional required wrapper -->
 				<div class="swiper-wrapper">
 					<!-- Slides -->
-					<div id="foodFilter" class="swiper-slide"><img src="assets/images/menurestr.svg" alt="menurestaurant"
+					<div id="foodFilter" class="swiper-slide"><img src="assets/images/menurestr.svg"
+							alt="menurestaurant" height="100px">
+					</div>
+
+					<div id="landmarkFilter" class="swiper-slide"><img src="assets/images/menusights.svg"
+							alt="menurestaurant" height="100px">
+					</div>
+
+					<div id="drinkFilter" class="swiper-slide"><img src="assets/images/menubar.svg" alt="menurestaurant"
+							height="100px">
+					</div>
+
+					<div id="hotelFilter" class="swiper-slide"><img src="assets/images/menuaccom.svg"
+							alt="menurestaurant" height="100px">
+					</div>
+
+					<!-- <div id="foodFilter" class="swiper-slide"><img src="assets/images/menurestr.svg" alt="menurestaurant"
 							height="100px">
 					</div>
 
 					<div id="landmarkFilter" class="swiper-slide"><img src="assets/images/menusights.svg" alt="menurestaurant"
 							height="100px">
-					</div>
-
-					<div id="drinkFilter" class="swiper-slide"><img src="assets/images/menubar.svg" alt="menurestaurant" 
-						height="100px">
-					</div>
-
-					<div id="hotelFilter" class="swiper-slide"><img src="assets/images/menuaccom.svg" alt="menurestaurant"
-							height="100px">
-					</div>
-
-					<div id="foodFilter" class="swiper-slide"><img src="assets/images/menurestr.svg" alt="menurestaurant"
-							height="100px">
-					</div>
-
-					<div id="landmarkFilter" class="swiper-slide"><img src="assets/images/menusights.svg" alt="menurestaurant"
-							height="100px">
-					</div>
+					</div> -->
 				</div>
 		</section>
 
@@ -111,27 +111,26 @@
 
 
 
-<div id="infoMenuContainer" class="hide">
-		<div class="infoMenu">
+		<div id="infoMenuContainer" class="hide">
+			<div class="infoMenu">
 
-			<div class="infoMenuTop container">
-				<div class="findTransport">Find Transport</div>
-				<div class="busArrow"><img src="assets/images/busarrow.svg"></div>
+				<div id="busArrow" class="infoMenuTop container">
+					<div class="findTransport">Find Transport</div>
+					<div class="busArrow"><img src="assets/images/busarrow.svg"></div>
+				</div>
+				<div id="mapArrow" class="infoMenuLow container">
+					<div class="mapArrow"><img src="assets/images/maparrow.svg"></div>
+					<div class="backMap">Back to Map</div>
+				</div>
+
 			</div>
 
-			<div class="infoMenuLow container">
-				<div class="mapArrow"><img src="assets/images/maparrow.svg"></div>
-				<div class="backMap">Back to Map</div>
-			</div>
+			<div class="infoMenuOpen">
 
-		</div>
+				<div id="pullBtn" class="pullTab"><img src="assets/images/tab.svg"></div>
+				<div class="infoMenuBody">
 
-		<div class="infoMenuOpen">
-
-             <div id="pullBtn" class="pullTab"><img src="assets/images/tab.svg"></div>
-			 <div class="infoMenuBody">
-
-			 	<script id="infoMenuData" type="text/x-handlebars-template">
+					<script id="infoMenuData" type="text/x-handlebars-template">
 
 	      		<h2>{{response.venue.name}}</h2>
 	      		<p>{{response.venue.rating}}/10</p>
@@ -151,40 +150,45 @@
 
             </script>
 
-			 <!-- <h5 class="venueTitle">test</h5> -->
-         </div>
+					<!-- <h5 class="venueTitle">test</h5> -->
+				</div>
 
+
+			</div>
 
 		</div>
 
-	</div>
 
 
 
 
+		<!-- Jquery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
-	<!-- Jquery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<!-- Google Maps -->
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADMD9LFOQbB8gF8HctWzlQipyitCIdhZo&callback=initMap"></script>
 
-	<!-- Google Maps -->
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADMD9LFOQbB8gF8HctWzlQipyitCIdhZo&callback=initMap"></script>
-	
-    <!-- Handlebars -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.js"></script>
+		<!-- Map & Foursquare -->
+		<script src="assets/scripts/foursquare.js"></script>
 
-	<!-- Map & Foursquare -->
-	<script src="assets/scripts/foursquare.js"></script>
-	
-	<!-- TypeIt -->
-	<script src="assets/scripts/typeit.min.js"></script>
-	<!-- Swiper -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
-	<!-- Header -->
-	<script src="assets/scripts/header.js"></script>
-	<!-- Main script -->
-	<script src="assets/scripts/main.js"></script>
+		<!-- Handlebars -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.js"></script>
 
 
+
+		<!-- TypeIt -->
+		<script src="assets/scripts/typeit.min.js"></script>
+		<!-- Swiper -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
+		<!-- Header -->
+		<script src="assets/scripts/header.js"></script>
+		<!-- Main script -->
+		<script src="assets/scripts/main.js"></script>
+		<!-- Transport script -->
+		<script src="assets/scripts/transport.js"></script>
+		<!-- Filter script -->
+		<script src="assets/scripts/filter.js"></script>
 </body>
 
 </html>
