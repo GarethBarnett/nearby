@@ -1,10 +1,36 @@
-/* Jules */
-
+/* Jason */
 /* 'Find Transport' icon click function */
+$('#busArrow').on('click',()=>{
+    for (let i = 0; i < allMarkers.length; i++) {
+        if(!(allMarkers[i].venueid == placeToGo)){
+            allMarkers[i].setMap(null);
+        }
+    }
+    findBusStop(latUser, lngUser, 100);
+    findBus();
+    
+})
+
+/* 'Back to Map' icon click function */
+$('#mapArrow').on('click', ()=>{
+    /* Show all icons */ 
+    for (let i = 0; i < allMarkers.length; i++) {
+        allMarkers[i].setMap(map);
+    }
+    /* Remove Bus icon */
+    if(busMarker){
+        busMarker.setMap(null);
+    }
+    /* Remove Bus Stop icon */ 
+    if(busStopMarker){
+        busStopMarker.setMap(null);
+    }
+})
+/* Jason */
 
 
-
-
+/* Jules */
+/* 'Find Transport' icon click function */
 let busMarker, busStopMarker;
 let busLocation = {
     lat: 0,
@@ -28,6 +54,7 @@ function presentAllBuese(val) {
     })
 
 }
+/* Jules */
 
 /* Jason */
 /* findBus function is using Auckland Transport API to find the nearby buses according to */
@@ -63,6 +90,10 @@ function findBus() {
                         });
                         busLocation.lat = returnedData[i].vehicle.position.latitude;
                         busLocation.lng = returnedData[i].vehicle.position.longitude;
+                        locations[0] = [latUser, lngUser];
+                        locations[1] = [placeToGoDetails[1], placeToGoDetails[2]];
+                        locations[2] = [busLocation.lat, busLocation.lng];
+                        getCentrePoint(locations);
                         return;
                     }
                 }
