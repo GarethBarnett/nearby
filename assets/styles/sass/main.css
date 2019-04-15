@@ -475,6 +475,98 @@ nav {
   width: 29px;
 }
 
+/* Bus menu */
+.busMenu {
+  position: absolute;
+  background: #001025;
+  height: 80px;
+  width: 100%;
+  bottom: -5px;
+  left: 0;
+  z-index: 50;
+}
+
+.busMenuLow {
+  padding: 20px;
+  height: 80px;
+  margin-top: 7px;
+  border-top: 1px solid white;
+}
+
+.busMapArrow {
+  height: 40px;
+  clear: both;
+  float: left;
+  cursor: pointer;
+  margin-left: 25px;
+}
+
+.busMapArrow img {
+  height: 100%;
+}
+
+.busMenuOpen {
+  position: absolute;
+  background: #001025;
+  height: 500px;
+  width: 100%;
+  bottom: -335px;
+  left: 0;
+  z-index: 49;
+  text-align: center;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.busMenuBody {
+  margin-top: 28px;
+}
+
+.busPullTab {
+  position: absolute;
+  top: -7px;
+  margin: 0 auto;
+  width: 210px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.busPullTab img {
+  width: 100%;
+}
+
+.busInfoHeading {
+  height: 61px;
+  margin-bottom: 20px;
+}
+
+.busInfoTitle {
+  float: left;
+  color: white;
+  font-family: 'Gotham Narrow Medium';
+  font-size: 24px;
+  margin: 15px 0px 0px 30px;
+  cursor: pointer;
+}
+
+.busInfoIcon {
+  height: 50px;
+  clear: both;
+  float: left;
+  cursor: pointer;
+  margin-left: 12px;
+}
+
+.busInfoIcon img {
+  height: 100%;
+}
+
+.busMenuMove {
+  transition: all 0.5s ease;
+  transform: translateY(-180px);
+}
+
+/* Bus menu */
 @media only screen and (max-width: 500px) {
   #phoneOverlay {
     display: none;
