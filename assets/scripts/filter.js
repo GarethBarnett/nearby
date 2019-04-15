@@ -33,6 +33,9 @@ $('#hotelFilter').on('click', () => {
 $('#trendingFilter').on('click', () => {
     showOrHideTrending();
 });
+$('#trending').on('click', () => {
+    showOrHideTrending();
+});
 /* Jules */
 /* Functions for all filter icon - end */
 
@@ -78,10 +81,12 @@ function showOrHideTrending() {
         for (let i = 0; i < allMarkers.length; i++) {
             if (!re.test(allMarkers[i].icon.url)) {
                 allMarkers[i].setMap(map);
+
             } else {
                 allMarkers[i].setMap(null);
             }
         }
+
         flags.trending = false;
     } else {
         for (let i = 0; i < allMarkers.length; i++) {
