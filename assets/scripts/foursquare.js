@@ -104,7 +104,6 @@ function initMap() {
     });
 
     /* Jules */
- 
 
 
 
@@ -112,7 +111,8 @@ function initMap() {
 
 
 
-/* Gareth */
+
+    /* Gareth */
 
     /* Ajax Request for Food */
     $.ajax({
@@ -150,25 +150,25 @@ function initMap() {
             requestAllLocationByFilter(res, map, 'landmark');
         }
     });
-/* Gareth */
+    /* Gareth */
 
 
 
 
-/* Jules */
+    /* Jules */
 
     /* Ajax Request for Trending */
     $.ajax({
         url: trendingUrl,
         dataType: 'jsonp',
         success: function (res) {
-            requestAllLocationByFilter(res, map, 'trending');
+            requestAllLocationByFilter(res, null, 'trending');
         }
     });
-/* Jules */
+    /* Jules */
 
 
-/* Gareth */
+    /* Gareth */
 } /* End Display Venues on Map */
 
 let placeLocationObj = {
@@ -189,7 +189,7 @@ let allMarkers = [];
 /* Jason */
 let placeToGo;
 let placeToGoDetails;
-let userLocation = {lat: latUser1, lng: lngUser1};
+let userLocation = { lat: latUser1, lng: lngUser1 };
 /* Jason */
 
 
@@ -233,7 +233,7 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
 
                     /* ---------------- Need to fix this part --------------------*/
                     /* 3 seconds after the center of the map has changed, pan back to the marker*/
-                    
+
                     // map.addListener('center_changed', function () {
                     //     window.setTimeout(function () {
                     //         // map.panTo(marker.getPosition());
@@ -244,15 +244,16 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
 
                     map.setZoom(18);
                     map.setCenter(marker.getPosition());
-                    
+
                     // map.setCenter(new google.maps.LatLng(latUser1, lngUser1));
                     placeToGo = placeDetails[5];
                     placeToGoDetails = placeDetails;
-                     /* Jules */
+                    /* Jules */
 
                 }
             });
         });
+        // console.log(marker);
         allMarkers.push(marker);
     });
 
