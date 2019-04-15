@@ -93,7 +93,7 @@ span {
   position: absolute;
   background-color: white;
   height: 73px;
-  bottom: 0px;
+  top: 900px;
 }
 
 #phoneOverlay {
