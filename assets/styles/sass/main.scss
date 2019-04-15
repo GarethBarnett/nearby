@@ -1,68 +1,55 @@
+
+
 @font-face {
-font-family: 'Gotham Narrow Bold';
-font-style: normal;
-font-weight: normal;
-src: url(/assets/fonts/GothamNarrow-Bold.woff);
+  font-family: Gotham Narrow Bold;
+  src: url(../fonts/GothamNarrow-Bold.woff); 
 }
 
 
 
 @font-face {
-font-family: 'Gotham Narrow Thin';
-font-style: normal;
-font-weight: normal;
-src: url(/assets/fonts/GothamNarrow-Thin.woff);
+font-family: Gotham Narrow Thin;
+src: url(../fonts/GothamNarrow-Thin.woff);
 }
 
 
 @font-face {
-font-family: 'Gotham Narrow Extra Light';
-font-style: normal;
-font-weight: normal;
-src: url(/assets/fonts/GothamNarrow-XLight.woff);
+font-family: Gotham Narrow Extra Light;
+src: url(../fonts/GothamNarrow-XLight.woff);
 }
 
 
 @font-face {
-font-family: 'Gotham Narrow Light';
-font-style: normal;
-font-weight: normal;
-src: url(/assets/fonts/GothamNarrow-Light.woff);
-}
-
-
-@font-face {
-font-family: 'Gotham Narrow Book';
-font-style: normal;
-font-weight: normal;
-src: url(/assets/fonts/GothamNarrow-Book.woff);
-}
-
-
-@font-face {
-font-family: 'Gotham Narrow Medium';
-font-style: normal;
-font-weight: normal;
-src: url(/assets/fonts/GothamNarrow-Medium.woff);
+font-family: Gotham Narrow Light;
+src: url(../fonts/GothamNarrow-Light.woff);
 }
 
 
 
 @font-face {
-font-family: 'Gotham Narrow Black';
-font-style: normal;
-font-weight: normal;
-src: url(/assets/fonts/GothamNarrow-Black.woff);
+font-family: Gotham Narrow Book;
+src: url(../fonts/GothamNarrow-Book.woff);
+}
+
+
+@font-face {
+font-family: Gotham Narrow Medium;
+src: url(../fonts/GothamNarrow-Medium.woff);
+}
+
+
+@font-face {
+font-family: Gotham Narrow Black;
+src: url(../fonts/GothamNarrow-Black.woff);
 }
 
 
 
 @font-face {
-font-family: 'Gotham Narrow Ultra';
-font-style: normal;
-font-weight: normal;
-src: url(/assets/fonts/GothamNarrow-Ultra.woff);
+font-family: Gotham Narrow Ultra;
+src: url(../fonts/GothamNarrow-Ultra.woff);
 }
+
 
 
 $atBlue: #001025;
@@ -71,11 +58,12 @@ $atYellow: #FFD400;
 
 
 body {
-
+    position: relative;
 	width: 100%;
 	height: 100%;
     background: white;
     overflow: hidden;
+    font-family: Gotham Narrow Light;
 }
 
 h1{
@@ -315,73 +303,91 @@ p {
 
 
 nav {
-    position: fixed;
-    height: 10vh;
-    top: 5%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 375px;
-    z-index: 999;
-    background: rgb(0, 16, 37);;
-    margin: auto;
-
+   
+        position: fixed;
+        height: 95px;
+        top: 5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        z-index: 999;
+        background: rgb(0, 16, 37);
+        margin: auto;
+    
 }
+
+
 .flex {
     height: 100%;
     padding: 0 20px;
+    margin-top: 13px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 
 .menuOpen {
     z-index: 99;
-   
+    position: relative;
+    top: -20px;
     display: flex;
-    height: 90vh; 
-    background: rgb(0, 16, 37);
+    height: 90vh;
+    background: #001025;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+}
+
+
+.menuOptions{
+    margin-top: 97px;
+    margin-left: 30px;
 }
 
 
 .menuLinks {
     margin: 20px;
     color: white;
-    font-size: 2em;
-
+    font-size: 28px;
+    line-height: 2.1em
 }
+
+
+.menuRail{
+    position: absolute;
+    width: 94px;
+    left: 163px;
+    top: -2px;
+}
+
 
 .hamburger {
     padding: 0;
 }
+
+
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
     width: 35px;
     height: 4px;
     background-color: rgb(255, 255, 255);
-    
-   
 }
+
 .hamburger.is-active .hamburger-inner, .hamburger.is-active .hamburger-inner::before, .hamburger.is-active .hamburger-inner::after {
     background-color: white;
     width: 35px;
 }
+
 :focus {
     outline: none;
 } 
+
 .panels {
     position: absolute;
-    z-index: 999;
-	bottom: -10%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 375px;
-    // height: 90vh;
+    z-index: 998;
+    bottom: -15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -398,20 +404,21 @@ nav {
 
 .swiper-slide {
     display: flex;
-    width: 100px;
-    margin: 0 5px;
-    height: 150px;
+    width: 135px !important;
+    margin: 0 3px;
+    height: 185px;
     background: rgb(0, 16, 37);
     border: 1px solid white;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
     justify-content: center;
     align-items: center;
     align-self: flex-end;
+
+    img{
+        width: 75px;
+    }
     
 }
-/* .swiper-slide:hover {
-    transform: scale(1.1);
-} */
 
 
 
@@ -425,25 +432,31 @@ nav {
 
 
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 500px) {
 
-#phoneOverlay{
-    display: none;
-}
-
-
-#prototype{
-	width: 100%;
-	height: 100%;
-
-}
-
-nav {
-    width: 100%;
-
-}
-
-}
+    #phoneOverlay{
+        display: none;
+    }
 
 
+    #prototype{
+        width: 100%;
+        height: 100%;
 
+    }
+    .panels {
+        width: 100%;
+    }
+
+    nav {
+        width: 100%;
+
+    }
+
+    }
+
+
+
+span{
+    font-size: 12px;
+    }

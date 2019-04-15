@@ -8,10 +8,13 @@ const key = version + clientid + clientSecret;
 
 /* Icons for Venues */
 let icons = {
-    food: './assets/images/restauranticon.svg',
-    drink: './assets/images/baricon.svg',
-    hotel: './assets/images/accommodationicon.svg',
-    landmark: './assets/images/sightsicon.svg',
+    location: './assets/images/location.svg',
+    bus: './assets/images/bus1.svg',
+    busstop: './assets/images/busstop.svg',
+    food: './assets/images/restauranticon.png',
+    drink: './assets/images/baricon.png',
+    hotel: './assets/images/accommodationicon.png',
+    landmark: './assets/images/sightsicon.png',
     trending: './assets/images/trending.svg'
 };
 
@@ -22,36 +25,102 @@ let hotel = '4bf58dd8d48988d1fa931735';
 let landmark = '4d4b7104d754a06370d81259';
 // let trending = '5ac51dde351e3d4df64064f8';
 
+// $('#marker').click(function () {
+//     if (navigator.geolocation)
+//         navigator.geolocation.getCurrentPosition(function (position) {
+//             console.log(position.coords.latitude);
+//             console.log(position.coords.longitude);
+//         }); else
+//         console.log('geo location is not supported');
+
+
+
+// });
+
+// Testing save
+
+navigator.geolocation.getCurrentPosition(locationHandler);
+
+function locationHandler(position) {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    latUser1 = position.coords.latitude;
+    lngUser1 = position.coords.longitude;
+    console.log(lat);
+    console.log(lng);
+    foodUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + food + '&limit=5&radius=2000';
+    drinkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + drink + '&limit=5&radius=2000';
+    hotelUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + hotel + '&limit=5&radius=2000';
+    landmarkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + landmark + '&limit=5&radius=2000';
+    trendingUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&limit=10';
+}
+
+let latUser1, lngUser1;
+
 
 /* User Location */
-let latUser = -36.8569444;
-let lngUser = 174.7641288;
+// let latUser = latuser1;
+// let lngUser = lngUser1;
 
+// var myLatLng = { lat: latUser, lng: lngUser }
 
+let foodUrl, drinkUrl, hotelUrl, landmarkUrl, trendingUrl;
 /* Display Venues on Map */
-let foodUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&categoryId=' + food + '&limit=5&radius=200';
-let drinkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&categoryId=' + drink + '&limit=5&radius=200';
-let hotelUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&categoryId=' + hotel + '&limit=5&radius=200';
-let landmarkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&categoryId=' + landmark + '&limit=5&radius=200';
-let trendingUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser + ',' + lngUser + ' ' + '&limit=10';
+
 
 
 
 /* Map JS Files */
 
+let map, marker;
 function initMap() {
-    let map, marker;
+
 
     map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -36.8569444, lng: 174.7641288 },
-        zoom: 17,
+        center: { lat: +latUser1, lng: +lngUser1 },
+        zoom: 12,
         disableDefaultUI: true,
         zoomControl: true,
         zoomControlOptions: {
             position: google.maps.ControlPosition.RIGHT_CENTER,
         },
         styles: mapstyle,
+
     });
+
+    var icon = {
+        url: "./assets/images/zeus.svg", // url
+        scaledSize: new google.maps.Size(20, 20), // scaled size
+        origin: new google.maps.Point(0, 0), // origin
+        anchor: new google.maps.Point(0, 0) // anchor
+    };
+
+
+    var location = new google.maps.Marker({
+        position: { lat: +latUser1, lng: +lngUser1 }, map: map,
+        icon: icon
+    });
+
+    var infoWindow = new google.maps.InfoWindow({
+        content: '<h4 class="testing animated fadeInDown"> Your location here</h4>'
+    });
+    location.addListener('click', function () {
+        infoWindow.open(map, location);
+    });
+    //     addMarker({ lat: -36.7642377, lng: 174.7577896 });
+
+    //     function addMarker(coords) {
+    //         var test = new google.maps.Marker({
+    //             position: coords,
+    //             map: map,
+    //             icon: icon
+    //         });
+    //     }
+    // }
+
+
+
+
 
 
 
@@ -113,6 +182,11 @@ let placeLocationObj = {
     landmark: [],
     trending: []
 }
+let allMarkers = [];
+/* Jason */
+let placeToGo;
+let placeToGoDetails;
+/* Jason */
 
 
 function requestAllLocationByFilter(obj, map, categoryVal) {
@@ -121,7 +195,8 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
         let lat = item.venue.location.lat;
         let lng = item.venue.location.lng;
         let venueName = item.venue.name;
-        placeLocationObj[categoryVal].push([true, Number(lat), Number(lng), venueName.toString(), icons[categoryVal].toString(), item.venue.id]);
+        let placeDetails = [true, Number(lat), Number(lng), venueName.toString(), icons[categoryVal].toString(), item.venue.id];
+        placeLocationObj[categoryVal].push(placeDetails);
 
         let marker = new google.maps.Marker({
             map: map,
@@ -148,11 +223,22 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
 
                     /* Fill info menu with data */
                     createInfoMenu(res);
+                    // 3 seconds after the center of the map has changed, pan back to the // marker.
+                    map.addListener('center_changed', function () {
+                        window.setTimeout(function () {
+                            map.panTo(marker.getPosition());
+                        }, 3000);
+                    });
+
+                    map.setZoom(18);
+                    map.setCenter(marker.getPosition());
+                    placeToGo = placeDetails[5];
+                    placeToGoDetails = placeDetails;
 
                 }
             });
         });
-
+        allMarkers.push(marker)
     });
 
 }
@@ -211,19 +297,19 @@ function createInfoMenu(res) {
 
 console.log(placeLocationObj)
 
-let foodFilter = document.getElementById('foodFilter');
+// let foodFilter = document.getElementById('foodFilter');
 
-foodFilter.addEventListener("click", function () {
+// foodFilter.addEventListener("click", function () {
 
-    // Object.keys(placeLocationObj)[0];
+//     // Object.keys(placeLocationObj)[0];
 
-    // placeLocationObj.food.parentNode.removeChild(placeLocationObj);
+//     // placeLocationObj.food.parentNode.removeChild(placeLocationObj);
 
-    // placeLocationObj
+//     // placeLocationObj
 
-    alert("success")
+//     alert("success")
 
-});
+// });
 
 
 
