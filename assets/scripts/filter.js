@@ -28,14 +28,14 @@ $('#hotelFilter').on('click', () => {
     reclickFilgerToShowOrHideAllMarkers('accommodation');
 })
 /* Jules */
-$('#trending').on('click', () => {
+$('#trendingFilter').on('click', () => {
     patt = /trending/i;
     reclickFilgerToShowOrHideAllMarkers('trending');
 })
-$('#marker').on('click', () => {
-    patt = /trending/i;
-    reclickFilgerToShowOrHideAllMarkers('trending');
-})
+// $('#marker').on('click', () => {
+//     patt = /trending/i;
+//     reclickFilgerToShowOrHideAllMarkers('trending');
+// })
 /* Jules */
 /* Functions for all filter icon - end */
 

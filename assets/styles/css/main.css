@@ -56,11 +56,28 @@ a {
 p {
   color: white;
   text-align: center;
-  font-size: 18px; }
+  font-size: 15px; }
+
+span {
+  font-size: 11.5px; }
 
 .container {
   width: 80%;
   margin: 0 auto; }
+
+.top {
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  height: 65px;
+  top: 0px; }
+
+.bottom {
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  height: 73px;
+  top: 900px; }
 
 #phoneOverlay {
   position: absolute;
@@ -86,14 +103,12 @@ p {
   position: absolute;
   top: -370px;
   left: -29px;
-  /* height: 63%; */
   width: 30px; }
 
 .phoneRight {
   position: absolute;
   top: -370px;
   right: -29px;
-  /* height: 63%; */
   width: 30px; }
 
 #splash {
@@ -104,7 +119,7 @@ p {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; }
+  height: 103%; }
 
 .logo {
   width: 192px;
@@ -123,7 +138,7 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 375px;
+  width: 376px;
   height: 821px;
   z-index: -1; }
 
@@ -213,10 +228,13 @@ nav {
   background: #001025;
   margin: auto; }
 
+#trendingFilter img {
+  height: 30px; }
+
 .flex {
   height: 100%;
   padding: 0 20px;
-  margin-top: 13px;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -386,7 +404,8 @@ nav {
   .panels {
     width: 100%; }
   nav {
-    width: 100%; } }
-
-span {
-  font-size: 12px; }
+    width: 100%; }
+  .top {
+    display: none; }
+  .bottom {
+    display: none; } }

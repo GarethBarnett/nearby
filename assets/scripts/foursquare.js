@@ -21,7 +21,7 @@ let icons = {
     hotel: './assets/images/accommodationicon.png',
     landmark: './assets/images/sightsicon.png',
     /* Jules */
-    trending: './assets/images/trending.svg'
+    trending: './assets/images/trending.png'
     /* Jules */
 };
 /* Gareth */
@@ -67,11 +67,9 @@ let foodUrl, drinkUrl, hotelUrl, landmarkUrl, trendingUrl;
 let map, marker;
 
 function initMap() {
-
-
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: +latUser1, lng: +lngUser1 },
-        zoom: 12,
+        zoom: 14,
         disableDefaultUI: true,
         zoomControl: true,
         zoomControlOptions: {
@@ -178,7 +176,9 @@ let placeLocationObj = {
     drink: [],
     hotel: [],
     landmark: [],
+    /* Jules */
     trending: []
+    /* Jules */
 }
 
 /* Gareth */
@@ -232,6 +232,7 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
 
                     /* ---------------- Need to fix this part --------------------*/
                     /* 3 seconds after the center of the map has changed, pan back to the marker*/
+                    
                     map.addListener('center_changed', function () {
                         window.setTimeout(function () {
                             map.panTo(marker.getPosition());
