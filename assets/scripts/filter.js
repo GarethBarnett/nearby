@@ -27,6 +27,7 @@ $('#hotelFilter').on('click', () => {
     patt = /accommodation/i;
     reclickFilgerToShowOrHideAllMarkers('accommodation');
 })
+/* Jules */
 $('#trending').on('click', () => {
     patt = /trending/i;
     reclickFilgerToShowOrHideAllMarkers('trending');
@@ -35,6 +36,7 @@ $('#marker').on('click', () => {
     patt = /trending/i;
     reclickFilgerToShowOrHideAllMarkers('trending');
 })
+/* Jules */
 /* Functions for all filter icon - end */
 
 /* Function to filter markers by different category */
