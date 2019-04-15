@@ -60,7 +60,7 @@ p {
   font-size: 18px; }
 
 .container {
-  width: 90%;
+  width: 80%;
   margin: 0 auto; }
 
 #splash {
@@ -96,7 +96,7 @@ p {
 
 .infoMenuMove {
   transition: all 0.5s ease;
-  transform: translateY(-250px); }
+  transform: translateY(-380px); }
 
 .infoMenu {
   position: absolute;
@@ -153,13 +153,19 @@ p {
   bottom: -225px;
   left: 0;
   z-index: 49;
-  text-align: center; }
+  text-align: center;
+  border-radius: 10px 10px 0px 0px; }
+
+.infoMenuBody {
+  margin-top: 28px; }
 
 .pullTab {
-  position: relative;
-  top: -36px;
+  position: absolute;
+  top: -7px;
   margin: 0 auto;
-  width: 210px; }
+  width: 210px;
+  left: 50%;
+  transform: translate(-50%, -50%); }
   .pullTab img {
     width: 100%; }
 
@@ -256,6 +262,87 @@ nav {
 
 .hide {
   display: none; }
+
+.venueStatus {
+  float: left;
+  width: 13px;
+  padding: 2px;
+  margin-right: 5px; }
+
+.venueName {
+  font-size: 23px;
+  text-align: left;
+  color: #fff;
+  float: left;
+  width: 225px;
+  font-family: Gotham Narrow Medium;
+  margin-bottom: 5px; }
+
+.venueAddress {
+  font-size: 16px;
+  color: #fff;
+  text-align: left;
+  clear: both;
+  margin-bottom: 5px; }
+
+.venueDistance {
+  font-size: 12px;
+  color: #fff;
+  text-align: left;
+  clear: both;
+  margin-bottom: 30px; }
+
+.venueRating {
+  font-size: 12px;
+  color: #000;
+  text-align: left;
+  width: 50px;
+  padding: 5px;
+  background: #FFD400;
+  border-radius: 15px;
+  clear: both;
+  float: right;
+  text-align: center;
+  font-family: Gotham Narrow Bold; }
+
+.venueImage img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px; }
+
+.venueDescription {
+  font-size: 10px;
+  color: #fff;
+  text-align: left;
+  clear: both;
+  font-family: Gotham Narrow;
+  margin-bottom: 20px;
+  line-height: 1.5em; }
+
+.venueWebsite {
+  display: inline;
+  float: left;
+  width: 70px;
+  padding: 5px;
+  background: #fff;
+  border-radius: 15px;
+  margin-right: 20px;
+  font-family: Gotham Narrow Bold; }
+
+.venueWebsite a {
+  color: #001025; }
+
+.venueShare {
+  display: inline;
+  float: left;
+  width: 27px; }
+
+.venueDirections {
+  display: inline;
+  float: right;
+  width: 29px; }
 
 @media only screen and (max-width: 500px) {
   #phoneOverlay {

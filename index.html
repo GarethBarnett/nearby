@@ -116,29 +116,95 @@
 			<div class="infoMenuOpen">
 
 				<div id="pullBtn" class="pullTab"><img src="assets/images/tab.svg"></div>
-				<div class="infoMenuBody">
+				<div class="infoMenuBody container">
 
 					<script id="infoMenuData" type="text/x-handlebars-template">
 
-	      		<h2>{{response.venue.name}}</h2>
-	      		<p>{{response.venue.rating}}/10</p>
+	      		{{#if response.venue.rating}}
+	      		<div class="venueRating">
+	      	    	{{response.venue.rating}}/10
+	      	    </div>
+	      	    {{else}}
+	      	    <div class="venueRating">
+	      	    	N/A
+	      	    </div>
+	      	    {{/if}}
 
-	      		<img src={{response.venue.bestPhoto.prefix}}50x50{{response.venue.bestPhoto.suffix}}>  
-	      		<p>likes {{response.venue.likes.count}}</p>
-	      		<p>{{response.venue.description}}</p>
-	      		<p>{{response.venue.contact.phone}}</p>	    
-	      	    <a href="{{response.venue.url}}">link</a>
+	      
 
-	      	    <div>
-	      	    	<p>{{response.venue.location.address}}</p>
-	      	    	<p>{{response.venue.location.city}}</p>
+                {{#if response.venue.hours.status}}
+	      			<div class="venueStatus"><img src="assets/images/open.svg"></div>
+	      	    {{/if}}
+
+
+	      		<div class="venueName">
+	      			{{response.venue.name}}
 	      	    </div>
 
-	      	     <a href="https://www.google.com/maps/dir/Current+Location/{{response.venue.location.lat}},{{response.venue.location.lng}}">directions</a>
+
+	      	
+				{{#if venue.location.address}}
+	      		<div class="venueAddress">
+	      	    	{{response.venue.location.address}}
+	      	    	{{response.venue.location.city}}
+	      	    </div>
+	      	    {{else}}
+	      	    <div class="venueAddress">
+	      	    	Auckland
+	      	    </div>
+	      	    {{/if}}
+
+
+
+	      	    <div class="venueDistance">
+	      	    	4km Away
+	      	    </div>
+
+	      	    
+				{{#if response.venue.bestPhoto.prefix}}
+	      	    <div class="venueImage">
+	      	    	<img src={{response.venue.bestPhoto.prefix}}320x200{{response.venue.bestPhoto.suffix}}>
+	      	    </div>
+	      	    {{else}}
+	      	    <div class="venueImage">
+	      	        <img src="assets/images/default.jpg">
+	      	        </div>
+	      	    {{/if}}
+
+
+				{{#if response.venue.description}}
+	      	    <div class="venueDescription">
+	      	    	{{response.venue.description}}
+	      	    </div>
+	      	    {{else}}
+	      	    <div class="venueDescription">
+	      	    	Check in at this venue and write a discription to share with others. 
+	      	    </div>
+	      	    {{/if}}
+
+
+	      	    
+				{{#if response.venue.url}}
+	      	    <div class="venueWebsite">
+	      	    	<a href="{{response.venue.url}}">WWW</a>
+	      	    </div>
+	      	    {{/if}}
+
+
+	      	     <div class="venueShare">
+	      	    	<a href="https://www.facebook.com/sharer/sharer.php?u={{response.venue.shortUrl}}"><img src="assets/images/share.svg"></a>
+	      	    </div>
+
+
+	      	   
+
+	      	     <div class="venueDirections">
+	      	    	<a href="https://www.google.com/maps/dir/Current+Location/{{response.venue.location.lat}},{{response.venue.location.lng}}"><img src="assets/images/directions.svg"></a>
+	      	    </div>
 
             </script>
 
-					<!-- <h5 class="venueTitle">test</h5> -->
+			
 				</div>
 
 
