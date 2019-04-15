@@ -5,7 +5,8 @@ let flags = {
     'restaurant': false,
     'sight': false,
     'bar': false,
-    'accommodation': false
+    'accommodation': false,
+    'trending': false
 }
 $('#foodFilter').on('click', () => {
     patt = /restaurant/i;
