@@ -60,19 +60,19 @@ body {
     height: 100%;
     background: white;
     overflow: hidden;
-    font-family: Gotham Narrow Light;
+    font-family: 'Gotham Narrow Light';
 }
 
 h1{
     color: white;
-    font-family: Gotham Narrow Bold;
+    font-family: 'Gotham Narrow Bold';
     margin-top: 60px;
     font-size: 38px;
 }
 
 h2{
     color: white;
-    font-family: Gotham Narrow Light;
+    font-family: 'Gotham Narrow Light';
     margin-top: 10px;
     font-size: 20px;
 }
@@ -111,7 +111,7 @@ span{
     position: absolute;
     background-color: white;
     height: 73px;
-    top: 900px;
+    bottom: 0px;
 }
 
 
@@ -244,7 +244,7 @@ img{
 .findTransport{
     float: left;
     color: white; 
-    font-family: Gotham Narrow Medium;
+    font-family: 'Gotham Narrow Medium';
     font-size: 21px;
     margin-top: 12px;
     cursor: pointer;
@@ -263,7 +263,7 @@ img {
 .backMap {
     float: left;
     color: white; 
-    font-family: Gotham Narrow Medium;
+    font-family: 'Gotham Narrow Medium';
     font-size: 17px;
     margin: 10px 0px 0px 30px;
     cursor: pointer;
@@ -457,7 +457,7 @@ img{
     color: #fff;
     float: left;
     width: 225px;
-    font-family: Gotham Narrow Medium;
+    font-family: 'Gotham Narrow Medium';
     margin-bottom: 5px;
 }
 
@@ -488,7 +488,7 @@ img{
     clear: both;
     float: right;
     text-align: center;
-    font-family: Gotham Narrow Bold;
+    font-family: 'Gotham Narrow Bold';
 }
 
 .venueImage img{
@@ -504,7 +504,7 @@ img{
     color: #fff;
     text-align: left;
     clear: both;
-    font-family: Gotham Narrow;
+    font-family: 'Gotham Narrow';
     margin-bottom: 20px;
     line-height: 1.5em;
 }
@@ -517,7 +517,7 @@ img{
     background: #fff;
     border-radius: 15px;
     margin-right: 20px;
-    font-family: Gotham Narrow Bold;
+    font-family: 'Gotham Narrow Bold';
 }
 
 .venueWebsite a{
