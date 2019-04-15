@@ -8,7 +8,8 @@ $('#busArrow').on('click',()=>{
     }
     findBusStop(latUser1, lngUser1, 100);
     findBus();
-    
+    $('#infoMenuContainer').addClass('hide');
+    $('#busMenuContainer').removeClass('hide');
 });
 
 /* 'Back to Map' icon click function */
