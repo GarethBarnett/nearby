@@ -1,8 +1,8 @@
 // TypeIT //
 
 new TypeIt('#breakLines', {
-    strings: ["Explore Nearby", "Select an Icon to get started"],
-    speed: 60,
+    strings: ["Explore Nearby", "<span>Select an Icon to get started</span>"],
+    speed: 120,
     waitUntilVisible: true,
     cursor: false
 }).go();
@@ -12,14 +12,14 @@ new TypeIt('#breakLines', {
 let menu = document.getElementById('menuBtn');
 let openMenu = document.getElementById('menuOpen');
 let type = document.getElementById('typeText');
-let position = document.getElementById('marker');
+let trendingIcon = document.getElementById('trendingFilter');
 let panels = document.getElementById('panel');
 menu.addEventListener("click", function () {
     type.classList.toggle("hide");
-    position.classList.toggle("hide");
+    trendingIcon.classList.toggle("hide");
     openMenu.classList.toggle("hide");
     panels.classList.toggle("hide");
-})
+});
 // Look for .hamburger
 var hamburger = document.querySelector(".hamburger");
 // On click
@@ -37,4 +37,4 @@ var mySwiper = new Swiper('.swiper-container', {
 
 
 
-})
+});

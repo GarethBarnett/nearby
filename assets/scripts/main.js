@@ -1,6 +1,6 @@
 /* Main JS Files */
 
-
+/* Gareth */
 let loader = document.getElementById("splash");
 
 
@@ -29,9 +29,7 @@ let infoMenuContainer = document.getElementById('infoMenuContainer');
 
 /* Info Menu Expand */
 infoMenuBtn.addEventListener("click", function () {
-
 	infoMenuOpen.classList.toggle('infoMenuMove');
-
 });
 
 
@@ -39,15 +37,7 @@ infoMenuBtn.addEventListener("click", function () {
 
 /* Info Menu Back */
 backBtn.addEventListener("click", function () {
-
-
 	infoMenuContainer.classList.toggle('hide');
 	panel.classList.remove('hide');
-
-
-
-
-
-
 });
-
+/* Gareth */

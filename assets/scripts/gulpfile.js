@@ -30,7 +30,7 @@ function mywatch(){
 		server: { baseDir: "./" }
 	});
 
-	gulp.watch("*.html", update)
+	gulp.watch("*.html", update);
 	gulp.watch(scssPath, style);
 }
 
