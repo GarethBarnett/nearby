@@ -11,10 +11,10 @@ let icons = {
     location: './assets/images/location.svg',
     bus: './assets/images/bus1.svg',
     busstop: './assets/images/busstop.svg',
-    food: './assets/images/restauranticon.svg',
-    drink: './assets/images/baricon.svg',
-    hotel: './assets/images/accommodationicon.svg',
-    landmark: './assets/images/sightsicon.svg',
+    food: './assets/images/restauranticon.png',
+    drink: './assets/images/baricon.png',
+    hotel: './assets/images/accommodationicon.png',
+    landmark: './assets/images/sightsicon.png',
     trending: './assets/images/trending.svg'
 };
 

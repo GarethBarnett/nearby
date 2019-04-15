@@ -1,56 +1,42 @@
 @font-face {
-  font-family: 'Gotham Narrow Bold';
-  font-style: normal;
-  font-weight: normal;
-  src: url(/assets/fonts/GothamNarrow-Bold.woff); }
+  font-family: Gotham Narrow Bold;
+  src: url(../fonts/GothamNarrow-Bold.woff); }
 
 @font-face {
-  font-family: 'Gotham Narrow Thin';
-  font-style: normal;
-  font-weight: normal;
-  src: url(/assets/fonts/GothamNarrow-Thin.woff); }
+  font-family: Gotham Narrow Thin;
+  src: url(../fonts/GothamNarrow-Thin.woff); }
 
 @font-face {
-  font-family: 'Gotham Narrow Extra Light';
-  font-style: normal;
-  font-weight: normal;
-  src: url(/assets/fonts/GothamNarrow-XLight.woff); }
+  font-family: Gotham Narrow Extra Light;
+  src: url(../fonts/GothamNarrow-XLight.woff); }
 
 @font-face {
-  font-family: 'Gotham Narrow Light';
-  font-style: normal;
-  font-weight: normal;
-  src: url(/assets/fonts/GothamNarrow-Light.woff); }
+  font-family: Gotham Narrow Light;
+  src: url(../fonts/GothamNarrow-Light.woff); }
 
 @font-face {
-  font-family: 'Gotham Narrow Book';
-  font-style: normal;
-  font-weight: normal;
-  src: url(/assets/fonts/GothamNarrow-Book.woff); }
+  font-family: Gotham Narrow Book;
+  src: url(../fonts/GothamNarrow-Book.woff); }
 
 @font-face {
-  font-family: 'Gotham Narrow Medium';
-  font-style: normal;
-  font-weight: normal;
-  src: url(/assets/fonts/GothamNarrow-Medium.woff); }
+  font-family: Gotham Narrow Medium;
+  src: url(../fonts/GothamNarrow-Medium.woff); }
 
 @font-face {
-  font-family: 'Gotham Narrow Black';
-  font-style: normal;
-  font-weight: normal;
-  src: url(/assets/fonts/GothamNarrow-Black.woff); }
+  font-family: Gotham Narrow Black;
+  src: url(../fonts/GothamNarrow-Black.woff); }
 
 @font-face {
-  font-family: 'Gotham Narrow Ultra';
-  font-style: normal;
-  font-weight: normal;
-  src: url(/assets/fonts/GothamNarrow-Ultra.woff); }
+  font-family: Gotham Narrow Ultra;
+  src: url(../fonts/GothamNarrow-Ultra.woff); }
 
 body {
+  position: relative;
   width: 100%;
   height: 100%;
   background: white;
-  overflow: hidden; }
+  overflow: hidden;
+  font-family: Gotham Narrow Light; }
 
 h1 {
   color: white;
@@ -198,17 +184,28 @@ nav {
 
 .menuOpen {
   z-index: 99;
+  position: relative;
+  top: -20px;
   display: flex;
   height: 90vh;
   background: #001025;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; }
+  flex-direction: column; }
+
+.menuOptions {
+  margin-top: 97px;
+  margin-left: 30px; }
 
 .menuLinks {
   margin: 20px;
   color: white;
-  font-size: 2em; }
+  font-size: 28px;
+  line-height: 2.1em; }
+
+.menuRail {
+  position: absolute;
+  width: 94px;
+  left: 163px;
+  top: -2px; }
 
 .hamburger {
   padding: 0; }
@@ -266,8 +263,7 @@ nav {
   #prototype {
     width: 100%;
     height: 100%; }
-  nav {
-    width: 100%; }
   .panels {
-    width: 100%;
-  }}
+    width: 100%; }
+  nav {
+    width: 100%; } }
