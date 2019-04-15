@@ -383,16 +383,14 @@ nav {
 
 .panels {
     position: absolute;
-    z-index: 999;
-	bottom: -10%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 375px;
-    // height: 90vh;
+    z-index: 998;
+    bottom: -15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    
 }
 .swiper-container {
     display: flex;
@@ -405,20 +403,21 @@ nav {
 
 .swiper-slide {
     display: flex;
-    width: 100px;
-    margin: 0 5px;
-    height: 150px;
+    width: 135px !important;
+    margin: 0 3px;
+    height: 185px;
     background: rgb(0, 16, 37);
     border: 1px solid white;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
     justify-content: center;
     align-items: center;
     align-self: flex-end;
+
+    img{
+        width: 75px;
+    }
     
 }
-/* .swiper-slide:hover {
-    transform: scale(1.1);
-} */
 
 
 
