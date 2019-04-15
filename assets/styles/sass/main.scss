@@ -303,21 +303,24 @@ p {
 
 
 nav {
-    position: fixed;
-    height: 10vh;
-    top: 5%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 375px;
-    z-index: 999;
-    background: rgb(0, 16, 37);;
-    margin: auto;
+   
+        position: fixed;
+        height: 95px;
+        top: 5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        z-index: 999;
+        background: rgb(0, 16, 37);
+        margin: auto;
+    
 }
 
 
 .flex {
     height: 100%;
     padding: 0 20px;
+    margin-top: 13px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -454,3 +457,6 @@ nav {
 
 
 
+span{
+    font-size: 12px;
+    }

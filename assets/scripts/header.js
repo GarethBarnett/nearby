@@ -1,8 +1,8 @@
 // TypeIT //
 
 new TypeIt('#breakLines', {
-    strings: ["Explore Nearby", "Select an Icon to get started"],
-    speed: 60,
+    strings: ["Explore Nearby", "<span>Select an Icon to get started</span>"],
+    speed: 120,
     waitUntilVisible: true,
     cursor: false
 }).go();
