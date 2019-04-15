@@ -31,7 +31,6 @@
   src: url(../fonts/GothamNarrow-Ultra.woff); }
 
 body {
-  position: relative;
   width: 100%;
   height: 100%;
   background: white;
@@ -57,11 +56,60 @@ a {
 p {
   color: white;
   text-align: center;
-  font-size: 18px; }
+  font-size: 15px; }
+
+span {
+  font-size: 11.5px; }
 
 .container {
-  width: 90%;
+  width: 80%;
   margin: 0 auto; }
+
+.top {
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  height: 65px;
+  top: 0px; }
+
+.bottom {
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  height: 73px;
+  top: 900px; }
+
+#phoneOverlay {
+  position: absolute;
+  z-index: 99999;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 0; }
+  #phoneOverlay img {
+    width: 100%; }
+
+.phoneTop {
+  position: relative;
+  top: -381px;
+  width: 375px; }
+
+.phoneBottom {
+  position: relative;
+  bottom: -379px;
+  width: 375px; }
+
+.phoneLeft {
+  position: absolute;
+  top: -370px;
+  left: -29px;
+  width: 30px; }
+
+.phoneRight {
+  position: absolute;
+  top: -370px;
+  right: -29px;
+  width: 30px; }
 
 #splash {
   background-color: #001025;
@@ -71,7 +119,7 @@ p {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; }
+  height: 103%; }
 
 .logo {
   width: 192px;
@@ -90,20 +138,20 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 375px;
+  width: 376px;
   height: 821px;
   z-index: -1; }
 
 .infoMenuMove {
   transition: all 0.5s ease;
-  transform: translateY(-250px); }
+  transform: translateY(-380px); }
 
 .infoMenu {
   position: absolute;
   background: #001025;
   height: 180px;
   width: 100%;
-  bottom: 0;
+  bottom: -5px;
   left: 0;
   z-index: 50; }
 
@@ -123,11 +171,13 @@ p {
   color: white;
   font-family: Gotham Narrow Medium;
   font-size: 21px;
-  margin-top: 12px; }
+  margin-top: 12px;
+  cursor: pointer; }
 
 .busArrow {
   height: 50px;
-  float: right; }
+  float: right;
+  cursor: pointer; }
   .busArrow img {
     height: 100%; }
 
@@ -136,12 +186,14 @@ p {
   color: white;
   font-family: Gotham Narrow Medium;
   font-size: 17px;
-  margin: 10px 0px 0px 30px; }
+  margin: 10px 0px 0px 30px;
+  cursor: pointer; }
 
 .mapArrow {
   height: 40px;
   clear: both;
-  float: left; }
+  float: left;
+  cursor: pointer; }
   .mapArrow img {
     height: 100%; }
 
@@ -153,13 +205,20 @@ p {
   bottom: -225px;
   left: 0;
   z-index: 49;
-  text-align: center; }
+  text-align: center;
+  border-radius: 10px 10px 0px 0px; }
+
+.infoMenuBody {
+  margin-top: 28px; }
 
 .pullTab {
-  position: relative;
-  top: -36px;
+  position: absolute;
+  top: -7px;
   margin: 0 auto;
-  width: 210px; }
+  width: 210px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer; }
   .pullTab img {
     width: 100%; }
 
@@ -174,10 +233,13 @@ nav {
   background: #001025;
   margin: auto; }
 
+#trendingFilter img {
+  height: 30px; }
+
 .flex {
   height: 100%;
   padding: 0 20px;
-  margin-top: 13px;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -200,7 +262,8 @@ nav {
   margin: 20px;
   color: white;
   font-size: 28px;
-  line-height: 2.1em; }
+  line-height: 2.1em;
+  cursor: pointer; }
 
 .menuRail {
   position: absolute;
@@ -232,7 +295,8 @@ nav {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center; }
+  justify-content: center;
+  cursor: pointer; }
 
 .swiper-container {
   display: flex;
@@ -243,7 +307,7 @@ nav {
 .swiper-slide {
   display: flex;
   width: 135px !important;
-  margin: 0 3px;
+  margin: 0 2px;
   height: 185px;
   background: #001025;
   border: 1px solid white;
@@ -257,6 +321,87 @@ nav {
 .hide {
   display: none; }
 
+.venueStatus {
+  float: left;
+  width: 13px;
+  padding: 2px;
+  margin-right: 5px; }
+
+.venueName {
+  font-size: 23px;
+  text-align: left;
+  color: #fff;
+  float: left;
+  width: 225px;
+  font-family: Gotham Narrow Medium;
+  margin-bottom: 5px; }
+
+.venueAddress {
+  font-size: 16px;
+  color: #fff;
+  text-align: left;
+  clear: both;
+  margin-bottom: 5px; }
+
+.venueDistance {
+  font-size: 12px;
+  color: #fff;
+  text-align: left;
+  clear: both;
+  margin-bottom: 30px; }
+
+.venueRating {
+  font-size: 12px;
+  color: #000;
+  text-align: left;
+  width: 50px;
+  padding: 5px;
+  background: #FFD400;
+  border-radius: 15px;
+  clear: both;
+  float: right;
+  text-align: center;
+  font-family: Gotham Narrow Bold; }
+
+.venueImage img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px; }
+
+.venueDescription {
+  font-size: 10px;
+  color: #fff;
+  text-align: left;
+  clear: both;
+  font-family: Gotham Narrow;
+  margin-bottom: 20px;
+  line-height: 1.5em; }
+
+.venueWebsite {
+  display: inline;
+  float: left;
+  width: 70px;
+  padding: 5px;
+  background: #fff;
+  border-radius: 15px;
+  margin-right: 20px;
+  font-family: Gotham Narrow Bold; }
+
+.venueWebsite a {
+  color: #001025; }
+
+.venueShare {
+  display: inline;
+  float: left;
+  width: 27px; }
+
+.venueDirections {
+  display: inline;
+  float: right;
+  width: 29px; }
+
 @media only screen and (max-width: 500px) {
   #phoneOverlay {
     display: none; }
@@ -266,7 +411,8 @@ nav {
   .panels {
     width: 100%; }
   nav {
-    width: 100%; } }
-
-span {
-  font-size: 12px; }
+    width: 100%; }
+  .top {
+    display: none; }
+  .bottom {
+    display: none; } }

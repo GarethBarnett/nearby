@@ -7,35 +7,35 @@ let flags = {
     'bar': false,
     'accommodation': false,
     'trending': false
-}
+};
 $('#foodFilter').on('click', () => {
     patt = /restaurant/i;
     reclickFilgerToShowOrHideAllMarkers('restaurant');
-})
+});
 
 $('#landmarkFilter').on('click', () => {
     patt = /sight/i;
     reclickFilgerToShowOrHideAllMarkers('sight');
-})
+});
 
 $('#drinkFilter').on('click', () => {
     patt = /bar/i;
     reclickFilgerToShowOrHideAllMarkers('bar');
-})
+});
 
 $('#hotelFilter').on('click', () => {
     patt = /accommodation/i;
     reclickFilgerToShowOrHideAllMarkers('accommodation');
-})
+});
 /* Jules */
-$('#trending').on('click', () => {
+$('#trendingFilter').on('click', () => {
     patt = /trending/i;
     reclickFilgerToShowOrHideAllMarkers('trending');
-})
-$('#marker').on('click', () => {
-    patt = /trending/i;
-    reclickFilgerToShowOrHideAllMarkers('trending');
-})
+});
+// $('#marker').on('click', () => {
+//     patt = /trending/i;
+//     reclickFilgerToShowOrHideAllMarkers('trending');
+// })
 /* Jules */
 /* Functions for all filter icon - end */
 
@@ -44,9 +44,9 @@ $('#marker').on('click', () => {
 function filterMarkers(category) {
     for (let i = 0; i < allMarkers.length; i++) {
         if (patt.test(allMarkers[i].icon.url)) {
-            allMarkers[i].setMap(map)
+            allMarkers[i].setMap(map);
         } else {
-            allMarkers[i].setMap(null)
+            allMarkers[i].setMap(null);
         }
     }
 }
@@ -62,7 +62,7 @@ function reclickFilgerToShowOrHideAllMarkers(val) {
         flags[val] = true;
     } else {
         for (let i = 0; i < allMarkers.length; i++) {
-            allMarkers[i].setMap(map)
+            allMarkers[i].setMap(map);
         }
         flags.restaurant = false;
         flags.sight = false;

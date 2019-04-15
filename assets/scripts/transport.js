@@ -9,7 +9,7 @@ $('#busArrow').on('click',()=>{
     findBusStop(latUser1, lngUser1, 100);
     findBus();
     
-})
+});
 
 /* 'Back to Map' icon click function */
 $('#mapArrow').on('click', ()=>{
@@ -25,7 +25,7 @@ $('#mapArrow').on('click', ()=>{
     if(busStopMarker){
         busStopMarker.setMap(null);
     }
-})
+});
 /* Jason */
 
 
@@ -51,7 +51,7 @@ function presentAllBuese(val) {
             }
         }
         return;
-    })
+    });
 
 }
 /* Jules */
@@ -74,7 +74,7 @@ function findBus() {
         data: "{body}",
     })
         .done(function (data) {
-            console.log(data)
+            console.log(data);
             let returnedData = data.response.entity;
             let pData = data.response.entity[0].vehicle.position;
             positionX = pData.latitude;

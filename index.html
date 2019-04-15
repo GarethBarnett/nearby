@@ -1,170 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="assets/styles/css/reset.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
-	<link rel="stylesheet" type="text/css" href="assets/styles/css/main.css">
-	<link rel="stylesheet" type="text/css" href="assets/styles/css/animate.css">
-	<link rel="stylesheet" type="text/css" href="assets/styles/css/map.css">
-	<link href="assets/styles/css/hamburgers.css" rel="stylesheet">
-
-	<title>AT Explore Nearby</title>
-
-
-</head>
-
-<body>
-
-
-
-
-	<div id="prototype">
-
-		<div id="splash" class="splash animated">
-			<div class="overlay"><img src="assets/images/overlay.svg"></div>
-			<div class="logo"><img src="assets/images/logo.svg"></div>
-			<h1>Kia Ora</h1>
-			<h2>Lets Explore Auckland</h2>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="assets/styles/css/reset.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
+		<link rel="stylesheet" type="text/css" href="assets/styles/css/main.css">
+		<link rel="stylesheet" type="text/css" href="assets/styles/css/animate.css">
+		<link rel="stylesheet" type="text/css" href="assets/styles/css/map.css">
+		<link href="assets/styles/css/hamburgers.css" rel="stylesheet">
+		<title>AT Explore Nearby</title>
+	</head>
+	<body>
+		<div id="phoneOverlay">
+			<div class="phoneTop"><img src="assets/images/phonetop.png" alt="phonetop"></div>
+			<div class="phoneLeft"><img src="assets/images/phoneleft.png" alt="phoneleft"></div>
+			<div class="phoneRight"><img src="assets/images/phoneright.png" alt="phoneright"></div>
+			<div class="phoneBottom"><img src="assets/images/phonebottom.png" alt="phonebottom"></div>
 		</div>
-
-		<nav id="navigation">
-			<ul class="flex">
-				<li><button class="hamburger hamburger--slider" type="button" id="menuBtn">
+		<div class="top"> </div>
+		<div class="bottom"> </div>
+		<div id="prototype">
+			<div id="splash" class="splash animated">
+				<div class="overlay">
+					<img src="assets/images/overlay.svg" alt="overlay">
+				</div>
+				<div class="logo">
+					<img src="assets/images/logo.svg" alt="logo">
+				</div>
+				<h1>Kia Ora</h1>
+				<h2>Lets Explore Auckland</h2>
+			</div>
+			<nav id="navigation">
+				<ul class="flex">
+					<li><button class="hamburger hamburger--slider" type="button" id="menuBtn">
 						<span class="hamburger-box">
 							<span class="hamburger-inner"></span>
 						</span>
 					</button></li>
-
-				<li id="typeText">
-					<p id="breakLines"></p>
-				</li>
-				<li id="marker"><a href="#"><img src="assets/images/fire.svg" alt="marker" height="30px"></a></li>
-
-
-			</ul>
-
-
-			<div id="menuOpen" class="menuOpen hide">
-
-				<ul class="menuOptions">
-					<li class="menuLinks animated fadeInLeft slow" id="trending">Trending</li>
-					<li class="menuLinks animated fadeInLeft slow">Search</li>
-					<li class="menuLinks animated fadeInLeft slow">Events</li>
-					<li class="menuLinks animated fadeInLeft slow">Deals</li>
+					<li id="typeText">
+						<p id="breakLines"></p>
+					</li>
+					<li id="trendingFilter"><a href="#"><img src="assets/images/fire.svg" alt="trending"></a></li>
 				</ul>
-
-				<div class="menuRail animated fadeInDown">
-					<img src="assets/images/menurail.svg" alt="menurail">
+				<div id="menuOpen" class="menuOpen hide">
+					<ul class="menuOptions">
+						<li class="menuLinks animated fadeInLeft slow" id="trending">Trending</li>
+						<li class="menuLinks animated fadeInLeft slow">Search</li>
+						<li class="menuLinks animated fadeInLeft slow">Events</li>
+						<li class="menuLinks animated fadeInLeft slow">Deals</li>
+					</ul>
+					<div class="menuRail animated fadeInDown">
+						<img src="assets/images/menurail.svg" alt="menurail">
+					</div>
+				</div>
+			</nav>
+			<section id="panel" class="panels">
+				<div class="swiper-container">
+					<!-- Additional required wrapper -->
+					<div class="swiper-wrapper">
+						<!-- Slides -->
+						<div id="foodFilter" class="swiper-slide"><img src="assets/images/menurestr.png"
+							alt="foodFilter">
+						</div>
+						<div id="landmarkFilter" class="swiper-slide"><img src="assets/images/menusights.png"
+							alt="landmarkFilter">
+						</div>
+						<div id="drinkFilter" class="swiper-slide"><img src="assets/images/menubar.png" alt="drinkFilter"
+							>
+						</div>
+						<div id="hotelFilter" class="swiper-slide"><img src="assets/images/menuaccom.png"
+							alt="hotelFilter">
+						</div>
+					</div>
+				</div>
+			</section>
+			<div id="map"></div>
+			<!-- Slider main container -->
+			<div id="infoMenuContainer" class="hide">
+				<div class="infoMenu">
+					<div id="busArrow" class="infoMenuTop container">
+						<div class="findTransport">Find Transport</div>
+						<div class="busArrow"><img src="assets/images/busarrow.png" alt="busarrow"></div>
+					</div>
+					<div id="mapArrow" class="infoMenuLow container">
+						<div class="mapArrow"><img src="assets/images/maparrow.png" alt="maparrow"></div>
+						<div class="backMap">Back to Map</div>
+					</div>
+				</div>
+				<div class="infoMenuOpen">
+					<div id="pullBtn" class="pullTab"><img src="assets/images/tab.svg" alt="tag"></div>
+					<div class="infoMenuBody container">
+						<!-- Gareth -->
+						<script id="infoMenuData" type="text/x-handlebars-template">
+						{{#if response.venue.rating}}
+						<div class="venueRating">
+								{{response.venue.rating}}/10
+						</div>
+						{{else}}
+						<div class="venueRating">
+								N/A
+						</div>
+						{{/if}}
+						{{#if response.venue.hours.status}}
+						<div class="venueStatus"><img src="assets/images/open.svg"></div>
+						{{/if}}
+						<div class="venueName">
+								{{response.venue.name}}
+						</div>
+						{{#if venue.location.address}}
+						<div class="venueAddress">
+								{{response.venue.location.address}}
+								{{response.venue.location.city}}
+						</div>
+						{{else}}
+						<div class="venueAddress">
+								Auckland
+						</div>
+						{{/if}}
+						<div class="venueDistance">
+								4km Away
+						</div>
+						{{#if response.venue.bestPhoto.prefix}}
+						<div class="venueImage">
+								<img src={{response.venue.bestPhoto.prefix}}320x200{{response.venue.bestPhoto.suffix}}>
+						</div>
+						{{else}}
+						<div class="venueImage">
+								<img src="assets/images/default.jpg">
+						</div>
+						{{/if}}
+						{{#if response.venue.description}}
+						<div class="venueDescription">
+								{{response.venue.description}}
+						</div>
+						{{else}}
+						<div class="venueDescription">
+								Check in at this venue and write a discription to share with others.
+						</div>
+						{{/if}}
+						{{#if response.venue.url}}
+						<div class="venueWebsite">
+								<a href="{{response.venue.url}}">WWW</a>
+						</div>
+						{{/if}}
+						<div class="venueShare">
+								<a href="https://www.facebook.com/sharer/sharer.php?u={{response.venue.shortUrl}}"><img src="assets/images/share.svg"></a>
+						</div>
+						<div class="venueDirections">
+								<a href="https://www.google.com/maps/dir/Current+Location/{{response.venue.location.lat}},{{response.venue.location.lng}}"><img src="assets/images/directions.svg"></a>
+						</div>
+						</script>
+						<!-- Gareth -->
+					</div>
 				</div>
 			</div>
-
-		</nav>
-
-
-		<section id="panel" class="panels">
-			<div class="swiper-container">
-				<!-- Additional required wrapper -->
-				<div class="swiper-wrapper">
-					<!-- Slides -->
-					<div id="foodFilter" class="swiper-slide"><img src="assets/images/menurestr.svg"
-							alt="menurestaurant" height="100px">
-					</div>
-
-					<div id="landmarkFilter" class="swiper-slide"><img src="assets/images/menusights.svg"
-							alt="menurestaurant" height="100px">
-					</div>
-
-					<div id="drinkFilter" class="swiper-slide"><img src="assets/images/menubar.svg" alt="menurestaurant"
-							height="100px">
-					</div>
-
-					<div id="hotelFilter" class="swiper-slide"><img src="assets/images/menuaccom.svg"
-							alt="menurestaurant" height="100px">
-					</div>
-				</div>
-		</section>
-
-		<div id="map"></div>
-
-
-		<!-- Slider main container -->
-
-
-
-
-
-
-		<div id="infoMenuContainer" class="hide">
-			<div class="infoMenu">
-
-				<div id="busArrow" class="infoMenuTop container">
-					<div class="findTransport">Find Transport</div>
-					<div class="busArrow"><img src="assets/images/busarrow.svg"></div>
-				</div>
-				<div id="mapArrow" class="infoMenuLow container">
-					<div class="mapArrow"><img src="assets/images/maparrow.svg"></div>
-					<div class="backMap">Back to Map</div>
-				</div>
-
-			</div>
-
-			<div class="infoMenuOpen">
-
-				<div id="pullBtn" class="pullTab"><img src="assets/images/tab.svg"></div>
-				<div class="infoMenuBody">
-
-					<script id="infoMenuData" type="text/x-handlebars-template">
-
-	      		<h2>{{response.venue.name}}</h2>
-	      		<p>{{response.venue.rating}}/10</p>
-
-	      		<img src={{response.venue.bestPhoto.prefix}}50x50{{response.venue.bestPhoto.suffix}}>  
-	      		<p>likes {{response.venue.likes.count}}</p>
-	      		<p>{{response.venue.description}}</p>
-	      		<p>{{response.venue.contact.phone}}</p>	    
-	      	    <a href="{{response.venue.url}}">link</a>
-
-	      	    <div>
-	      	    	<p>{{response.venue.location.address}}</p>
-	      	    	<p>{{response.venue.location.city}}</p>
-	      	    </div>
-
-	      	     <a href="https://www.google.com/maps/dir/Current+Location/{{response.venue.location.lat}},{{response.venue.location.lng}}">directions</a>
-
-            </script>
-
-					<!-- <h5 class="venueTitle">test</h5> -->
-				</div>
-
-
-			</div>
-
 		</div>
-
-
-
-
-
 		<!-- Jquery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-
 		<!-- Google Maps -->
 		<script async defer
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADMD9LFOQbB8gF8HctWzlQipyitCIdhZo&callback=initMap"></script>
-
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADMD9LFOQbB8gF8HctWzlQipyitCIdhZo&callback=initMap"></script>
 		<!-- Map & Foursquare -->
 		<script src="assets/scripts/foursquare.js"></script>
-
 		<!-- Handlebars -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.js"></script>
-
-
-
 		<!-- TypeIt -->
 		<script src="assets/scripts/typeit.min.js"></script>
 		<!-- Swiper -->
@@ -177,6 +179,5 @@
 		<script src="assets/scripts/transport.js"></script>
 		<!-- Filter script -->
 		<script src="assets/scripts/filter.js"></script>
-</body>
-
+	</body>
 </html>
