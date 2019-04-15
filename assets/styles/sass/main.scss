@@ -247,11 +247,13 @@ img{
     font-family: Gotham Narrow Medium;
     font-size: 21px;
     margin-top: 12px;
+    cursor: pointer;
 }
 
 .busArrow{
     height: 50px;
     float: right;
+    cursor: pointer;
 
 img {
     height: 100%
@@ -264,12 +266,14 @@ img {
     font-family: Gotham Narrow Medium;
     font-size: 17px;
     margin: 10px 0px 0px 30px;
+    cursor: pointer;
 }
 
 .mapArrow{
     height: 40px;
     clear: both;
     float: left;
+    cursor: pointer;
 
 img{
     height:  100%
@@ -303,6 +307,7 @@ img{
     width: 210px;
     left: 50%;
     transform: translate(-50%, -50%);
+    cursor: pointer;
 
 img{
     width: 100%;
@@ -360,7 +365,8 @@ nav {
     margin: 20px;
     color: white;
     font-size: 28px;
-    line-height: 2.1em
+    line-height: 2.1em;
+    cursor: pointer;
 }
 
 
@@ -402,6 +408,7 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    cursor: pointer;
 }
 
 .swiper-container {

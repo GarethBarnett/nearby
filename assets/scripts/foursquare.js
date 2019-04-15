@@ -169,7 +169,7 @@ function initMap() {
 
 
 /* Gareth */
-}; /* End Display Venues on Map */
+} /* End Display Venues on Map */
 
 let placeLocationObj = {
     food: [],
@@ -179,7 +179,7 @@ let placeLocationObj = {
     /* Jules */
     trending: []
     /* Jules */
-}
+};
 
 /* Gareth */
 
@@ -249,7 +249,7 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
                 }
             });
         });
-        allMarkers.push(marker)
+        allMarkers.push(marker);
     });
 
 }
@@ -525,6 +525,6 @@ var mapstyle = [
             }
         ]
     }
-]
+];
 /* Gareth */
 
