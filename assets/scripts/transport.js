@@ -8,6 +8,11 @@ $('#busArrow').on('click',()=>{
     }
     findBusStop(latUser1, lngUser1, 100);
     findBus();
+    window.setTimeout(function () {
+        // map.panTo(marker.getPosition());
+        map.panTo(new google.maps.LatLng(latUser1, lngUser1));
+        map.setZoom(18);
+    }, 6000);
     $('#infoMenuContainer').addClass('hide');
     $('#busMenuContainer').removeClass('hide');
 });
@@ -75,7 +80,7 @@ function findBus() {
         data: "{body}",
     })
         .done(function (data) {
-            console.log(data);
+            // console.log(data);
             let returnedData = data.response.entity;
             let pData = data.response.entity[0].vehicle.position;
             positionX = pData.latitude;
@@ -94,7 +99,7 @@ function findBus() {
                         locations[0] = [latUser1, lngUser1];
                         locations[1] = [placeToGoDetails[1], placeToGoDetails[2]];
                         locations[2] = [busLocation.lat, busLocation.lng];
-
+                        getCentrePoint(locations);
                         return;
                     }
                 }
@@ -131,4 +136,17 @@ function findBusStop(lat, lng, distance) {
             alert("error");
         });
 }
+/* Jason */
+
+/* Jason */
+/* Find out the centre point according to user location, bus location, and destination */
+function getCentrePoint(locations){
+    var bound = new google.maps.LatLngBounds();
+    for (i = 0; i < locations.length; i++) {
+        bound.extend( new google.maps.LatLng(locations[i][0], locations[i][1]) );
+    }
+    bound.getCenter();
+    map.fitBounds(bound);
+}
+
 /* Jason */

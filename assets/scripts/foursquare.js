@@ -189,6 +189,7 @@ let allMarkers = [];
 /* Jason */
 let placeToGo;
 let placeToGoDetails;
+let userLocation = {lat: latUser1, lng: lngUser1};
 /* Jason */
 
 
@@ -233,15 +234,18 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
                     /* ---------------- Need to fix this part --------------------*/
                     /* 3 seconds after the center of the map has changed, pan back to the marker*/
                     
-                    map.addListener('center_changed', function () {
-                        window.setTimeout(function () {
-                            map.panTo(marker.getPosition());
-                        }, 3000);
-                    });
+                    // map.addListener('center_changed', function () {
+                    //     window.setTimeout(function () {
+                    //         // map.panTo(marker.getPosition());
+                    //         map.panTo(new google.maps.LatLng(latUser1, lngUser1))
+                    //     }, 3000);
+                    // });
                     /* ---------------- Need to fix this part --------------------*/
 
                     map.setZoom(18);
                     map.setCenter(marker.getPosition());
+                    
+                    // map.setCenter(new google.maps.LatLng(latUser1, lngUser1));
                     placeToGo = placeDetails[5];
                     placeToGoDetails = placeDetails;
                      /* Jules */
