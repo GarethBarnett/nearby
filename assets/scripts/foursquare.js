@@ -82,7 +82,6 @@ function initMap() {
         styles: mapstyle,
 
     });
-    console.log(map)
     setTimeout(() => {
         // setTimeout(()=>{
     //     map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
@@ -172,16 +171,13 @@ function initMap() {
 
     /* Ajax Request for Trending */
     
-    // setTimeout(() => {
         $.ajax({
             url: trendingUrl,
             dataType: 'jsonp',
             success: function (res) {
-                console.log(res)
                 requestAllLocationByFilter(res, null, 'trending');
             }
         });
-    // }, 8000);
     /* Jules */
 
     getCentreAfterMapLoad();
@@ -191,7 +187,6 @@ function initMap() {
 
 function getCentreAfterMapLoad(){
     setTimeout(()=>{
-        console.log('test output from getCentreAfterMapLoad function')
         map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
         // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
     },2000);
@@ -223,7 +218,6 @@ let userLocation = { lat: latUser1, lng: lngUser1 };
 function requestAllLocationByFilter(obj, map, categoryVal) {
     
     let data = obj.response.groups["0"].items;
-    console.log(data)
     let venues = data.map(function (item) {
         let lat = item.venue.location.lat;
         let lng = item.venue.location.lng;
