@@ -44,6 +44,9 @@ function locationHandler(position) {
     var lng = position.coords.longitude;
     latUser1 = position.coords.latitude;
     lngUser1 = position.coords.longitude;
+    //-36.856754, 174.763391 yoobee
+    // latUser1 = -36.856754;
+    // lngUser1 = 174.763391;
     /* Gareth */
     foodUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + food + '&limit=5&radius=2000';
     drinkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + drink + '&limit=5&radius=2000';
@@ -65,10 +68,11 @@ let foodUrl, drinkUrl, hotelUrl, landmarkUrl, trendingUrl;
 /* Map JS Files */
 
 let map, marker;
-
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: +latUser1, lng: +lngUser1 },
+        // -36.878901, 174.792339 random location for test
+        // center: { lat: -36.856693, lng: 174.763369 },
+        center: { lat: -36.878901, lng: 174.792339 },
         zoom: 14,
         disableDefaultUI: true,
         zoomControl: true,
@@ -78,6 +82,11 @@ function initMap() {
         styles: mapstyle,
 
     });
+    // setTimeout(()=>{
+    //     map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
+    //     // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
+    // },3000);
+    
 
     /* Gareth */
 
@@ -93,7 +102,9 @@ function initMap() {
 
     var location = new google.maps.Marker({
         position: { lat: +latUser1, lng: +lngUser1 }, map: map,
-        icon: icon
+        icon: icon,
+        zIndex: 999,
+        animation: google.maps.Animation.DROP
     });
 
     var infoWindow = new google.maps.InfoWindow({
@@ -104,15 +115,15 @@ function initMap() {
     });
 
     /* Jules */
- 
+
+
+    getCentreAfterMapLoad();
 
 
 
 
 
-
-
-/* Gareth */
+    /* Gareth */
 
     /* Ajax Request for Food */
     $.ajax({
@@ -150,26 +161,33 @@ function initMap() {
             requestAllLocationByFilter(res, map, 'landmark');
         }
     });
-/* Gareth */
+    /* Gareth */
 
 
 
 
-/* Jules */
+    /* Jules */
 
     /* Ajax Request for Trending */
     $.ajax({
         url: trendingUrl,
         dataType: 'jsonp',
         success: function (res) {
-            requestAllLocationByFilter(res, map, 'trending');
+            requestAllLocationByFilter(res, null, 'trending');
         }
     });
-/* Jules */
+    /* Jules */
 
 
-/* Gareth */
+    /* Gareth */
 } /* End Display Venues on Map */
+
+function getCentreAfterMapLoad(){
+    setTimeout(()=>{
+        map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
+        // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
+    },1000);
+}
 
 let placeLocationObj = {
     food: [],
@@ -189,6 +207,7 @@ let allMarkers = [];
 /* Jason */
 let placeToGo;
 let placeToGoDetails;
+let userLocation = { lat: latUser1, lng: lngUser1 };
 /* Jason */
 
 
@@ -232,23 +251,27 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
 
                     /* ---------------- Need to fix this part --------------------*/
                     /* 3 seconds after the center of the map has changed, pan back to the marker*/
-                    
-                    map.addListener('center_changed', function () {
-                        window.setTimeout(function () {
-                            map.panTo(marker.getPosition());
-                        }, 3000);
-                    });
+
+                    // map.addListener('center_changed', function () {
+                    //     window.setTimeout(function () {
+                    //         // map.panTo(marker.getPosition());
+                    //         map.panTo(new google.maps.LatLng(latUser1, lngUser1))
+                    //     }, 3000);
+                    // });
                     /* ---------------- Need to fix this part --------------------*/
 
                     map.setZoom(18);
                     map.setCenter(marker.getPosition());
+
+                    // map.setCenter(new google.maps.LatLng(latUser1, lngUser1));
                     placeToGo = placeDetails[5];
                     placeToGoDetails = placeDetails;
-                     /* Jules */
+                    /* Jules */
 
                 }
             });
         });
+        // console.log(marker);
         allMarkers.push(marker);
     });
 

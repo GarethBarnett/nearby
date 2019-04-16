@@ -60,22 +60,35 @@ body {
     height: 100%;
     background: white;
     overflow: hidden;
-    font-family: Gotham Narrow Light;
+    font-family: 'Gotham Narrow Light';
 }
 
 h1{
     color: white;
-    font-family: Gotham Narrow Bold;
+    font-family: 'Gotham Narrow Bold';
     margin-top: 60px;
     font-size: 38px;
 }
 
 h2{
     color: white;
-    font-family: Gotham Narrow Light;
+    font-family: 'Gotham Narrow Light';
     margin-top: 10px;
     font-size: 20px;
 }
+
+
+
+/* Jason Add*/
+h5{
+    font-size: 15px;
+    font-family: 'Gotham Narrow Medium';
+    margin-bottom: 5px;
+}
+/* Jason Add*/
+
+
+
 
 a {
     text-decoration: none;
@@ -244,7 +257,7 @@ img{
 .findTransport{
     float: left;
     color: white; 
-    font-family: Gotham Narrow Medium;
+    font-family: 'Gotham Narrow Medium';
     font-size: 21px;
     margin-top: 12px;
     cursor: pointer;
@@ -263,7 +276,7 @@ img {
 .backMap {
     float: left;
     color: white; 
-    font-family: Gotham Narrow Medium;
+    font-family: 'Gotham Narrow Medium';
     font-size: 17px;
     margin: 10px 0px 0px 30px;
     cursor: pointer;
@@ -325,6 +338,9 @@ nav {
     z-index: 999;
     background: rgb(0, 16, 37);
     margin: auto;
+    -webkit-box-shadow: 3px 3px 4px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 4px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.75);
 }
 
 
@@ -409,6 +425,7 @@ nav {
     flex-direction: row;
     justify-content: center;
     cursor: pointer;
+    
 }
 
 .swiper-container {
@@ -424,15 +441,19 @@ nav {
     margin: 0 2px;
     height: 185px;
     background: rgb(0, 16, 37);
-    border: 1px solid white;
+    
     border-radius: 10px 10px 0 0;
     justify-content: center;
     align-items: center;
     align-self: flex-end;
-
+    
+    -webkit-box-shadow: 3px 3px 4px 0px rgba(0,0,0,0.65);
+    -moz-box-shadow: 3px 3px 4px 0px rgba(0,0,0,0.65);
+    box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.65);
 img{
     width: 75px;
 }
+
 
 }
 
@@ -457,7 +478,7 @@ img{
     color: #fff;
     float: left;
     width: 225px;
-    font-family: Gotham Narrow Medium;
+    font-family: 'Gotham Narrow Medium';
     margin-bottom: 5px;
 }
 
@@ -488,7 +509,7 @@ img{
     clear: both;
     float: right;
     text-align: center;
-    font-family: Gotham Narrow Bold;
+    font-family: 'Gotham Narrow Bold';
 }
 
 .venueImage img{
@@ -504,7 +525,7 @@ img{
     color: #fff;
     text-align: left;
     clear: both;
-    font-family: Gotham Narrow;
+    font-family: 'Gotham Narrow';
     margin-bottom: 20px;
     line-height: 1.5em;
 }
@@ -517,7 +538,7 @@ img{
     background: #fff;
     border-radius: 15px;
     margin-right: 20px;
-    font-family: Gotham Narrow Bold;
+    font-family: 'Gotham Narrow Bold';
 }
 
 .venueWebsite a{
@@ -539,7 +560,209 @@ img{
 }
 
 
+/* Bus menu */
 
+.busMenu{
+    position: absolute;
+    background: $atBlue;
+    height: 80px;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+    z-index: 50;
+
+}
+
+.busMenuLow{
+   padding: 20px;
+    height: 80px;
+    margin-top: 7px;
+    border-top: 1px solid white;
+}
+
+.busMapArrow {
+    height: 40px;
+    clear: both;
+    float: left;
+    cursor: pointer;
+    margin-left: 25px;
+
+    img{
+        height: 100%;
+    }
+}
+
+.busMenuOpen{
+    position: absolute;
+    background: #001025;
+    height: 500px;
+    width: 100%;
+    bottom: -335px;
+    left: 0;
+    z-index: 49;
+    text-align: center;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.busMenuBody{
+    margin-top: 28px;
+}
+
+.busPullTab{
+    position: absolute;
+    top: -7px;
+    margin: 0 auto;
+    width: 210px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+
+img{
+    width: 100%;
+}
+}
+
+
+/* jason change */
+
+
+.busInfoHeading{
+    height: 61px;
+    margin-bottom: 10px;
+
+}
+
+/* jason change */
+
+
+.busInfoTitle {
+   float: left;
+    color: white;
+    font-family: 'Gotham Narrow Medium';
+    font-size: 24px;
+    margin: 15px 0px 0px 30px;
+    cursor: pointer;
+}
+
+.busInfoIcon{
+    height: 50px;
+    clear: both;
+    float: left;
+    cursor: pointer;
+    margin-left: 12px;
+
+img{
+    height:  100%
+}
+}
+
+.busMenuMove{
+    transition: all 0.5s ease;
+    transform: translateY(-180px);
+} 
+
+
+
+
+
+
+
+
+.transportPanels{
+    position: absolute;
+    top: 500px;
+    z-index: 3;
+    color: white;
+    margin-left: 15px;
+    font-size: 14px;
+    font-family: 'Gotham Narrow Medium';
+}
+
+.busStopInfo{
+    background: $atBlue;
+    width: 150px;
+    height: 45px;
+    margin-bottom: 7.5px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.4);
+}
+
+.busStopIcon{
+
+height: 30px;
+margin: 5px 15px 0 15px;
+float: left; 
+padding: 3px;
+
+     img{
+        height: 100%;
+    }
+
+}
+
+.busStopId{
+padding-top: 14px;
+    
+}
+
+
+.busEtaInfo{
+    background: $atYellow;
+    width: 150px;
+    height: 45px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.4);
+}
+
+.busEtaIcon{
+    height: 30px;
+    margin: 5px 18px 0 18px;
+    float: left; 
+
+
+    img{
+        height: 100%;
+    }
+
+}
+
+.busEta{
+    padding-top: 14px;
+    color: $atBlue;
+}
+
+
+.busMenuInfo{
+    color: white;
+    text-align: left;
+
+    p{
+        text-align: left;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+}
+
+#busVenueTitle{
+    font-size: 25px;
+    margin-bottom: 13px;
+    font-family: 'Gotham Narrow Medium';
+}
+
+
+.busMenuLeft{
+    float: left;
+    width: 65%;
+}
+
+.busMenuRight{
+    float: left;
+  
+}
+
+
+
+/* Bus menu */
 
 @media only screen and (max-width: 500px) {
 
@@ -571,6 +794,20 @@ nav {
 
 
 }
+
+ @media (max-height:953px){
+
+.top{
+    display: none;
+}
+
+.bottom{
+    display: none;
+}
+
+
+}
+
 
 
 
