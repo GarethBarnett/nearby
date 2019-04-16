@@ -82,7 +82,9 @@ function initMap() {
         styles: mapstyle,
 
     });
-    // setTimeout(()=>{
+    console.log(map)
+    setTimeout(() => {
+        // setTimeout(()=>{
     //     map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
     //     // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
     // },3000);
@@ -169,17 +171,22 @@ function initMap() {
     /* Jules */
 
     /* Ajax Request for Trending */
-    $.ajax({
-        url: trendingUrl,
-        dataType: 'jsonp',
-        success: function (res) {
-            requestAllLocationByFilter(res, null, 'trending');
-        }
-    });
+    
+    // setTimeout(() => {
+        $.ajax({
+            url: trendingUrl,
+            dataType: 'jsonp',
+            success: function (res) {
+                console.log(res)
+                requestAllLocationByFilter(res, null, 'trending');
+            }
+        });
+    // }, 8000);
     /* Jules */
 
     getCentreAfterMapLoad();
     /* Gareth */
+    }, 1000);
 } /* End Display Venues on Map */
 
 function getCentreAfterMapLoad(){
@@ -214,7 +221,9 @@ let userLocation = { lat: latUser1, lng: lngUser1 };
 
 /* Gareth */
 function requestAllLocationByFilter(obj, map, categoryVal) {
+    
     let data = obj.response.groups["0"].items;
+    console.log(data)
     let venues = data.map(function (item) {
         let lat = item.venue.location.lat;
         let lng = item.venue.location.lng;
@@ -227,10 +236,11 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
             icon: { url: icons[categoryVal], scaledSize: new google.maps.Size(50, 50) },
             position: { lat: lat, lng: lng },
             title: venueName
+            
         });
 
         marker.venueid = item.venue.id;
-
+        console.log(map)
         /* Click function on Marker */
         marker.addListener('click', function () {
             var venueUrl = 'https://api.foursquare.com/v2/venues/' + this.venueid + key;
