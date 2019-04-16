@@ -117,7 +117,7 @@ function initMap() {
     /* Jules */
 
 
-    getCentreAfterMapLoad();
+    
 
 
 
@@ -178,15 +178,16 @@ function initMap() {
     });
     /* Jules */
 
-
+    getCentreAfterMapLoad();
     /* Gareth */
 } /* End Display Venues on Map */
 
 function getCentreAfterMapLoad(){
     setTimeout(()=>{
+        console.log('test output from getCentreAfterMapLoad function')
         map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
         // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
-    },1000);
+    },2000);
 }
 
 let placeLocationObj = {
