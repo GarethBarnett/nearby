@@ -65,10 +65,9 @@ let foodUrl, drinkUrl, hotelUrl, landmarkUrl, trendingUrl;
 /* Map JS Files */
 
 let map, marker;
-
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: +latUser1, lng: +lngUser1 },
+        center: { lat: -36.856693, lng: 174.763369 },
         zoom: 14,
         disableDefaultUI: true,
         zoomControl: true,
@@ -78,6 +77,7 @@ function initMap() {
         styles: mapstyle,
 
     });
+    map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
 
     /* Gareth */
 
