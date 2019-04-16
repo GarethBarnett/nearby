@@ -42,11 +42,11 @@ navigator.geolocation.getCurrentPosition(locationHandler);
 function locationHandler(position) {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
-    // latUser1 = position.coords.latitude;
-    // lngUser1 = position.coords.longitude;
+    latUser1 = position.coords.latitude;
+    lngUser1 = position.coords.longitude;
     //-36.856754, 174.763391 yoobee
-    latUser1 = -36.856754;
-    lngUser1 = 174.763391;
+    // latUser1 = -36.856754;
+    // lngUser1 = 174.763391;
     /* Gareth */
     foodUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + food + '&limit=5&radius=2000';
     drinkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + drink + '&limit=5&radius=2000';
@@ -70,7 +70,9 @@ let foodUrl, drinkUrl, hotelUrl, landmarkUrl, trendingUrl;
 let map, marker;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -36.856693, lng: 174.763369 },
+        // -36.878901, 174.792339 random location for test
+        // center: { lat: -36.856693, lng: 174.763369 },
+        center: { lat: -36.878901, lng: 174.792339 },
         zoom: 14,
         disableDefaultUI: true,
         zoomControl: true,
@@ -80,10 +82,10 @@ function initMap() {
         styles: mapstyle,
 
     });
-    setTimeout(()=>{
-        map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
-        // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
-    },3000);
+    // setTimeout(()=>{
+    //     map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
+    //     // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
+    // },3000);
     
 
     /* Gareth */
@@ -115,7 +117,7 @@ function initMap() {
     /* Jules */
 
 
-
+    getCentreAfterMapLoad();
 
 
 
@@ -179,6 +181,13 @@ function initMap() {
 
     /* Gareth */
 } /* End Display Venues on Map */
+
+function getCentreAfterMapLoad(){
+    setTimeout(()=>{
+        map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
+        // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
+    },2000);
+}
 
 let placeLocationObj = {
     food: [],
