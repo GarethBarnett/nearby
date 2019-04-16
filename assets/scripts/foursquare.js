@@ -93,7 +93,9 @@ function initMap() {
 
     var location = new google.maps.Marker({
         position: { lat: +latUser1, lng: +lngUser1 }, map: map,
-        icon: icon
+        icon: icon,
+        zIndex: 999,
+        animation: google.maps.Animation.DROP
     });
 
     var infoWindow = new google.maps.InfoWindow({
