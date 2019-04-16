@@ -42,8 +42,11 @@ navigator.geolocation.getCurrentPosition(locationHandler);
 function locationHandler(position) {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
-    latUser1 = position.coords.latitude;
-    lngUser1 = position.coords.longitude;
+    // latUser1 = position.coords.latitude;
+    // lngUser1 = position.coords.longitude;
+    //-36.856754, 174.763391 yoobee
+    latUser1 = -36.856754;
+    lngUser1 = 174.763391;
     /* Gareth */
     foodUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + food + '&limit=5&radius=2000';
     drinkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + drink + '&limit=5&radius=2000';
@@ -77,7 +80,11 @@ function initMap() {
         styles: mapstyle,
 
     });
-    map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
+    setTimeout(()=>{
+        map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
+        // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
+    },3000);
+    
 
     /* Gareth */
 

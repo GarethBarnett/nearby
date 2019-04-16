@@ -1,6 +1,7 @@
 /* Jason */
 /* 'Find Transport' icon click function */
 $('#busArrow').on('click',()=>{
+    // alert('test')
     for (let i = 0; i < allMarkers.length; i++) {
         if(allMarkers[i].venueid != placeToGo){
             allMarkers[i].setMap(null);
@@ -10,12 +11,13 @@ $('#busArrow').on('click',()=>{
     console.log(placeToGoDetails[3])
     findBus();
     findBusStop(latUser1, lngUser1, 200);
+    // findBusStop(-36.856754, 174.763391, 1000);
     // getTravelInformation();
-    window.setTimeout(function () {
-        // map.panTo(marker.getPosition());
-        map.panTo(new google.maps.LatLng(latUser1, lngUser1));
-        map.setZoom(18);
-    }, 6000);
+    // window.setTimeout(function () {
+    //     // map.panTo(marker.getPosition());
+    //     map.panTo(new google.maps.LatLng(latUser1, lngUser1));
+    //     map.setZoom(18);
+    // }, 6000);
     $('#infoMenuContainer').addClass('hide');
     $('#busMenuContainer').removeClass('hide');
 
@@ -91,7 +93,7 @@ function findBus() {
         data: "{body}",
     })
         .done(function (data) {
-            // console.log(data);
+            console.log(data);
             let returnedData = data.response.entity;
             let pData = data.response.entity[0].vehicle.position;
             positionX = pData.latitude;
@@ -99,6 +101,7 @@ function findBus() {
             for (let i = 0; i < returnedData.length; i++) {
                 if ((returnedData[i].vehicle.position.latitude <= (latUser1 + 0.005)) && (returnedData[i].vehicle.position.latitude >= (latUser1 - 0.005))) {
                     if ((returnedData[i].vehicle.position.longitude <= (lngUser1 + 0.005)) && (returnedData[i].vehicle.position.longitude >= (lngUser1 - 0.005))) {
+                
                         busMarker = new google.maps.Marker({
                             map: map,
                             draggable: false,
@@ -113,9 +116,8 @@ function findBus() {
                         getCentrePoint(locations);
                         console.log(returnedData[i])
                         shownBusRouteId = returnedData[i].vehicle.trip.route_id;
-                        // console.log(shownBusRouteId)
+                        console.log(shownBusRouteId)
                         getTravelInformation();
-                        alert('done')
                         return;
                     }
                 }
@@ -129,6 +131,7 @@ function findBus() {
 
 /* Jason */
 /* findBusStop is trying to find the nearest bus stop according to user current location by AT API */
+let nearbyStopId;
 function findBusStop(lat, lng, distance) {
     $.ajax({
         url: "https://api.at.govt.nz/v2/gtfs/stops/geosearch?lat=" + lat + "&lng=" + lng + "&distance=" + distance,
@@ -148,6 +151,7 @@ function findBusStop(lat, lng, distance) {
                 icon: { url: icons.busstop, scaledSize: new google.maps.Size(60, 60) },
                 position: { lat: data.response[0].stop_lat, lng: data.response[0].stop_lon }
             });
+            nearbyStopId = data.response[0].stop_code;
         })
         .fail(function () {
             alert("error");
@@ -189,11 +193,16 @@ function getTravelInformation(){
         data: "{body}",
     })
     .done(function(data) {
-        alert("success");
+        // alert("success");
         console.log(data.response[0].route_short_name)
 
         let busIdUpdate = data.response[0].route_short_name;
-
+        $('#busVenueTitle').text(placeToGoDetails[3])
+        // console.log($('#busIdUpdate').text())
+        $('#busIdUpdate').text(data.response[0].route_short_name)
+        // nearbyStopId
+        $('#stopIdUpdate').text(nearbyStopId);
+        $('#busStopId').text('STOP ' +nearbyStopId);
     })
     .fail(function() {
         console.log("getting route detail error");
