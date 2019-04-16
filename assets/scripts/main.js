@@ -7,14 +7,16 @@ let loader = document.getElementById("splash");
 setTimeout(function () {
    'use strict';
    loader.classList.add('slideOutUp');
-}, 3000);
+}, 2000);
 
 
 /* Splash Removal */
 setTimeout(function () {
    'use strict';
    loader.parentNode.removeChild(loader);
-}, 4000);
+}, 2000);
+
+//window.location.reload();
 
 
 /* Global variables */
