@@ -6,8 +6,11 @@ $('#busArrow').on('click',()=>{
             allMarkers[i].setMap(null);
         }
     }
-    findBusStop(latUser1, lngUser1, 100);
+    console.log(latUser1, lngUser1)
+    console.log(placeToGoDetails[3])
     findBus();
+    findBusStop(latUser1, lngUser1, 200);
+    // getTravelInformation();
     window.setTimeout(function () {
         // map.panTo(marker.getPosition());
         map.panTo(new google.maps.LatLng(latUser1, lngUser1));
@@ -15,6 +18,12 @@ $('#busArrow').on('click',()=>{
     }, 6000);
     $('#infoMenuContainer').addClass('hide');
     $('#busMenuContainer').removeClass('hide');
+
+
+    /* jason add*/
+    $('.transportPanels').removeClass('hide');
+
+    /* jason add*/
 });
 
 /* 'Back to Map' icon click function */
@@ -33,7 +42,9 @@ $('#mapArrow').on('click', ()=>{
     }
 });
 /* Jason */
-
+/* Jason */
+let shownBusRouteId;
+/* Jason */
 
 /* Jules */
 /* 'Find Transport' icon click function */
@@ -91,7 +102,7 @@ function findBus() {
                         busMarker = new google.maps.Marker({
                             map: map,
                             draggable: false,
-                            icon: { url: icons.bus, scaledSize: new google.maps.Size(30, 30) },
+                            icon: { url: icons.bus, scaledSize: new google.maps.Size(50, 50) },
                             position: { lat: returnedData[i].vehicle.position.latitude, lng: returnedData[i].vehicle.position.longitude }
                         });
                         busLocation.lat = returnedData[i].vehicle.position.latitude;
@@ -100,6 +111,11 @@ function findBus() {
                         locations[1] = [placeToGoDetails[1], placeToGoDetails[2]];
                         locations[2] = [busLocation.lat, busLocation.lng];
                         getCentrePoint(locations);
+                        console.log(returnedData[i])
+                        shownBusRouteId = returnedData[i].vehicle.trip.route_id;
+                        // console.log(shownBusRouteId)
+                        getTravelInformation();
+                        alert('done')
                         return;
                     }
                 }
@@ -125,10 +141,11 @@ function findBusStop(lat, lng, distance) {
         data: "{body}",
     })
         .done(function (data) {
+            console.log(data)
             busStopMarker = new google.maps.Marker({
                 map: map,
                 draggable: false,
-                icon: { url: icons.busstop, scaledSize: new google.maps.Size(40, 40) },
+                icon: { url: icons.busstop, scaledSize: new google.maps.Size(60, 60) },
                 position: { lat: data.response[0].stop_lat, lng: data.response[0].stop_lon }
             });
         })
@@ -150,3 +167,35 @@ function getCentrePoint(locations){
 }
 
 /* Jason */
+/* Jason */
+
+function getTravelInformation(){
+    // destination name: placeToGoDetails[3]
+    //shownBusRouteId to get all bus info
+    console.log(shownBusRouteId)
+    var params = {
+        // Request parameters
+        // "callback": "{string}",
+    };
+  
+    $.ajax({
+        url: "https://api.at.govt.nz/v2/gtfs/routes/routeId/"+ shownBusRouteId + "?" + $.param(params),
+        beforeSend: function(xhrObj){
+            // Request headers
+            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","0011a2284d7a4d8caf839d6bb94428e1");
+        },
+        type: "GET",
+        // Request body
+        data: "{body}",
+    })
+    .done(function(data) {
+        alert("success");
+        console.log(data.response[0].route_short_name)
+
+        let busIdUpdate = data.response[0].route_short_name;
+
+    })
+    .fail(function() {
+        console.log("getting route detail error");
+    });
+}

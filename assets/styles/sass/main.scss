@@ -77,6 +77,19 @@ h2{
     font-size: 20px;
 }
 
+
+
+/* Jason Add*/
+h5{
+    font-size: 15px;
+    font-family: 'Gotham Narrow Medium';
+    margin-bottom: 5px;
+}
+/* Jason Add*/
+
+
+
+
 a {
     text-decoration: none;
     color: white;
@@ -610,11 +623,16 @@ img{
 }
 
 
+/* jason change */
+
+
 .busInfoHeading{
     height: 61px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
 }
+
+/* jason change */
 
 
 .busInfoTitle {
@@ -642,6 +660,106 @@ img{
     transition: all 0.5s ease;
     transform: translateY(-180px);
 } 
+
+
+
+
+
+
+
+
+.transportPanels{
+    position: absolute;
+    top: 500px;
+    z-index: 3;
+    color: white;
+    margin-left: 15px;
+    font-size: 14px;
+    font-family: 'Gotham Narrow Medium';
+}
+
+.busStopInfo{
+    background: $atBlue;
+    width: 150px;
+    height: 45px;
+    margin-bottom: 7.5px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.4);
+}
+
+.busStopIcon{
+
+height: 30px;
+margin: 5px 15px 0 15px;
+float: left; 
+padding: 3px;
+
+     img{
+        height: 100%;
+    }
+
+}
+
+.busStopId{
+padding-top: 14px;
+    
+}
+
+
+.busEtaInfo{
+    background: $atYellow;
+    width: 150px;
+    height: 45px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.4);
+}
+
+.busEtaIcon{
+    height: 30px;
+    margin: 5px 18px 0 18px;
+    float: left; 
+
+
+    img{
+        height: 100%;
+    }
+
+}
+
+.busEta{
+    padding-top: 14px;
+    color: $atBlue;
+}
+
+
+.busMenuInfo{
+    color: white;
+    text-align: left;
+
+    p{
+        text-align: left;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+}
+
+#busVenueTitle{
+    font-size: 25px;
+    margin-bottom: 13px;
+    font-family: 'Gotham Narrow Medium';
+}
+
+
+.busMenuLeft{
+    float: left;
+    width: 65%;
+}
+
+.busMenuRight{
+    float: left;
+  
+}
+
 
 
 /* Bus menu */
@@ -676,6 +794,20 @@ nav {
 
 
 }
+
+ @media (max-height:953px){
+
+.top{
+    display: none;
+}
+
+.bottom{
+    display: none;
+}
+
+
+}
+
 
 
 

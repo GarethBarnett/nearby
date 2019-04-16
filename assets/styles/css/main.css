@@ -49,6 +49,13 @@ h2 {
   margin-top: 10px;
   font-size: 20px; }
 
+/* Jason Add*/
+h5 {
+  font-size: 15px;
+  font-family: 'Gotham Narrow Medium';
+  margin-bottom: 5px; }
+
+/* Jason Add*/
 a {
   text-decoration: none;
   color: white; }
@@ -457,10 +464,12 @@ nav {
   .busPullTab img {
     width: 100%; }
 
+/* jason change */
 .busInfoHeading {
   height: 61px;
-  margin-bottom: 20px; }
+  margin-bottom: 10px; }
 
+/* jason change */
 .busInfoTitle {
   float: left;
   color: white;
@@ -482,6 +491,72 @@ nav {
   transition: all 0.5s ease;
   transform: translateY(-180px); }
 
+.transportPanels {
+  position: absolute;
+  top: 500px;
+  z-index: 3;
+  color: white;
+  margin-left: 15px;
+  font-size: 14px;
+  font-family: 'Gotham Narrow Medium'; }
+
+.busStopInfo {
+  background: #001025;
+  width: 150px;
+  height: 45px;
+  margin-bottom: 7.5px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.4); }
+
+.busStopIcon {
+  height: 30px;
+  margin: 5px 15px 0 15px;
+  float: left;
+  padding: 3px; }
+  .busStopIcon img {
+    height: 100%; }
+
+.busStopId {
+  padding-top: 14px; }
+
+.busEtaInfo {
+  background: #FFD400;
+  width: 150px;
+  height: 45px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.4); }
+
+.busEtaIcon {
+  height: 30px;
+  margin: 5px 18px 0 18px;
+  float: left; }
+  .busEtaIcon img {
+    height: 100%; }
+
+.busEta {
+  padding-top: 14px;
+  color: #001025; }
+
+.busMenuInfo {
+  color: white;
+  text-align: left; }
+  .busMenuInfo p {
+    text-align: left;
+    font-size: 12px;
+    margin-bottom: 10px; }
+
+#busVenueTitle {
+  font-size: 25px;
+  margin-bottom: 13px;
+  font-family: 'Gotham Narrow Medium'; }
+
+.busMenuLeft {
+  float: left;
+  width: 65%; }
+
+.busMenuRight {
+  float: left; }
+
 /* Bus menu */
 @media only screen and (max-width: 500px) {
   #phoneOverlay {
@@ -493,6 +568,12 @@ nav {
     width: 100%; }
   nav {
     width: 100%; }
+  .top {
+    display: none; }
+  .bottom {
+    display: none; } }
+
+@media (max-height: 953px) {
   .top {
     display: none; }
   .bottom {

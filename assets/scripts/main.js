@@ -33,6 +33,8 @@ let busMenuBtn = document.getElementById('busPullBtn');
 let busMenuOpen = document.getElementsByClassName('busMenuOpen')[0];
 let busMenuContainer = document.getElementById('busMenuContainer');
 let resetBtn = document.getElementsByClassName('busMenuLow')[0];
+
+let transportPanels = document.getElementsByClassName('transportPanels')[0];
 /* Jason */
 
 
@@ -55,6 +57,7 @@ backBtn.addEventListener("click", function () {
 /* Jason */
 busMenuBtn.addEventListener("click", function () {
 	busMenuOpen.classList.toggle('busMenuMove');
+	transportPanels.classList.toggle('busMenuMove');
 });
 
 
@@ -62,5 +65,6 @@ busMenuBtn.addEventListener("click", function () {
 resetBtn.addEventListener("click", function () {
 	busMenuContainer.classList.toggle('hide');
 	panel.classList.remove('hide');
+	transportPanels.classList.add('hide');
 });
 /* Jason */
