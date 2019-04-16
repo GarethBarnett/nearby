@@ -68,6 +68,7 @@ let foodUrl, drinkUrl, hotelUrl, landmarkUrl, trendingUrl;
 /* Map JS Files */
 
 let map, marker;
+let flagOfIniMap = true;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         // -36.878901, 174.792339 random location for test
@@ -82,7 +83,9 @@ function initMap() {
         styles: mapstyle,
 
     });
-    setTimeout(() => {
+    // alert(Boolean(map));
+    // console.log(map);
+    
         // setTimeout(()=>{
     //     map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
     //     // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
@@ -92,7 +95,7 @@ function initMap() {
     /* Gareth */
 
     /* Jules */
-
+        // alert('time out function with all ajax requests')
     var icon = {
         url: "./assets/images/usericon.svg", // url
         scaledSize: new google.maps.Size(50, 50), // scaled size
@@ -102,88 +105,37 @@ function initMap() {
 
 
     var location = new google.maps.Marker({
-        position: { lat: +latUser1, lng: +lngUser1 }, map: map,
+        position: { lat: +latUser1, lng: +lngUser1 },
+        // position: { lat: -36.878901, lng: 174.792339 },
+        map: map,
         icon: icon,
         zIndex: 999,
         animation: google.maps.Animation.DROP
     });
-
-    var infoWindow = new google.maps.InfoWindow({
-        content: '<h4 class="testing animated fadeInDown"> Your location here</h4>'
-    });
-    location.addListener('click', function () {
-        infoWindow.open(map, location);
-    });
+    // var infoWindow = new google.maps.InfoWindow({
+    //     content: '<h4 class="testing animated fadeInDown"> Your location here</h4>'
+    // });
+    // location.addListener('click', function () {
+    //     infoWindow.open(map, location);
+    // });
 
     /* Jules */
 
 
     
 
-
-
-
-
-    /* Gareth */
-
-    /* Ajax Request for Food */
-    $.ajax({
-        url: foodUrl,
-        dataType: 'jsonp',
-        success: function (res) {
-            requestAllLocationByFilter(res, map, 'food');
-        }
-    });
-
-    /* Ajax Request for Drinks */
-    $.ajax({
-        url: drinkUrl,
-        dataType: 'jsonp',
-        success: function (res) {
-            requestAllLocationByFilter(res, map, 'drink');
-        }
-    });
-
-    /* Ajax Request for Hotels */
-    $.ajax({
-        url: hotelUrl,
-        dataType: 'jsonp',
-        success: function (res) {
-            requestAllLocationByFilter(res, map, 'hotel');
-        }
-    });
-
-
-    /* Ajax Request for Landmarks */
-    $.ajax({
-        url: landmarkUrl,
-        dataType: 'jsonp',
-        success: function (res) {
-            requestAllLocationByFilter(res, map, 'landmark');
-        }
-    });
-    /* Gareth */
-
-
-
-
-    /* Jules */
-
-    /* Ajax Request for Trending */
-    
-        $.ajax({
-            url: trendingUrl,
-            dataType: 'jsonp',
-            success: function (res) {
-                requestAllLocationByFilter(res, null, 'trending');
-            }
-        });
-    /* Jules */
-
-    getCentreAfterMapLoad();
+    setTimeout(() => {
+        allAjaxRequest();
+        getCentreAfterMapLoad();
     /* Gareth */
     }, 1000);
+    
 } /* End Display Venues on Map */
+// if(flagOfIniMap){
+//     alert('reload initmap')
+//     initMap();
+//     flagOfIniMap = false;
+// }
 
 function getCentreAfterMapLoad(){
     setTimeout(()=>{
@@ -216,7 +168,7 @@ let userLocation = { lat: latUser1, lng: lngUser1 };
 
 /* Gareth */
 function requestAllLocationByFilter(obj, map, categoryVal) {
-    
+    // console.log(map)
     let data = obj.response.groups["0"].items;
     let venues = data.map(function (item) {
         let lat = item.venue.location.lat;
@@ -234,7 +186,7 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
         });
 
         marker.venueid = item.venue.id;
-        console.log(map)
+        // console.log(map)
         /* Click function on Marker */
         marker.addListener('click', function () {
             var venueUrl = 'https://api.foursquare.com/v2/venues/' + this.venueid + key;
@@ -556,3 +508,156 @@ var mapstyle = [
 ];
 /* Gareth */
 
+
+
+//save all ajax requests
+
+//  /* Gareth */
+
+//     /* Ajax Request for Food */
+//     $.ajax({
+//         url: foodUrl,
+//         dataType: 'jsonp',
+//         type: 'POST',
+//         // async: false,
+//         success: function (res) {
+//             alert('food ajax successful')
+//             console.log(res);
+//             requestAllLocationByFilter(res, map, 'food');
+//         }
+//     });
+
+//     /* Ajax Request for Drinks */
+//     $.ajax({
+//         url: drinkUrl,
+//         dataType: 'jsonp',
+//         type: 'POST',
+//         success: function (res) {
+//             alert('drinks ajax successful')
+//             console.log(res);
+//             requestAllLocationByFilter(res, map, 'drink');
+//         }
+//     });
+
+//     /* Ajax Request for Hotels */
+//     $.ajax({
+//         url: hotelUrl,
+//         dataType: 'jsonp',
+//         type: 'POST',
+//         success: function (res) {
+//             alert('hotels ajax successful')
+//             console.log(res);
+//             requestAllLocationByFilter(res, map, 'hotel');
+//         }
+//     });
+
+
+//     /* Ajax Request for Landmarks */
+//     $.ajax({
+//         url: landmarkUrl,
+//         dataType: 'jsonp',
+//         type: 'POST',
+//         success: function (res) {
+//             alert('landmark ajax successful')
+//             console.log(res);
+//             requestAllLocationByFilter(res, map, 'landmark');
+//         }
+//     });
+//     /* Gareth */
+
+
+
+
+//     /* Jules */
+
+//     /* Ajax Request for Trending */
+    
+//         $.ajax({
+//             url: trendingUrl,
+//             dataType: 'jsonp',
+//             type: 'POST',
+//             success: function (res) {
+//                 alert('trending ajax successful')
+//                 console.log(res);
+//                 requestAllLocationByFilter(res, null, 'trending');
+//             }
+//         });
+
+
+function allAjaxRequest(){
+
+
+
+
+    /* Gareth */
+
+    /* Ajax Request for Food */
+    $.ajax({
+        url: foodUrl,
+        dataType: 'jsonp',
+        type: 'GET',
+        // async: false,
+        success: function (res) {
+            // alert('food ajax successful')
+            // console.log(res);
+            requestAllLocationByFilter(res, map, 'food');
+        }
+    });
+
+    /* Ajax Request for Drinks */
+    $.ajax({
+        url: drinkUrl,
+        dataType: 'jsonp',
+        type: 'GET',
+        success: function (res) {
+            // alert('drinks ajax successful')
+            // console.log(res);
+            requestAllLocationByFilter(res, map, 'drink');
+        }
+    });
+
+    /* Ajax Request for Hotels */
+    $.ajax({
+        url: hotelUrl,
+        dataType: 'jsonp',
+        type: 'GET',
+        success: function (res) {
+            // alert('hotels ajax successful')
+            // console.log(res);
+            requestAllLocationByFilter(res, map, 'hotel');
+        }
+    });
+
+
+    /* Ajax Request for Landmarks */
+    $.ajax({
+        url: landmarkUrl,
+        dataType: 'jsonp',
+        type: 'GET',
+        success: function (res) {
+            // alert('landmark ajax successful')
+            // console.log(res);
+            requestAllLocationByFilter(res, map, 'landmark');
+        }
+    });
+    /* Gareth */
+
+
+
+
+    /* Jules */
+
+    /* Ajax Request for Trending */
+    
+        $.ajax({
+            url: trendingUrl,
+            dataType: 'jsonp',
+            type: 'GET',
+            success: function (res) {
+                // alert('trending ajax successful')
+                // console.log(res);
+                requestAllLocationByFilter(res, null, 'trending');
+            }
+        });
+    /* Jules */
+}
