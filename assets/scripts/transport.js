@@ -2,7 +2,7 @@
 /* 'Find Transport' icon click function */
 $('#busArrow').on('click',()=>{
     for (let i = 0; i < allMarkers.length; i++) {
-        if(!(allMarkers[i].venueid == placeToGo)){
+        if(allMarkers[i].venueid != placeToGo){
             allMarkers[i].setMap(null);
         }
     }
