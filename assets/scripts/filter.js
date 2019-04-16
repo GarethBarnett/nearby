@@ -8,6 +8,8 @@ let flags = {
     'accommodation': false,
     'trending': false
 };
+let re = new RegExp('trending');
+
 $('#foodFilter').on('click', () => {
     patt = /restaurant/i;
     reclickFilgerToShowOrHideAllMarkers('restaurant');
@@ -29,22 +31,25 @@ $('#hotelFilter').on('click', () => {
 });
 /* Jules */
 $('#trendingFilter').on('click', () => {
-    patt = /trending/i;
-    reclickFilgerToShowOrHideAllMarkers('trending');
+    showOrHideTrending();
 });
-// $('#marker').on('click', () => {
-//     patt = /trending/i;
-//     reclickFilgerToShowOrHideAllMarkers('trending');
-// })
+$('#trending').on('click', () => {
+    showOrHideTrending();
+});
 /* Jules */
 /* Functions for all filter icon - end */
 
 /* Function to filter markers by different category */
 /* Argument for this function could be: restaurant, bar, accommodation, sight, and trending */
 function filterMarkers(category) {
+    // console.log(allMarkers[0].icon.url)
+    // console.log(re.test(allMarkers[0].icon.url))
     for (let i = 0; i < allMarkers.length; i++) {
         if (patt.test(allMarkers[i].icon.url)) {
-            allMarkers[i].setMap(map);
+            if (!re.test(allMarkers[i].icon.url)) {
+                // alert('trending found')
+                allMarkers[i].setMap(map);
+            }
         } else {
             allMarkers[i].setMap(null);
         }
@@ -58,16 +63,39 @@ function reclickFilgerToShowOrHideAllMarkers(val) {
         flags.sight = false;
         flags.bar = false;
         flags.accommodation = false;
-        flags.trending = false;
         flags[val] = true;
     } else {
         for (let i = 0; i < allMarkers.length; i++) {
-            allMarkers[i].setMap(map);
+            if (!re.test(allMarkers[i].icon.url)) {
+                allMarkers[i].setMap(map);
+            }
         }
         flags.restaurant = false;
         flags.sight = false;
         flags.bar = false;
         flags.accommodation = false;
+    }
+}
+function showOrHideTrending() {
+    if (flags.trending) {
+        for (let i = 0; i < allMarkers.length; i++) {
+            if (!re.test(allMarkers[i].icon.url)) {
+                allMarkers[i].setMap(map);
+
+            } else {
+                allMarkers[i].setMap(null);
+            }
+        }
+
         flags.trending = false;
+    } else {
+        for (let i = 0; i < allMarkers.length; i++) {
+            if (!re.test(allMarkers[i].icon.url)) {
+                allMarkers[i].setMap(null);
+            } else {
+                allMarkers[i].setMap(map);
+            }
+        }
+        flags.trending = true;
     }
 }

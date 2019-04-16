@@ -14,6 +14,7 @@ let openMenu = document.getElementById('menuOpen');
 let type = document.getElementById('typeText');
 let trendingIcon = document.getElementById('trendingFilter');
 let panels = document.getElementById('panel');
+let trending = document.getElementById('trending')
 menu.addEventListener("click", function () {
     type.classList.toggle("hide");
     trendingIcon.classList.toggle("hide");
@@ -26,8 +27,17 @@ var hamburger = document.querySelector(".hamburger");
 hamburger.addEventListener("click", function () {
     // Toggle class "is-active"
     hamburger.classList.toggle("is-active");
+
     // Do something else, like open/close menu
 });
+trending.addEventListener("click", function () {
+    type.classList.toggle("hide");
+    trendingIcon.classList.toggle("hide");
+    openMenu.classList.toggle("hide");
+    panels.classList.toggle("hide");
+    hamburger.classList.toggle("is-active");
+});
+
 var mySwiper = new Swiper('.swiper-container', {
     // Optional parameters
     direction: 'horizontal',

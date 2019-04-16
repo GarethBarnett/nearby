@@ -57,26 +57,33 @@
 					</div>
 				</div>
 			</nav>
-			<section id="panel" class="panels">
+			<div id="panel" class="panels">
 				<div class="swiper-container">
 					<!-- Additional required wrapper -->
 					<div class="swiper-wrapper">
 						<!-- Slides -->
-						<div id="foodFilter" class="swiper-slide"><img src="assets/images/menurestr.png"
-							alt="foodFilter">
+						<div id="foodFilter" class="swiper-slide"><img src="assets/images/menurestr.png" alt="foodFilter">
 						</div>
 						<div id="landmarkFilter" class="swiper-slide"><img src="assets/images/menusights.png"
 							alt="landmarkFilter">
 						</div>
-						<div id="drinkFilter" class="swiper-slide"><img src="assets/images/menubar.png" alt="drinkFilter"
-							>
+						<div id="drinkFilter" class="swiper-slide"><img src="assets/images/menubar.png" alt="drinkFilter">
 						</div>
-						<div id="hotelFilter" class="swiper-slide"><img src="assets/images/menuaccom.png"
-							alt="hotelFilter">
+						<div id="hotelFilter" class="swiper-slide"><img src="assets/images/menuaccom.png" alt="hotelFilter">
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+			<div class="transportPanels hide">
+				<div class="busStopInfo">
+					<div class="busStopIcon"><img src="assets/images/busstoppanel.svg" alt="busstopicon"></div>
+					<div class="busStopId" id="busStopId">STOP 1432</div>
+				</div>
+				<div class="busEtaInfo">
+					<div class="busEtaIcon"><img src="assets/images/busstopeta.svg" alt="busetaicon"></div>
+					<div class="busEta">ETA 5 Mins</div>
+				</div>
+			</div>
 			<div id="map"></div>
 			<!-- Slider main container -->
 			<div id="infoMenuContainer" class="hide">
@@ -95,74 +102,131 @@
 					<div class="infoMenuBody container">
 						<!-- Gareth -->
 						<script id="infoMenuData" type="text/x-handlebars-template">
-						{{#if response.venue.rating}}
-						<div class="venueRating">
-								{{response.venue.rating}}/10
-						</div>
-						{{else}}
-						<div class="venueRating">
-								N/A
-						</div>
-						{{/if}}
-						{{#if response.venue.hours.status}}
-						<div class="venueStatus"><img src="assets/images/open.svg"></div>
-						{{/if}}
-						<div class="venueName">
-								{{response.venue.name}}
-						</div>
-						{{#if venue.location.address}}
-						<div class="venueAddress">
-								{{response.venue.location.address}}
-								{{response.venue.location.city}}
-						</div>
-						{{else}}
-						<div class="venueAddress">
-								Auckland
-						</div>
-						{{/if}}
-						<div class="venueDistance">
-								4km Away
-						</div>
-						{{#if response.venue.bestPhoto.prefix}}
-						<div class="venueImage">
-								<img src={{response.venue.bestPhoto.prefix}}320x200{{response.venue.bestPhoto.suffix}}>
-						</div>
-						{{else}}
-						<div class="venueImage">
-								<img src="assets/images/default.jpg">
-						</div>
-						{{/if}}
-						{{#if response.venue.description}}
-						<div class="venueDescription">
-								{{response.venue.description}}
-						</div>
-						{{else}}
-						<div class="venueDescription">
-								Check in at this venue and write a discription to share with others.
-						</div>
-						{{/if}}
-						{{#if response.venue.url}}
-						<div class="venueWebsite">
-								<a href="{{response.venue.url}}">WWW</a>
-						</div>
-						{{/if}}
-						<div class="venueShare">
-								<a href="https://www.facebook.com/sharer/sharer.php?u={{response.venue.shortUrl}}"><img src="assets/images/share.svg"></a>
-						</div>
-						<div class="venueDirections">
-								<a href="https://www.google.com/maps/dir/Current+Location/{{response.venue.location.lat}},{{response.venue.location.lng}}"><img src="assets/images/directions.svg"></a>
-						</div>
+							{{#if response.venue.rating}}
+							<div class="venueRating">
+										{{response.venue.rating}}/10
+							</div>
+							{{else}}
+							<div class="venueRating">
+										N/A
+							</div>
+							{{/if}}
+							{{#if response.venue.hours.status}}
+							<div class="venueStatus"><img src="assets/images/open.svg"></div>
+							{{/if}}
+							<div class="venueName">
+										{{response.venue.name}}
+							</div>
+							{{#if venue.location.address}}
+							<div class="venueAddress">
+										{{response.venue.location.address}}
+										{{response.venue.location.city}}
+							</div>
+							{{else}}
+							<div class="venueAddress">
+										Auckland
+							</div>
+							{{/if}}
+							<div class="venueDistance">
+										4km Away
+							</div>
+							{{#if response.venue.bestPhoto.prefix}}
+							<div class="venueImage">
+										<img src={{response.venue.bestPhoto.prefix}}320x200{{response.venue.bestPhoto.suffix}}>
+							</div>
+							{{else}}
+							<div class="venueImage">
+										<img src="assets/images/default.jpg">
+							</div>
+							{{/if}}
+							{{#if response.venue.description}}
+							<div class="venueDescription">
+										{{response.venue.description}}
+							</div>
+							{{else}}
+							<div class="venueDescription">
+										Check in at this venue and write a discription to share with others.
+							</div>
+							{{/if}}
+							{{#if response.venue.url}}
+							<div class="venueWebsite">
+										<a href="{{response.venue.url}}">WWW</a>
+							</div>
+							{{/if}}
+							<div class="venueShare">
+										<a href="https://www.facebook.com/sharer/sharer.php?u={{response.venue.shortUrl}}"><img src="assets/images/share.svg"></a>
+							</div>
+							<div class="venueDirections">
+										<a href="https://www.google.com/maps/dir/Current+Location/{{response.venue.location.lat}},{{response.venue.location.lng}}"><img src="assets/images/directions.svg"></a>
+							</div>
 						</script>
 						<!-- Gareth -->
 					</div>
 				</div>
 			</div>
+			<!-- Bus menu -->
+			<div id="busMenuContainer" class="hide">
+				<div class="busMenu">
+					<div class="busMenuLow container">
+						<div class="busMapArrow"><img src="assets/images/maparrow.png" alt="maparrow"></div>
+						<div class="backMap">Search Again</div>
+					</div>
+				</div>
+				<div class="busMenuOpen">
+					<div id="busPullBtn" class="busPullTab"><img src="assets/images/tab.svg" alt="tag"></div>
+					<div class="busMenuBody container">
+						<div class="busInfoHeading">
+							<div class="busInfoIcon"><img src="assets/images/businfo.svg" alt="maparrow"></div>
+							<div class="busInfoTitle">Travel Information</div>
+						</div>
+						<!-- Bus menu Inner -->
+						<div class="busMenuInfo container">
+							
+							<div id="busVenueTitle">Venue Title</div>
+							
+							<div class="busMenuLeft">
+								<div class="walkTime">
+									<h5>Walk</h5>
+									<p>3 Mins</p>
+								</div>
+								<div class="totalTime">
+									<h5>Total Time</h5>
+									<p>20 Mins</p>
+								</div>
+								<div class="appPrice">
+									<h5>App Price</h5>
+									<p>$1.45</p>
+								</div>
+							</div>
+							<div class="busMenuRight">
+								<div class="busTime">
+									<h5>Bus</h5>
+									<p>17 Mins</p>
+								</div>
+								<div class="atStop">
+									<h5>AT Stop</h5>
+									<p id="stopIdUpdate">1432</p>
+								</div>
+								<div class="busId">
+									<h5>Bus ID</h5>
+									<p id="busIdUpdate">72X</p>
+								</div>
+							</div>
+							
+						</div>
+						<!-- Bus menu Inner -->
+						
+					</div>
+				</div>
+			</div>
+			<!-- Bus menu -->
 		</div>
 		<!-- Jquery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<!-- Google Maps -->
 		<script async defer
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADMD9LFOQbB8gF8HctWzlQipyitCIdhZo&callback=initMap"></script>
+		<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADMD9LFOQbB8gF8HctWzlQipyitCIdhZo" async defer></script> -->
 		<!-- Map & Foursquare -->
 		<script src="assets/scripts/foursquare.js"></script>
 		<!-- Handlebars -->
