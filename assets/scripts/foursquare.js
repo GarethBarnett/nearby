@@ -98,26 +98,11 @@ function initMap() {
         // alert('time out function with all ajax requests')
     var icon = {
         url: "./assets/images/usericon.svg", // url
-        scaledSize: new google.maps.Size(50, 50), // scaled size
-        origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(0, 0) // anchor
+        scaledSize: new google.maps.Size(50, 50) // scaled size
     };
 
 
-    var location = new google.maps.Marker({
-        position: { lat: +latUser1, lng: +lngUser1 },
-        // position: { lat: -36.878901, lng: 174.792339 },
-        map: map,
-        icon: icon,
-        zIndex: 999,
-        animation: google.maps.Animation.DROP
-    });
-    // var infoWindow = new google.maps.InfoWindow({
-    //     content: '<h4 class="testing animated fadeInDown"> Your location here</h4>'
-    // });
-    // location.addListener('click', function () {
-    //     infoWindow.open(map, location);
-    // });
+    
 
     /* Jules */
 
@@ -125,6 +110,20 @@ function initMap() {
     
 
     setTimeout(() => {
+        var location = new google.maps.Marker({
+            position: { lat: +latUser1, lng: +lngUser1 },
+            // position: { lat: -36.878901, lng: 174.792339 },
+            map: map,
+            icon: icon,
+            zIndex: 999,
+            animation: google.maps.Animation.DROP
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: '<h4 class="testing animated fadeInDown"> Your location here</h4>'
+        });
+        location.addListener('click', function () {
+            infoWindow.open(map, location);
+        });
         allAjaxRequest();
         getCentreAfterMapLoad();
     /* Gareth */
