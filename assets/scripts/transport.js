@@ -20,29 +20,21 @@ $('#busArrow').on('click',()=>{
     // }, 6000);
     $('#infoMenuContainer').addClass('hide');
     $('#busMenuContainer').removeClass('hide'); 
-
-
     /* jason add*/
     $('.transportPanels').removeClass('hide');
-
     /* jason add*/
 });
 
 /* 'Back to Map' icon click function */
 $('#mapArrow').on('click', ()=>{
-    /* Show all icons */ 
-    for (let i = 0; i < allMarkers.length; i++) {
-        allMarkers[i].setMap(map);
-    }
-    /* Remove Bus icon */
-    if(busMarker){
-        busMarker.setMap(null);
-    }
-    /* Remove Bus Stop icon */ 
-    if(busStopMarker){
-        busStopMarker.setMap(null);
-    }
+    searchAgainOrbackToMap();
 });
+
+/* */
+$('#searchAgain').on('click', ()=>{
+    searchAgainOrbackToMap();
+});
+
 /* Jason */
 /* Jason */
 let shownBusRouteId;
@@ -207,4 +199,29 @@ function getTravelInformation(){
     .fail(function() {
         console.log("getting route detail error");
     });
+}
+
+function searchAgainOrbackToMap(){
+    /* Remove Bus icon */
+    if(busMarker){
+        busMarker.setMap(null);
+    }
+    /* Remove Bus Stop icon */ 
+    if(busStopMarker){
+        busStopMarker.setMap(null);
+    }
+    /* Show all markers without trending */
+    for (let i = 0; i < allMarkers.length; i++) {
+        if (!re.test(allMarkers[i].icon.url)) {
+            allMarkers[i].setMap(map);
+
+        } else {
+            allMarkers[i].setMap(null);
+        }
+    }
+    /* Use user location as the centre of map  */
+    /* This function comes from foursquare.js */
+    getCentreAfterMapLoad();
+    /* Consistent map zoom level as first loading status */
+    map.setZoom(14);
 }
