@@ -91,7 +91,20 @@ function initMap() {
     };
 
 
-    
+    var location = new google.maps.Marker({
+        position: { lat: +latUser1, lng: +lngUser1 },
+        // position: { lat: -36.878901, lng: 174.792339 },
+        map: map,
+        icon: icon,
+        zIndex: 999,
+        animation: google.maps.Animation.DROP
+    });
+    // var infoWindow = new google.maps.InfoWindow({
+    //     content: '<h4 class="testing animated fadeInDown"> Your location here</h4>'
+    // });
+    // location.addListener('click', function () {
+    //     infoWindow.open(map, location);
+    // });
 
     /* Jules */
     setTimeout(() => {
