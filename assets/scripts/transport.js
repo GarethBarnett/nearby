@@ -7,42 +7,25 @@ $('#busArrow').on('click',()=>{
             allMarkers[i].setMap(null);
         }
     }
-    console.log(latUser1, lngUser1)
-    console.log(placeToGoDetails[3])
     findBus();
     findBusStop(latUser1, lngUser1, 200);
-    // findBusStop(-36.856754, 174.763391, 1000);
-    // getTravelInformation();
-    // window.setTimeout(function () {
-    //     // map.panTo(marker.getPosition());
-    //     map.panTo(new google.maps.LatLng(latUser1, lngUser1));
-    //     map.setZoom(18);
-    // }, 6000);
     $('#infoMenuContainer').addClass('hide');
     $('#busMenuContainer').removeClass('hide'); 
-
-
     /* jason add*/
     $('.transportPanels').removeClass('hide');
-
     /* jason add*/
 });
 
 /* 'Back to Map' icon click function */
 $('#mapArrow').on('click', ()=>{
-    /* Show all icons */ 
-    for (let i = 0; i < allMarkers.length; i++) {
-        allMarkers[i].setMap(map);
-    }
-    /* Remove Bus icon */
-    if(busMarker){
-        busMarker.setMap(null);
-    }
-    /* Remove Bus Stop icon */ 
-    if(busStopMarker){
-        busStopMarker.setMap(null);
-    }
+    searchAgainOrbackToMap();
 });
+
+/* */
+$('#searchAgain').on('click', ()=>{
+    searchAgainOrbackToMap();
+});
+
 /* Jason */
 /* Jason */
 let shownBusRouteId;
@@ -93,7 +76,6 @@ function findBus() {
         data: "{body}",
     })
         .done(function (data) {
-            console.log(data);
             let returnedData = data.response.entity;
             let pData = data.response.entity[0].vehicle.position;
             positionX = pData.latitude;
@@ -114,9 +96,9 @@ function findBus() {
                         locations[1] = [placeToGoDetails[1], placeToGoDetails[2]];
                         locations[2] = [busLocation.lat, busLocation.lng];
                         getCentrePoint(locations);
-                        console.log(returnedData[i])
+                        console.log(returnedData[i]);
                         shownBusRouteId = returnedData[i].vehicle.trip.route_id;
-                        console.log(shownBusRouteId)
+                        console.log(shownBusRouteId);
                         getTravelInformation();
                         return;
                     }
@@ -144,7 +126,6 @@ function findBusStop(lat, lng, distance) {
         data: "{body}",
     })
         .done(function (data) {
-            console.log(data)
             busStopMarker = new google.maps.Marker({
                 map: map,
                 draggable: false,
@@ -171,16 +152,11 @@ function getCentrePoint(locations){
 }
 
 /* Jason */
+
 /* Jason */
 
 function getTravelInformation(){
-    // destination name: placeToGoDetails[3]
-    //shownBusRouteId to get all bus info
-    console.log(shownBusRouteId)
-    var params = {
-        // Request parameters
-        // "callback": "{string}",
-    };
+    var params = {};
   
     $.ajax({
         url: "https://api.at.govt.nz/v2/gtfs/routes/routeId/"+ shownBusRouteId + "?" + $.param(params),
@@ -193,18 +169,37 @@ function getTravelInformation(){
         data: "{body}",
     })
     .done(function(data) {
-        // alert("success");
-        console.log(data.response[0].route_short_name)
-
-        let busIdUpdate = data.response[0].route_short_name;
-        $('#busVenueTitle').text(placeToGoDetails[3])
-        // console.log($('#busIdUpdate').text())
-        $('#busIdUpdate').text(data.response[0].route_short_name)
-        // nearbyStopId
+        $('#busVenueTitle').text(placeToGoDetails[3]);
+        $('#busIdUpdate').text(data.response[0].route_short_name);
         $('#stopIdUpdate').text(nearbyStopId);
         $('#busStopId').text('STOP ' +nearbyStopId);
     })
     .fail(function() {
         console.log("getting route detail error");
     });
+}
+
+function searchAgainOrbackToMap(){
+    /* Remove Bus icon */
+    if(busMarker){
+        busMarker.setMap(null);
+    }
+    /* Remove Bus Stop icon */ 
+    if(busStopMarker){
+        busStopMarker.setMap(null);
+    }
+    /* Show all markers without trending */
+    for (let i = 0; i < allMarkers.length; i++) {
+        if (!re.test(allMarkers[i].icon.url)) {
+            allMarkers[i].setMap(map);
+
+        } else {
+            allMarkers[i].setMap(null);
+        }
+    }
+    /* Use user location as the centre of map  */
+    /* This function comes from foursquare.js */
+    getCentreAfterMapLoad();
+    /* Consistent map zoom level as first loading status */
+    map.setZoom(14);
 }

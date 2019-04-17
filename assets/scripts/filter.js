@@ -42,12 +42,9 @@ $('#trending').on('click', () => {
 /* Function to filter markers by different category */
 /* Argument for this function could be: restaurant, bar, accommodation, sight, and trending */
 function filterMarkers(category) {
-    // console.log(allMarkers[0].icon.url)
-    // console.log(re.test(allMarkers[0].icon.url))
     for (let i = 0; i < allMarkers.length; i++) {
         if (patt.test(allMarkers[i].icon.url)) {
             if (!re.test(allMarkers[i].icon.url)) {
-                // alert('trending found')
                 allMarkers[i].setMap(map);
             }
         } else {
