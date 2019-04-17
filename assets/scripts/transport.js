@@ -7,17 +7,8 @@ $('#busArrow').on('click',()=>{
             allMarkers[i].setMap(null);
         }
     }
-    console.log(latUser1, lngUser1)
-    console.log(placeToGoDetails[3])
     findBus();
     findBusStop(latUser1, lngUser1, 200);
-    // findBusStop(-36.856754, 174.763391, 1000);
-    // getTravelInformation();
-    // window.setTimeout(function () {
-    //     // map.panTo(marker.getPosition());
-    //     map.panTo(new google.maps.LatLng(latUser1, lngUser1));
-    //     map.setZoom(18);
-    // }, 6000);
     $('#infoMenuContainer').addClass('hide');
     $('#busMenuContainer').removeClass('hide'); 
     /* jason add*/
@@ -85,7 +76,6 @@ function findBus() {
         data: "{body}",
     })
         .done(function (data) {
-            console.log(data);
             let returnedData = data.response.entity;
             let pData = data.response.entity[0].vehicle.position;
             positionX = pData.latitude;
@@ -136,7 +126,6 @@ function findBusStop(lat, lng, distance) {
         data: "{body}",
     })
         .done(function (data) {
-            console.log(data)
             busStopMarker = new google.maps.Marker({
                 map: map,
                 draggable: false,
@@ -163,16 +152,11 @@ function getCentrePoint(locations){
 }
 
 /* Jason */
+
 /* Jason */
 
 function getTravelInformation(){
-    // destination name: placeToGoDetails[3]
-    //shownBusRouteId to get all bus info
-    console.log(shownBusRouteId)
-    var params = {
-        // Request parameters
-        // "callback": "{string}",
-    };
+    var params = {};
   
     $.ajax({
         url: "https://api.at.govt.nz/v2/gtfs/routes/routeId/"+ shownBusRouteId + "?" + $.param(params),
@@ -185,14 +169,8 @@ function getTravelInformation(){
         data: "{body}",
     })
     .done(function(data) {
-        // alert("success");
-        console.log(data.response[0].route_short_name)
-
-        let busIdUpdate = data.response[0].route_short_name;
         $('#busVenueTitle').text(placeToGoDetails[3])
-        // console.log($('#busIdUpdate').text())
         $('#busIdUpdate').text(data.response[0].route_short_name)
-        // nearbyStopId
         $('#stopIdUpdate').text(nearbyStopId);
         $('#busStopId').text('STOP ' +nearbyStopId);
     })
