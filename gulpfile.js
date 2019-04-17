@@ -1,3 +1,4 @@
+/* Jules Gareth Jason */
 let gulp = require("gulp");
 let sass = require("gulp-sass");
 let browserSync = require("browser-sync").create();
@@ -5,6 +6,7 @@ let autoprefixer = require('gulp-autoprefixer');
 let scssPath = "./assets/styles/sass/**/*.scss"; //globbing
 let cssPath = "./assets/styles/css";
 
+/* Jules */
 gulp.task('prefix', () =>
 	gulp.src('./assets/styles/css/main.css')
 		.pipe(autoprefixer({
@@ -13,7 +15,9 @@ gulp.task('prefix', () =>
 		}))
 		.pipe(gulp.dest('./assets/styles/css/'))
 );
+/* Jules */
 
+/* Gareth */
 function style() {
 	return (
 		gulp
@@ -25,7 +29,9 @@ function style() {
 	);
 
 }
+/* Gareth */
 
+/* Jason */
 function update(done) {
 	browserSync.reload();
 	done();
@@ -37,11 +43,12 @@ function mywatch() {
 		server: { baseDir: "./" }
 	});
 
-	gulp.watch("*.html", update)
-	gulp.watch("./assets/scripts/*.js", update)
+	gulp.watch("*.html", update);
+	gulp.watch("./assets/scripts/*.js", update);
 	gulp.watch(scssPath, style);
 }
-
+/* Jason */
 exports.sass = style;
 
 exports.mywatcher = mywatch;
+/* Jules Gareth Jason */

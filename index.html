@@ -70,7 +70,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="transportPanels hide">
+			<div id="transportPanels" class="transportPanels hide">
 				<div class="busStopInfo">
 					<div class="busStopIcon"><img src="assets/images/busstoppanel.svg" alt="busstopicon"></div>
 					<div class="busStopId" id="busStopId">STOP 1432</div>
@@ -143,14 +143,16 @@
 										Check in at this venue and write a discription to share with others.
 							</div>
 							{{/if}}
+
+
 							{{#if response.venue.url}}
 							<div class="venueWebsite">
 										<a href="{{response.venue.url}}">WWW</a>
 							</div>
 							{{/if}}
-							<div class="venueShare">
-										<a href="https://www.facebook.com/sharer/sharer.php?u={{response.venue.shortUrl}}"><img src="assets/images/share.svg"></a>
-							</div>
+						
+
+
 							<div class="venueDirections">
 										<a href="https://www.google.com/maps/dir/Current+Location/{{response.venue.location.lat}},{{response.venue.location.lng}}"><img src="assets/images/directions.svg"></a>
 							</div>
@@ -160,13 +162,13 @@
 				</div>
 			</div>
 			<div id="busMenuContainer" class="hide">
-				<div class="busMenu">
+				<div id="busMenu" class="busMenu">
 					<div class="busMenuLow container">
 						<div class="busMapArrow"><img src="assets/images/maparrow.png" alt="maparrow"></div>
 						<div id="searchAgain" class="backMap">Search Again</div>
 					</div>
 				</div>
-				<div class="busMenuOpen">
+				<div id="busMenuOpen" class="busMenuOpen">
 					<div id="busPullBtn" class="busPullTab"><img src="assets/images/tab.svg" alt="tag"></div>
 					<div class="busMenuBody container">
 						<div class="busInfoHeading">
@@ -213,10 +215,6 @@
 
 		<!-- Jquery -->
 		<script id="jqueryapi" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-		<!-- Google Maps -->
-		<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADMD9LFOQbB8gF8HctWzlQipyitCIdhZo&callback=initMap"></script>
 		<!-- Map & Foursquare -->
 		<script id="foursquareapi" async defer src="assets/scripts/foursquare.js"></script>
 		<!-- Handlebars -->
@@ -236,7 +234,5 @@
 		<!-- Google Maps -->
 		<script id="googleapi" async defer
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADMD9LFOQbB8gF8HctWzlQipyitCIdhZo&callback=initMap"></script>
-    <!-- Filter js -->
-		<script src="assets/scripts/filter.js"></script>
 	</body>
 </html>
