@@ -1,5 +1,6 @@
 /* Foursquare JS Files */
 
+
 /* Gareth */
 
 /* Foursquare settings */
@@ -130,17 +131,9 @@ function initMap() {
     }, 1000);
     
 } /* End Display Venues on Map */
-// if(flagOfIniMap){
-//     alert('reload initmap')
-//     initMap();
-//     flagOfIniMap = false;
-// }
 
 function getCentreAfterMapLoad(){
-    // setTimeout(()=>{
         map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
-        // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
-    // },2000);
 }
 
 let placeLocationObj = {
@@ -154,10 +147,7 @@ let placeLocationObj = {
 };
 
 /* Gareth */
-
-
 let allMarkers = [];
-
 /* Jason */
 let placeToGo;
 let placeToGoDetails;
@@ -167,7 +157,6 @@ let userLocation = { lat: latUser1, lng: lngUser1 };
 
 /* Gareth */
 function requestAllLocationByFilter(obj, map, categoryVal) {
-    // console.log(map)
     let data = obj.response.groups["0"].items;
     let venues = data.map(function (item) {
         let lat = item.venue.location.lat;
@@ -175,17 +164,13 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
         let venueName = item.venue.name;
         let placeDetails = [true, Number(lat), Number(lng), venueName.toString(), icons[categoryVal].toString(), item.venue.id];
         placeLocationObj[categoryVal].push(placeDetails);
-
         let marker = new google.maps.Marker({
             map: map,
             icon: { url: icons[categoryVal], scaledSize: new google.maps.Size(50, 50) },
             position: { lat: lat, lng: lng },
             title: venueName
-            
         });
-
         marker.venueid = item.venue.id;
-        // console.log(map)
         /* Click function on Marker */
         marker.addListener('click', function () {
             var venueUrl = 'https://api.foursquare.com/v2/venues/' + this.venueid + key;
@@ -193,13 +178,10 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
                 url: venueUrl,
                 dataType: 'jsonp',
                 success: function (res) {
-
                     /* Hide the Filter Panel */
                     panel.classList.add('hide');
-
                     /* Hide the Filter Panel */
                     infoMenuContainer.classList.remove('hide');
-
                     /* Fill info menu with data */
                     createInfoMenu(res);
 
@@ -218,23 +200,17 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
 
                     map.setZoom(18);
                     map.setCenter(marker.getPosition());
-
-                    // map.setCenter(new google.maps.LatLng(latUser1, lngUser1));
                     placeToGo = placeDetails[5];
                     placeToGoDetails = placeDetails;
                     /* Jules */
-
                 }
             });
         });
-        // console.log(marker);
         allMarkers.push(marker);
     });
 
 }
 /* Gareth */
-
-
 
 /* Gareth */
 let source;
@@ -507,87 +483,7 @@ var mapstyle = [
 ];
 /* Gareth */
 
-
-
-//save all ajax requests
-
-//  /* Gareth */
-
-//     /* Ajax Request for Food */
-//     $.ajax({
-//         url: foodUrl,
-//         dataType: 'jsonp',
-//         type: 'POST',
-//         // async: false,
-//         success: function (res) {
-//             alert('food ajax successful')
-//             console.log(res);
-//             requestAllLocationByFilter(res, map, 'food');
-//         }
-//     });
-
-//     /* Ajax Request for Drinks */
-//     $.ajax({
-//         url: drinkUrl,
-//         dataType: 'jsonp',
-//         type: 'POST',
-//         success: function (res) {
-//             alert('drinks ajax successful')
-//             console.log(res);
-//             requestAllLocationByFilter(res, map, 'drink');
-//         }
-//     });
-
-//     /* Ajax Request for Hotels */
-//     $.ajax({
-//         url: hotelUrl,
-//         dataType: 'jsonp',
-//         type: 'POST',
-//         success: function (res) {
-//             alert('hotels ajax successful')
-//             console.log(res);
-//             requestAllLocationByFilter(res, map, 'hotel');
-//         }
-//     });
-
-
-//     /* Ajax Request for Landmarks */
-//     $.ajax({
-//         url: landmarkUrl,
-//         dataType: 'jsonp',
-//         type: 'POST',
-//         success: function (res) {
-//             alert('landmark ajax successful')
-//             console.log(res);
-//             requestAllLocationByFilter(res, map, 'landmark');
-//         }
-//     });
-//     /* Gareth */
-
-
-
-
-//     /* Jules */
-
-//     /* Ajax Request for Trending */
-    
-//         $.ajax({
-//             url: trendingUrl,
-//             dataType: 'jsonp',
-//             type: 'POST',
-//             success: function (res) {
-//                 alert('trending ajax successful')
-//                 console.log(res);
-//                 requestAllLocationByFilter(res, null, 'trending');
-//             }
-//         });
-
-
 function allAjaxRequest(){
-
-
-
-
     /* Gareth */
 
     /* Ajax Request for Food */
