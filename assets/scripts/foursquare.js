@@ -40,14 +40,12 @@ let landmark = '4d4b7104d754a06370d81259';
 /* Jules */
 navigator.geolocation.getCurrentPosition(locationHandler);
 
+/* Finding Users Location & venue endpoints */
 function locationHandler(position) {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
     latUser1 = position.coords.latitude;
     lngUser1 = position.coords.longitude;
-    //-36.856754, 174.763391 yoobee
-    // latUser1 = -36.856754;
-    // lngUser1 = 174.763391;
     /* Gareth */
     foodUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + food + '&limit=5&radius=2000';
     drinkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + drink + '&limit=5&radius=2000';
@@ -58,7 +56,6 @@ function locationHandler(position) {
 }
 
 let latUser1, lngUser1;
-
 /* Jules */
 
 
@@ -84,36 +81,22 @@ function initMap() {
         styles: mapstyle,
 
     });
-    // alert(Boolean(map));
-    // console.log(map);
-    
-        // setTimeout(()=>{
-    //     map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
-    //     // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
-    // },3000);
-    
-
+      
     /* Gareth */
 
     /* Jules */
-        // alert('time out function with all ajax requests')
     var icon = {
-        url: "./assets/images/usericon.svg", // url
-        scaledSize: new google.maps.Size(50, 50) // scaled size
+        url: "./assets/images/usericon.svg", 
+        scaledSize: new google.maps.Size(50, 50) 
     };
 
 
     
 
     /* Jules */
-
-
-    
-
     setTimeout(() => {
         var location = new google.maps.Marker({
             position: { lat: +latUser1, lng: +lngUser1 },
-            // position: { lat: -36.878901, lng: 174.792339 },
             map: map,
             icon: icon,
             zIndex: 999,
@@ -127,15 +110,20 @@ function initMap() {
         });
         allAjaxRequest();
         getCentreAfterMapLoad();
-    /* Gareth */
     }, 1000);
+    /* Jules */
     
 } /* End Display Venues on Map */
+/* Gareth */
 
+/* Jules */
 function getCentreAfterMapLoad(){
         map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
 }
+/* Jules */
 
+
+/* Gareth */
 let placeLocationObj = {
     food: [],
     drink: [],
@@ -145,8 +133,8 @@ let placeLocationObj = {
     trending: []
     /* Jules */
 };
-
 /* Gareth */
+
 let allMarkers = [];
 /* Jason */
 let placeToGo;
@@ -186,18 +174,6 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
                     createInfoMenu(res);
 
                     /* Jules */
-
-                    /* ---------------- Need to fix this part --------------------*/
-                    /* 3 seconds after the center of the map has changed, pan back to the marker*/
-
-                    // map.addListener('center_changed', function () {
-                    //     window.setTimeout(function () {
-                    //         // map.panTo(marker.getPosition());
-                    //         map.panTo(new google.maps.LatLng(latUser1, lngUser1))
-                    //     }, 3000);
-                    // });
-                    /* ---------------- Need to fix this part --------------------*/
-
                     map.setZoom(18);
                     map.setCenter(marker.getPosition());
                     placeToGo = placeDetails[5];
