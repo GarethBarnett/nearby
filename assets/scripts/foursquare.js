@@ -137,10 +137,10 @@ function initMap() {
 // }
 
 function getCentreAfterMapLoad(){
-    setTimeout(()=>{
+    // setTimeout(()=>{
         map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
         // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
-    },2000);
+    // },2000);
 }
 
 let placeLocationObj = {

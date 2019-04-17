@@ -43,6 +43,35 @@ $('#mapArrow').on('click', ()=>{
         busStopMarker.setMap(null);
     }
 });
+
+/* */
+$('#searchAgain').on('click', ()=>{
+    console.log('search again')
+    /* Remove Bus icon */
+    if(busMarker){
+        busMarker.setMap(null);
+    }
+    /* Remove Bus Stop icon */ 
+    if(busStopMarker){
+        busStopMarker.setMap(null);
+    }
+    // console.log(allMarkers[0].icon.url)
+    // console.log(/trending/.test(allMarkers[0].icon.url))
+    // for (let i = 0; i < allMarkers.length; i++) {
+    //     allMarkers[i].setMap(map);
+    // }
+    for (let i = 0; i < allMarkers.length; i++) {
+        if (!re.test(allMarkers[i].icon.url)) {
+            allMarkers[i].setMap(map);
+
+        } else {
+            allMarkers[i].setMap(null);
+        }
+    }
+    getCentreAfterMapLoad();
+    map.setZoom(14);
+});
+
 /* Jason */
 /* Jason */
 let shownBusRouteId;
