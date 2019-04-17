@@ -70,7 +70,7 @@ let flagOfIniMap = true;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -36.878901, lng: 174.792339 },
-        zoom: 16,
+        zoom: 15,
         disableDefaultUI: true,
         zoomControl: true,
         zoomControlOptions: {
@@ -91,20 +91,12 @@ function initMap() {
 
     var location = new google.maps.Marker({
         position: { lat: +latUser1, lng: +lngUser1 },
-        // position: { lat: -36.878901, lng: 174.792339 },
         map: map,
         icon: icon,
         zIndex: 999,
         animation: google.maps.Animation.DROP
     });
-    // var infoWindow = new google.maps.InfoWindow({
-    //     content: '<h4 class="testing animated fadeInDown"> Your location here</h4>'
-    // });
-    // location.addListener('click', function () {
-    //     infoWindow.open(map, location);
-    // });
-
-    /* Jules */
+   
     setTimeout(() => {
         var location = new google.maps.Marker({
             position: { lat: +latUser1, lng: +lngUser1 },
@@ -477,10 +469,7 @@ function allAjaxRequest(){
         url: foodUrl,
         dataType: 'jsonp',
         type: 'GET',
-        // async: false,
         success: function (res) {
-            // alert('food ajax successful')
-            // console.log(res);
             requestAllLocationByFilter(res, map, 'food');
         }
     });
@@ -491,8 +480,6 @@ function allAjaxRequest(){
         dataType: 'jsonp',
         type: 'GET',
         success: function (res) {
-            // alert('drinks ajax successful')
-            // console.log(res);
             requestAllLocationByFilter(res, map, 'drink');
         }
     });
@@ -503,8 +490,6 @@ function allAjaxRequest(){
         dataType: 'jsonp',
         type: 'GET',
         success: function (res) {
-            // alert('hotels ajax successful')
-            // console.log(res);
             requestAllLocationByFilter(res, map, 'hotel');
         }
     });
@@ -516,8 +501,6 @@ function allAjaxRequest(){
         dataType: 'jsonp',
         type: 'GET',
         success: function (res) {
-            // alert('landmark ajax successful')
-            // console.log(res);
             requestAllLocationByFilter(res, map, 'landmark');
         }
     });

@@ -1,7 +1,6 @@
 /* Jason */
-/* 'Find Transport' icon click function */
+/* Find Transport' icon click function */
 $('#busArrow').on('click',()=>{
-    // alert('test')
     for (let i = 0; i < allMarkers.length; i++) {
         if(allMarkers[i].venueid != placeToGo){
             allMarkers[i].setMap(null);
@@ -11,9 +10,7 @@ $('#busArrow').on('click',()=>{
     findBusStop(latUser1, lngUser1, 200);
     $('#infoMenuContainer').addClass('hide');
     $('#busMenuContainer').removeClass('hide'); 
-    /* jason add*/
     $('.transportPanels').removeClass('hide');
-    /* jason add*/
 });
 
 /* 'Back to Map' icon click function */
@@ -21,18 +18,18 @@ $('#mapArrow').on('click', ()=>{
     searchAgainOrbackToMap();
 });
 
-/* */
+
 $('#searchAgain').on('click', ()=>{
     searchAgainOrbackToMap();
 });
-
 /* Jason */
+
 /* Jason */
 let shownBusRouteId;
 /* Jason */
 
 /* Jules */
-/* 'Find Transport' icon click function */
+/* Find Transport' icon click function */
 let busMarker, busStopMarker;
 let busLocation = {
     lat: 0,
@@ -81,7 +78,7 @@ function findBus() {
                 $('#infoMenuContainer').addClass('hide');
                 $('#busMenuContainer').addClass('hide'); 
                 $('.transportPanels').addClass('hide');
-                $('#panel').removeClass('hide')
+                $('#panel').removeClass('hide');
                 searchAgainOrbackToMap();
             }else{
                 let returnedData = data.response.entity;
@@ -204,5 +201,5 @@ function searchAgainOrbackToMap(){
     /* This function comes from foursquare.js */
     getCentreAfterMapLoad();
     /* Consistent map zoom level as first loading status */
-    map.setZoom(16);
+    map.setZoom(15);
 }

@@ -143,14 +143,16 @@
 										Check in at this venue and write a discription to share with others.
 							</div>
 							{{/if}}
+
+
 							{{#if response.venue.url}}
 							<div class="venueWebsite">
 										<a href="{{response.venue.url}}">WWW</a>
 							</div>
 							{{/if}}
-							<div class="venueShare">
-										<a href="https://www.facebook.com/sharer/sharer.php?u={{response.venue.shortUrl}}"><img src="assets/images/share.svg"></a>
-							</div>
+						
+
+
 							<div class="venueDirections">
 										<a href="https://www.google.com/maps/dir/Current+Location/{{response.venue.location.lat}},{{response.venue.location.lng}}"><img src="assets/images/directions.svg"></a>
 							</div>
