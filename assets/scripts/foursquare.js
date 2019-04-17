@@ -40,6 +40,7 @@ let landmark = '4d4b7104d754a06370d81259';
 /* Jules */
 navigator.geolocation.getCurrentPosition(locationHandler);
 
+/* Finding Users Location & venue endpoints */
 function locationHandler(position) {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
@@ -80,34 +81,22 @@ function initMap() {
         styles: mapstyle,
 
     });
-    // alert(Boolean(map));
-    // console.log(map);
-    
-        // setTimeout(()=>{
-    //     map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
-    //     // map.setCenter( new google.maps.LatLng(-36.864304, 174.778330));
-    // },3000);
-    
-
+      
     /* Gareth */
 
     /* Jules */
-        // alert('time out function with all ajax requests')
     var icon = {
-        url: "./assets/images/usericon.svg", // url
-        scaledSize: new google.maps.Size(50, 50) // scaled size
+        url: "./assets/images/usericon.svg", 
+        scaledSize: new google.maps.Size(50, 50) 
     };
 
 
     
 
     /* Jules */
-
-
     setTimeout(() => {
         var location = new google.maps.Marker({
             position: { lat: +latUser1, lng: +lngUser1 },
-            // position: { lat: -36.878901, lng: 174.792339 },
             map: map,
             icon: icon,
             zIndex: 999,
@@ -121,15 +110,20 @@ function initMap() {
         });
         allAjaxRequest();
         getCentreAfterMapLoad();
-    /* Gareth */
     }, 1000);
+    /* Jules */
     
 } /* End Display Venues on Map */
+/* Gareth */
 
+/* Jules */
 function getCentreAfterMapLoad(){
         map.setCenter( new google.maps.LatLng(+latUser1, +lngUser1));
 }
+/* Jules */
 
+
+/* Gareth */
 let placeLocationObj = {
     food: [],
     drink: [],
@@ -139,8 +133,8 @@ let placeLocationObj = {
     trending: []
     /* Jules */
 };
-
 /* Gareth */
+
 let allMarkers = [];
 /* Jason */
 let placeToGo;
