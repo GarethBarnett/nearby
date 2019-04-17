@@ -39,6 +39,7 @@ $('#trending').on('click', () => {
 /* Jules */
 /* Functions for all filter icon - end */
 
+/* Jason */
 /* Function to filter markers by different category */
 /* Argument for this function could be: restaurant, bar, accommodation, sight, and trending */
 function filterMarkers(category) {
@@ -73,6 +74,9 @@ function reclickFilgerToShowOrHideAllMarkers(val) {
         flags.accommodation = false;
     }
 }
+/* Jason */
+
+/* Jules */
 function showOrHideTrending() {
     if (flags.trending) {
         for (let i = 0; i < allMarkers.length; i++) {
@@ -96,3 +100,5 @@ function showOrHideTrending() {
         flags.trending = true;
     }
 }
+
+/* Jules */

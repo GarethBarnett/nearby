@@ -69,10 +69,8 @@ let map, marker;
 let flagOfIniMap = true;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        // -36.878901, 174.792339 random location for test
-        // center: { lat: -36.856693, lng: 174.763369 },
         center: { lat: -36.878901, lng: 174.792339 },
-        zoom: 14,
+        zoom: 15,
         disableDefaultUI: true,
         zoomControl: true,
         zoomControlOptions: {
@@ -93,20 +91,12 @@ function initMap() {
 
     var location = new google.maps.Marker({
         position: { lat: +latUser1, lng: +lngUser1 },
-        // position: { lat: -36.878901, lng: 174.792339 },
         map: map,
         icon: icon,
         zIndex: 999,
         animation: google.maps.Animation.DROP
     });
-    // var infoWindow = new google.maps.InfoWindow({
-    //     content: '<h4 class="testing animated fadeInDown"> Your location here</h4>'
-    // });
-    // location.addListener('click', function () {
-    //     infoWindow.open(map, location);
-    // });
-
-    /* Jules */
+   
     setTimeout(() => {
         var location = new google.maps.Marker({
             position: { lat: +latUser1, lng: +lngUser1 },
@@ -185,7 +175,6 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
                     infoMenuContainer.classList.remove('hide');
                     /* Fill info menu with data */
                     createInfoMenu(res);
-
                     /* Jules */
                     map.setZoom(18);
                     map.setCenter(marker.getPosition());
@@ -480,10 +469,7 @@ function allAjaxRequest(){
         url: foodUrl,
         dataType: 'jsonp',
         type: 'GET',
-        // async: false,
         success: function (res) {
-            // alert('food ajax successful')
-            // console.log(res);
             requestAllLocationByFilter(res, map, 'food');
         }
     });
@@ -494,8 +480,6 @@ function allAjaxRequest(){
         dataType: 'jsonp',
         type: 'GET',
         success: function (res) {
-            // alert('drinks ajax successful')
-            // console.log(res);
             requestAllLocationByFilter(res, map, 'drink');
         }
     });
@@ -506,8 +490,6 @@ function allAjaxRequest(){
         dataType: 'jsonp',
         type: 'GET',
         success: function (res) {
-            // alert('hotels ajax successful')
-            // console.log(res);
             requestAllLocationByFilter(res, map, 'hotel');
         }
     });
@@ -519,8 +501,6 @@ function allAjaxRequest(){
         dataType: 'jsonp',
         type: 'GET',
         success: function (res) {
-            // alert('landmark ajax successful')
-            // console.log(res);
             requestAllLocationByFilter(res, map, 'landmark');
         }
     });
@@ -538,9 +518,12 @@ function allAjaxRequest(){
             dataType: 'jsonp',
             type: 'GET',
             success: function (res) {
-                // alert('trending ajax successful')
-                // console.log(res);
-                requestAllLocationByFilter(res, null, 'trending');
+                requestAllLocationByFilter(res, map, 'trending');
+                for(let i = 0; i < allMarkers.length; i++){
+                    if (/trending/.test(allMarkers[i].icon.url)) {
+                        allMarkers[i].setMap(null);
+                    }
+                }
             }
         });
     /* Jules */
