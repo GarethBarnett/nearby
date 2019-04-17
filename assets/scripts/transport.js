@@ -60,9 +60,6 @@ function presentAllBuese(val) {
 
 /* Jason */
 /* findBus function is using Auckland Transport API to find the nearby buses according to */
-
-
-/* user current location */
 function findBus() {
     var params = {};
     $.ajax({
@@ -76,31 +73,37 @@ function findBus() {
         data: "{body}",
     })
         .done(function (data) {
-            let returnedData = data.response.entity;
-            let pData = data.response.entity[0].vehicle.position;
-            positionX = pData.latitude;
-            positionY = pData.longitude;
-            for (let i = 0; i < returnedData.length; i++) {
-                if ((returnedData[i].vehicle.position.latitude <= (latUser1 + 0.005)) && (returnedData[i].vehicle.position.latitude >= (latUser1 - 0.005))) {
-                    if ((returnedData[i].vehicle.position.longitude <= (lngUser1 + 0.005)) && (returnedData[i].vehicle.position.longitude >= (lngUser1 - 0.005))) {
-                
-                        busMarker = new google.maps.Marker({
-                            map: map,
-                            draggable: false,
-                            icon: { url: icons.bus, scaledSize: new google.maps.Size(50, 50) },
-                            position: { lat: returnedData[i].vehicle.position.latitude, lng: returnedData[i].vehicle.position.longitude }
-                        });
-                        busLocation.lat = returnedData[i].vehicle.position.latitude;
-                        busLocation.lng = returnedData[i].vehicle.position.longitude;
-                        locations[0] = [latUser1, lngUser1];
-                        locations[1] = [placeToGoDetails[1], placeToGoDetails[2]];
-                        locations[2] = [busLocation.lat, busLocation.lng];
-                        getCentrePoint(locations);
-                        console.log(returnedData[i]);
-                        shownBusRouteId = returnedData[i].vehicle.trip.route_id;
-                        console.log(shownBusRouteId);
-                        getTravelInformation();
-                        return;
+            if(data.response.entity.length <= 0){
+                confirm('No buses nearby, please try another venue!');
+                if(busStopMarker){
+                    busStopMarker.setMap(null);
+                }
+                $('#infoMenuContainer').addClass('hide');
+                $('#busMenuContainer').addClass('hide'); 
+                $('.transportPanels').addClass('hide');
+                $('#panel').removeClass('hide')
+                searchAgainOrbackToMap();
+            }else{
+                let returnedData = data.response.entity;
+                for (let i = 0; i < returnedData.length; i++) {
+                    if ((returnedData[i].vehicle.position.latitude <= (latUser1 + 0.005)) && (returnedData[i].vehicle.position.latitude >= (latUser1 - 0.005))) {
+                        if ((returnedData[i].vehicle.position.longitude <= (lngUser1 + 0.005)) && (returnedData[i].vehicle.position.longitude >= (lngUser1 - 0.005))) {
+                            busMarker = new google.maps.Marker({
+                                map: map,
+                                draggable: false,
+                                icon: { url: icons.bus, scaledSize: new google.maps.Size(50, 50) },
+                                position: { lat: returnedData[i].vehicle.position.latitude, lng: returnedData[i].vehicle.position.longitude }
+                            });
+                            busLocation.lat = returnedData[i].vehicle.position.latitude;
+                            busLocation.lng = returnedData[i].vehicle.position.longitude;
+                            locations[0] = [latUser1, lngUser1];
+                            locations[1] = [placeToGoDetails[1], placeToGoDetails[2]];
+                            locations[2] = [busLocation.lat, busLocation.lng];
+                            getCentrePoint(locations);
+                            shownBusRouteId = returnedData[i].vehicle.trip.route_id;
+                            getTravelInformation();
+                            return;
+                        }
                     }
                 }
             }
@@ -201,5 +204,5 @@ function searchAgainOrbackToMap(){
     /* This function comes from foursquare.js */
     getCentreAfterMapLoad();
     /* Consistent map zoom level as first loading status */
-    map.setZoom(14);
+    map.setZoom(16);
 }

@@ -69,10 +69,8 @@ let map, marker;
 let flagOfIniMap = true;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        // -36.878901, 174.792339 random location for test
-        // center: { lat: -36.856693, lng: 174.763369 },
         center: { lat: -36.878901, lng: 174.792339 },
-        zoom: 14,
+        zoom: 16,
         disableDefaultUI: true,
         zoomControl: true,
         zoomControlOptions: {
@@ -185,7 +183,6 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
                     infoMenuContainer.classList.remove('hide');
                     /* Fill info menu with data */
                     createInfoMenu(res);
-
                     /* Jules */
                     map.setZoom(18);
                     map.setCenter(marker.getPosition());
@@ -538,9 +535,12 @@ function allAjaxRequest(){
             dataType: 'jsonp',
             type: 'GET',
             success: function (res) {
-                // alert('trending ajax successful')
-                // console.log(res);
-                requestAllLocationByFilter(res, null, 'trending');
+                requestAllLocationByFilter(res, map, 'trending');
+                for(let i = 0; i < allMarkers.length; i++){
+                    if (/trending/.test(allMarkers[i].icon.url)) {
+                        allMarkers[i].setMap(null);
+                    }
+                }
             }
         });
     /* Jules */
