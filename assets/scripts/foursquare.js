@@ -45,9 +45,6 @@ function locationHandler(position) {
     var lng = position.coords.longitude;
     latUser1 = position.coords.latitude;
     lngUser1 = position.coords.longitude;
-    //-36.856754, 174.763391 yoobee
-    // latUser1 = -36.856754;
-    // lngUser1 = 174.763391;
     /* Gareth */
     foodUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + food + '&limit=5&radius=2000';
     drinkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + drink + '&limit=5&radius=2000';
@@ -58,7 +55,6 @@ function locationHandler(position) {
 }
 
 let latUser1, lngUser1;
-
 /* Jules */
 
 
@@ -107,8 +103,6 @@ function initMap() {
 
     /* Jules */
 
-
-    
 
     setTimeout(() => {
         var location = new google.maps.Marker({
@@ -186,18 +180,6 @@ function requestAllLocationByFilter(obj, map, categoryVal) {
                     createInfoMenu(res);
 
                     /* Jules */
-
-                    /* ---------------- Need to fix this part --------------------*/
-                    /* 3 seconds after the center of the map has changed, pan back to the marker*/
-
-                    // map.addListener('center_changed', function () {
-                    //     window.setTimeout(function () {
-                    //         // map.panTo(marker.getPosition());
-                    //         map.panTo(new google.maps.LatLng(latUser1, lngUser1))
-                    //     }, 3000);
-                    // });
-                    /* ---------------- Need to fix this part --------------------*/
-
                     map.setZoom(18);
                     map.setCenter(marker.getPosition());
                     placeToGo = placeDetails[5];

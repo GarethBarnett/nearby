@@ -96,9 +96,9 @@ function findBus() {
                         locations[1] = [placeToGoDetails[1], placeToGoDetails[2]];
                         locations[2] = [busLocation.lat, busLocation.lng];
                         getCentrePoint(locations);
-                        console.log(returnedData[i])
+                        console.log(returnedData[i]);
                         shownBusRouteId = returnedData[i].vehicle.trip.route_id;
-                        console.log(shownBusRouteId)
+                        console.log(shownBusRouteId);
                         getTravelInformation();
                         return;
                     }
@@ -169,8 +169,8 @@ function getTravelInformation(){
         data: "{body}",
     })
     .done(function(data) {
-        $('#busVenueTitle').text(placeToGoDetails[3])
-        $('#busIdUpdate').text(data.response[0].route_short_name)
+        $('#busVenueTitle').text(placeToGoDetails[3]);
+        $('#busIdUpdate').text(data.response[0].route_short_name);
         $('#stopIdUpdate').text(nearbyStopId);
         $('#busStopId').text('STOP ' +nearbyStopId);
     })

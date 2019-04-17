@@ -14,9 +14,7 @@ setTimeout(function () {
 setTimeout(function () {
    'use strict';
    loader.parentNode.removeChild(loader);
-}, 2000);
-
-//window.location.reload();
+}, 3000);
 
 
 /* Global variables */
