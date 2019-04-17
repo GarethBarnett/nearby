@@ -19,7 +19,7 @@ $('#busArrow').on('click',()=>{
     //     map.setZoom(18);
     // }, 6000);
     $('#infoMenuContainer').addClass('hide');
-    $('#busMenuContainer').removeClass('hide');
+    $('#busMenuContainer').removeClass('hide'); 
 
 
     /* jason add*/
