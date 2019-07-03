@@ -38,10 +38,11 @@ let landmark = '4d4b7104d754a06370d81259';
 
 
 /* Jules */
-navigator.geolocation.getCurrentPosition(locationHandler);
+// navigator.geolocation.getCurrentPosition(locationHandler);
 
 /* Finding Users Location & venue endpoints */
 function locationHandler(position) {
+    initMap()
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
     latUser1 = position.coords.latitude;
@@ -53,6 +54,7 @@ function locationHandler(position) {
     landmarkUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&categoryId=' + landmark + '&limit=5&radius=2000';
     /* Gareth */
     trendingUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=' + latUser1 + ',' + lngUser1 + ' ' + '&limit=10';
+    
 }
 
 let latUser1, lngUser1;
@@ -68,6 +70,7 @@ let foodUrl, drinkUrl, hotelUrl, landmarkUrl, trendingUrl;
 let map, marker;
 let flagOfIniMap = true;
 function initMap() {
+
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -36.878901, lng: 174.792339 },
         zoom: 15,

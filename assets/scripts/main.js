@@ -1,6 +1,7 @@
 /* Main JS Files */
 
 /* Gareth */
+
 let loader = document.getElementById("splash");
 
 /* Splash Animation */
@@ -15,6 +16,8 @@ setTimeout(function () {
    'use strict';
    loader.parentNode.removeChild(loader);
 }, 3000);
+
+
 
 
 /* Global variables */
